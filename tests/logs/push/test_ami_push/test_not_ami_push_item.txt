@@ -1,0 +1,3 @@
+[    INFO] Checking files in: /tmp/test_staged
+[ WARNING] Push Item test.txt at /tmp/test_staged/test_x86_64/FILES/test.txt is not an AmiPushItem. Dropping it from the queue
+# Raised: 'NoneType' object is not iterable

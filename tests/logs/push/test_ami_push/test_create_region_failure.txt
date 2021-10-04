@@ -1,0 +1,36 @@
+[    INFO] Checking files in: /tmp/aws_staged
+[   DEBUG] Searching for product RHEL_HOURLY for provider awstest in rhsm
+[   DEBUG] Fetching product from https://example.com/v1/internal/cloud_access_providers/amazon/provider_image_groups
+[   DEBUG] 1 Products(AWS provider) in rhsm: RHEL_HOURLY(awstest)
+[    INFO] Uploading /tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw to region region-1 (type: hourly, ship: True)
+[    INFO] Image name: RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2
+[    INFO] Creating region region-1
+[   ERROR] Failed creating region region-1 for image ami-1234567
+[ WARNING] 500 Server Error: None for url: https://example.com/v1/internal/cloud_access_providers/amazon/regions
+[    INFO] Retrying upload
+[    INFO] Uploading /tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw to region region-1 (type: hourly, ship: True)
+[    INFO] Image name: RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2
+[    INFO] Creating region region-1
+[   ERROR] Failed creating region region-1 for image ami-1234567
+[ WARNING] 500 Server Error: None for url: https://example.com/v1/internal/cloud_access_providers/amazon/regions
+[    INFO] Retrying upload
+[    INFO] Uploading /tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw to region region-1 (type: hourly, ship: True)
+[    INFO] Image name: RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2
+[    INFO] Creating region region-1
+[   ERROR] Failed creating region region-1 for image ami-1234567
+[ WARNING] 500 Server Error: None for url: https://example.com/v1/internal/cloud_access_providers/amazon/regions
+[    INFO] Retrying upload
+[    INFO] Uploading /tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw to region region-1 (type: hourly, ship: True)
+[    INFO] Image name: RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2
+[    INFO] Creating region region-1
+[   ERROR] Failed creating region region-1 for image ami-1234567
+[ WARNING] 500 Server Error: None for url: https://example.com/v1/internal/cloud_access_providers/amazon/regions
+[    INFO] Retrying upload
+[    INFO] Uploading /tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw to region region-1 (type: hourly, ship: True)
+[    INFO] Image name: RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2
+[    INFO] Creating region region-1
+[   ERROR] Failed creating region region-1 for image ami-1234567
+[ WARNING] 500 Server Error: None for url: https://example.com/v1/internal/cloud_access_providers/amazon/regions
+[   ERROR] Upload failed after 5 attempts. Giving up
+[    INFO] Collecting results
+[    INFO] AMI upload completed

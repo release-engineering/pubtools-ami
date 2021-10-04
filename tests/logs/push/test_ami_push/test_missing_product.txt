@@ -1,0 +1,8 @@
+[    INFO] Checking files in: /tmp/aws_staged
+[   DEBUG] Searching for product RHEL_HOURLY for provider AWS in rhsm
+[   DEBUG] Fetching product from https://example.com/v1/internal/cloud_access_providers/amazon/provider_image_groups
+[   DEBUG] 1 Products(AWS provider) in rhsm: RHEL_HOURLY(awstest)
+[   ERROR] Product not in rhsm: RHEL_HOURLY
+[   ERROR] Pre-push check in metadata service failed for ami-1.raw at /tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw
+[   ERROR] Pre-push verification of push items in metadata service failed
+# Raised: 30

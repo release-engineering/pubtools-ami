@@ -1,0 +1,38 @@
+{
+    "header": {
+      "version": "0.2"
+    }, 
+    "payload": {
+      "files": [
+        {
+          "attributes": {
+            "billing_codes": {
+              "codes": [
+                "code-0001"
+              ], 
+              "name": "Hourly2"
+            }, 
+            "description": "Provided by Red Hat, Inc.", 
+            "ena_support": true, 
+            "region": "region-1", 
+            "release": {
+              "arch": "x86_64", 
+              "base_product": "RHEL", 
+              "base_version": "8.5", 
+              "date": "20210902", 
+              "product": "RHEL", 
+              "respin": 5, 
+              "type": "beta", 
+              "variant": "BaseOS", 
+              "version": "8.5.0"
+            }, 
+            "root_device": "/dev/sda1", 
+            "sriov_net_support": "simple", 
+            "type": "hourly", 
+            "virtualization": "hvm", 
+            "volume": "gp2"
+          }, 
+          "relative_path": "region-1-hourly/AWS_IMAGES/ami-1.raw"
+        }
+      ]}
+} 
