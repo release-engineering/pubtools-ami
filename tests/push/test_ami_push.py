@@ -79,8 +79,6 @@ def test_do_push(command_tester, requests_mocker):
         lambda: entry_point(AmiPush),
         [
             "test-push",
-            "--source",
-            AMI_STAGE_ROOT,
             "--rhsm-url",
             "https://example.com",
             "--aws-provider-name",
@@ -95,6 +93,7 @@ def test_do_push(command_tester, requests_mocker):
             "secret_key",
             "--ship",
             "--debug",
+            AMI_STAGE_ROOT,
         ],
     )
 
@@ -110,7 +109,7 @@ def test_no_source(command_tester):
 def test_no_rhsm_url(command_tester):
     command_tester.test(
         lambda: entry_point(AmiPush),
-        ["test-push", "--debug", "--source", AMI_STAGE_ROOT],
+        ["test-push", "--debug", AMI_STAGE_ROOT],
     )
 
 
@@ -120,14 +119,13 @@ def test_no_aws_credentials(command_tester):
         [
             "test-push",
             "--debug",
-            "--source",
-            AMI_STAGE_ROOT,
             "--rhsm-url",
             "https://example.com",
             "--aws-provider-name",
             "awstest",
             "--retry-wait",
             "1",
+            AMI_STAGE_ROOT,
         ],
     )
 
@@ -137,8 +135,6 @@ def test_missing_product(command_tester):
         lambda: entry_point(AmiPush),
         [
             "test-push",
-            "--source",
-            AMI_STAGE_ROOT,
             "--rhsm-url",
             "https://example.com",
             "--aws-provider-name",
@@ -150,6 +146,7 @@ def test_missing_product(command_tester):
             "--aws-secret-key",
             "secret_key",
             "--debug",
+            AMI_STAGE_ROOT,
         ],
     )
 
@@ -159,8 +156,6 @@ def test_push_public_image(command_tester):
         lambda: entry_point(AmiPush),
         [
             "test-push",
-            "--source",
-            AMI_STAGE_ROOT,
             "--rhsm-url",
             "https://example.com",
             "--aws-provider-name",
@@ -176,6 +171,7 @@ def test_push_public_image(command_tester):
             "--ship",
             "--allow-public-image",
             "--debug",
+            AMI_STAGE_ROOT,
         ],
     )
 
@@ -186,8 +182,6 @@ def test_create_region_failure(command_tester, requests_mocker):
         lambda: entry_point(AmiPush),
         [
             "test-push",
-            "--source",
-            AMI_STAGE_ROOT,
             "--rhsm-url",
             "https://example.com",
             "--aws-provider-name",
@@ -202,6 +196,7 @@ def test_create_region_failure(command_tester, requests_mocker):
             "secret_key",
             "--ship",
             "--debug",
+            AMI_STAGE_ROOT,
         ],
     )
 
@@ -213,8 +208,6 @@ def test_create_image_failure(command_tester, requests_mocker):
         lambda: entry_point(AmiPush),
         [
             "test-push",
-            "--source",
-            AMI_STAGE_ROOT,
             "--rhsm-url",
             "https://example.com",
             "--aws-provider-name",
@@ -231,6 +224,7 @@ def test_create_image_failure(command_tester, requests_mocker):
             "secret_key",
             "--ship",
             "--debug",
+            AMI_STAGE_ROOT,
         ],
     )
 
@@ -242,8 +236,6 @@ def test_not_ami_push_item(command_tester, staged_file):
         lambda: entry_point(AmiPush),
         [
             "test-push",
-            "--source",
-            temp_stage,
             "--rhsm-url",
             "https://example.com",
             "--aws-provider-name",
@@ -257,6 +249,7 @@ def test_not_ami_push_item(command_tester, staged_file):
             "--aws-secret-key",
             "secret_key",
             "--debug",
+            temp_stage,
         ],
     )
 
@@ -274,8 +267,6 @@ def test_aws_publish_failures(command_tester, mock_aws_publish):
         lambda: entry_point(AmiPush),
         [
             "test-push",
-            "--source",
-            AMI_STAGE_ROOT,
             "--rhsm-url",
             "https://example.com",
             "--aws-provider-name",
@@ -291,5 +282,6 @@ def test_aws_publish_failures(command_tester, mock_aws_publish):
             "--ship",
             "--allow-public-image",
             "--debug",
+            AMI_STAGE_ROOT,
         ],
     )

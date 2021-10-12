@@ -46,23 +46,19 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
     def _get_push_items(self):
         ami_push_items = []
-        source_loc = self.args.source
-        if not source_loc:
-            self.fail(
-                "Source not available to fetch push items. "
-                "Use --source to provide the location of the AMIs."
-            )
-        with Source.get("staged:", url=source_loc) as source:
-            for push_item in source:
-                if not isinstance(push_item, AmiPushItem):
-                    LOG.warning(
-                        "Push Item %s at %s is not an AmiPushItem. "
-                        "Dropping it from the queue",
-                        push_item.name,
-                        push_item.src,
-                    )
-                    continue
-                ami_push_items.append(push_item)
+
+        for source_loc in self.args.source:
+            with Source.get("staged:", url=source_loc) as source:
+                for push_item in source:
+                    if not isinstance(push_item, AmiPushItem):
+                        LOG.warning(
+                            "Push Item %s at %s is not an AmiPushItem. "
+                            "Dropping it from the queue",
+                            push_item.name,
+                            push_item.src,
+                        )
+                        continue
+                    ami_push_items.append(push_item)
         return ami_push_items
 
     @property
@@ -367,7 +363,10 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
         group = self.parser.add_argument_group("AMI Push arguments")
 
-        group.add_argument("--source", help="source location of the staged AMIs")
+        group.add_argument(
+            "source", nargs="+",
+            help="source location of the staged AMIs", action=SplitAndExtend
+        )
 
         group.add_argument(
             "--ship", help="publish the AMIs in public domain", action="store_true"

@@ -1,2 +1,1 @@
-[   ERROR] Source not available to fetch push items. Use --source to provide the location of the AMIs.
-# Raised: 30
+# Raised: 2
