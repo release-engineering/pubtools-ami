@@ -28,6 +28,7 @@ def stage_ami():
     if os.path.exists(AMI_STAGE_ROOT):
         shutil.rmtree(AMI_STAGE_ROOT)
 
+accounts = json.dumps({"default":{"access-1":"secret-1"}})
 
 @pytest.fixture
 def staged_file():
@@ -86,7 +87,7 @@ def test_do_push(command_tester, requests_mocker):
             "--retry-wait",
             "1",
             "--accounts",
-            "123, 456",
+            accounts,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
@@ -123,6 +124,8 @@ def test_no_aws_credentials(command_tester):
             "https://example.com",
             "--aws-provider-name",
             "awstest",
+            "--accounts",
+            accounts,
             "--retry-wait",
             "1",
             AMI_STAGE_ROOT,
@@ -163,7 +166,7 @@ def test_push_public_image(command_tester):
             "--retry-wait",
             "1",
             "--accounts",
-            "123, 456",
+            accounts,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
@@ -189,7 +192,7 @@ def test_create_region_failure(command_tester, requests_mocker):
             "--retry-wait",
             "1",
             "--accounts",
-            "123, 456",
+            accounts,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
@@ -217,7 +220,7 @@ def test_create_image_failure(command_tester, requests_mocker):
             "--max-retries",
             "2",
             "--accounts",
-            "123, 456",
+            accounts,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
@@ -244,6 +247,8 @@ def test_not_ami_push_item(command_tester, staged_file):
             "1",
             "--max-retries",
             "2",
+            "--accounts",
+            accounts,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
@@ -274,7 +279,7 @@ def test_aws_publish_failures(command_tester, mock_aws_publish):
             "--retry-wait",
             "1",
             "--accounts",
-            "123, 456",
+            accounts,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
