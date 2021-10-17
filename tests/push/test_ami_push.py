@@ -28,7 +28,9 @@ def stage_ami():
     if os.path.exists(AMI_STAGE_ROOT):
         shutil.rmtree(AMI_STAGE_ROOT)
 
-accounts = json.dumps({"default":{"access-1":"secret-1"}})
+
+accounts = json.dumps({"default": {"access-1": "secret-1"}})
+
 
 @pytest.fixture
 def staged_file():

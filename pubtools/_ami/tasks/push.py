@@ -208,7 +208,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         if region in _accounts:
             accounts = list(_accounts[region].values())
         else:
-            accounts = list(_accounts['default'].values())
+            accounts = list(_accounts["default"].values())
 
         publish_meta = AWSPublishingMetadata(
             image_path=file_path,
@@ -368,8 +368,11 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         group = self.parser.add_argument_group("AMI Push options")
 
         group.add_argument(
-            "source", nargs="+",
-            help="source location of the staged AMIs", action=SplitAndExtend, split_on=","
+            "source",
+            nargs="+",
+            help="source location of the staged AMIs",
+            action=SplitAndExtend,
+            split_on=",",
         )
 
         group.add_argument(
@@ -384,10 +387,10 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
         group.add_argument(
             "--accounts",
-            help="region to accounts mapping for the accounts which will have permission to use the image in a region. " \
-                "If the accounts are not specific to a region, map them to defaults " \
-                "e.g. '{\"region-1\": {\"user-1\": \"key-1\"}}' OR '{\"default\": {\"user-1\": \"key-1\"}}' " \
-                "OR '{\"region-1\": {\"user-1\": \"key-1\"}, \"default\": {\"user-1\": \"key-1\"}}'",
+            help="region to accounts mapping for the accounts which will have permission to use the image in a region. "
+            "If the accounts are not specific to a region, map them to defaults "
+            'e.g. \'{"region-1": {"user-1": "key-1"}}\' OR \'{"default": {"user-1": "key-1"}}\' '
+            'OR \'{"region-1": {"user-1": "key-1"}, "default": {"user-1": "key-1"}}\'',
             type=json.loads,
             default={},
         )

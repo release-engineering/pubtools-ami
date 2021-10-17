@@ -37,10 +37,9 @@ class RHSMClient(object):
             retry_args["max_sleep"] = max_retry_sleep
 
         self._session_attrs = kwargs
-        self._executor = (
-            Executors.thread_pool(name="rhsm-client", max_workers=self._REQUEST_THREADS)
-            .with_retry(**retry_args)
-        )
+        self._executor = Executors.thread_pool(
+            name="rhsm-client", max_workers=self._REQUEST_THREADS
+        ).with_retry(**retry_args)
 
     @staticmethod
     def _check_http_response(response):
