@@ -22,20 +22,17 @@ class RHSMClientService(Service):
     def add_service_args(self, parser):
         super(RHSMClientService, self).add_service_args(parser)
 
-        group = parser.add_argument_group("RHSM environment")
+        group = parser.add_argument_group("RHSM service")
 
         group.add_argument("--rhsm-url", help="Base URL of the RHSM API")
         group.add_argument(
             "--rhsm-cert",
-            help=(
-                "RHSM API certificate path",
-                "(or set RHSM_CERT environment variable)",
-            ),
+            help="RHSM API certificate path (or set RHSM_CERT environment variable)",
             type=from_environ("RHSM_CERT"),
         )
         group.add_argument(
             "--rhsm-key",
-            help=("RHSM API key path", "(or set RHSM_KEY environment variable)"),
+            help="RHSM API key path (or set RHSM_KEY environment variable)",
             type=from_environ("RHSM_KEY"),
         )
 

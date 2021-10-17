@@ -39,7 +39,6 @@ class RHSMClient(object):
         self._session_attrs = kwargs
         self._executor = (
             Executors.thread_pool(name="rhsm-client", max_workers=self._REQUEST_THREADS)
-            # .with_map(self._check_http_response)
             .with_retry(**retry_args)
         )
 
@@ -60,7 +59,6 @@ class RHSMClient(object):
         LOG.error("Failed to process request to RHSM with exception %s", exception)
         raise exception
 
-    # TODO: reduce this to _verb
     def _get(self, *args, **kwargs):
         return self._session.get(*args, **kwargs)
 

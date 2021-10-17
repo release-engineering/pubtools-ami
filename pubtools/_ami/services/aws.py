@@ -23,24 +23,20 @@ class AWSPublishService(Service):
     def add_service_args(self, parser):
         super(AWSPublishService, self).add_service_args(parser)
 
-        group = parser.add_argument_group("AWS Service arguments")
+        group = parser.add_argument_group("AWS Service")
 
         group.add_argument(
             "--aws-access-id",
-            help=(
-                "The AWS Service ID or Login to access the service "
-                "(or set AWS_ACCESS_ID environment variable)"
-            ),
+            help="The AWS Service ID or Login to access the service " \
+            "(or set AWS_ACCESS_ID environment variable)",
             default="",
             type=from_environ("AWS_ACCESS_ID"),
         )
 
         group.add_argument(
             "--aws-secret-key",
-            help=(
-                "The AWS Service key to access the service "
-                "(or set AWS_SECRET_KEY environment variable)"
-            ),
+            help="The AWS Service key to access the service " \
+            "(or set AWS_SECRET_KEY environment variable)",
             default="",
             type=from_environ("AWS_SECRET_KEY"),
         )

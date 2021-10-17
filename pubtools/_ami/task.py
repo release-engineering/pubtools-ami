@@ -90,10 +90,7 @@ class AmiTask(object):
             "-d",
             action="count",
             default=0,
-            help=(
-                "Show debug logs; can be provided up to three times "
-                "to enable more logs"
-            ),
+            help="Show debug logs; can be provided up to three times to enable more logs",
         )
 
     def _setup_logging(self):
