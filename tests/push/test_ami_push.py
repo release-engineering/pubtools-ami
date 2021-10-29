@@ -30,6 +30,9 @@ def stage_ami():
 
 
 accounts = json.dumps({"default": {"access-1": "secret-1"}})
+region_acc = json.dumps(
+    {"region-1": {"access-r": "secret-r"}, "default": {"access-1": "secret-1"}}
+)
 
 
 @pytest.fixture
@@ -89,7 +92,7 @@ def test_do_push(command_tester, requests_mocker):
             "--retry-wait",
             "1",
             "--accounts",
-            accounts,
+            region_acc,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",

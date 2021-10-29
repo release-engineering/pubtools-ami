@@ -342,7 +342,9 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
                         "Upload failed after %s attempts. Giving up", (max_retries + 1)
                     )
                     state = "NOTPUSHED"
-                break
+                # break statement is not covered in py38
+                # https://github.com/nedbat/coveragepy/issues/772
+                break  # pragma: no cover
             attr.evolve(push_item, state=state)
             dest_data["state"] = state
             dest_data["image_id"] = image_id
