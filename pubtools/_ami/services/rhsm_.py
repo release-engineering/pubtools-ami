@@ -1,6 +1,7 @@
 import logging
 import threading
 
+from pubtools.pluggy import pm
 from pubtools._ami.rhsm import RHSMClient
 from pubtools._ami.arguments import from_environ
 from .base import Service
@@ -49,8 +50,14 @@ class RHSMClientService(Service):
 
     def _get_rhsm_instance(self):
         rhsm_url = self._service_args.rhsm_url
+        rhsm_cert = self._service_args.rhsm_cert
+        rhsm_key = self._service_args.rhsm_key
         if not rhsm_url:
             raise Exception("RHSM URL not provided for the RHSM client")
 
-        cert = self._service_args.rhsm_cert, self._service_args.rhsm_key
+        result = pm.hook.get_cert_key_paths(  # pylint: disable=no-member
+            server_url=rhsm_url
+        )
+        default_cert, default_key = result if result else None, None
+        cert = rhsm_cert or default_cert, rhsm_key or default_key
         return RHSMClient(rhsm_url, cert=cert)
