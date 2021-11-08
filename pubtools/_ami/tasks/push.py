@@ -27,6 +27,13 @@ class AWSPublishError(Exception):
 
 
 class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
+    """Pushes one or more Amazon Machine Images to AWS from the specified sources.
+
+    This command gets the AMIs from the provided sources, checks for the image product in
+    the metadata service e.g. RHSM and then uploads to AWS using the image metadata from
+    the source. The image metadata is then updated to the metadata service post upload if
+    the images were shipped to the users.
+    """
 
     _REQUEST_THREADS = int(os.environ.get("AMI_PUSH_REQUEST_THREADS", "5"))
 
