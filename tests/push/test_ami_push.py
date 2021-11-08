@@ -79,8 +79,8 @@ def mock_rhsm_api(requests_mocker):
 
 
 def test_do_push(command_tester, requests_mocker):
+    """Successful push and ship of an image that's not present on RHSM"""
     requests_mocker.register_uri("PUT", re.compile("amazon/amis"), status_code=400)
-
     command_tester.test(
         lambda: entry_point(AmiPush),
         [
@@ -104,15 +104,18 @@ def test_do_push(command_tester, requests_mocker):
     )
 
 
-def test_no_source(command_tester):
-
+def test_no_source(command_tester, capsys):
+    """Checks that exception is raised when the source is missing"""
     command_tester.test(
         lambda: entry_point(AmiPush),
         ["test-push", "--debug", "--rhsm-url", "https://example.com"],
     )
+    _, err = capsys.readouterr()
+    assert "error: too few arguments" in err
 
 
 def test_no_rhsm_url(command_tester):
+    """Raises an error that RHSM url is not provided"""
     command_tester.test(
         lambda: entry_point(AmiPush),
         ["test-push", "--debug", AMI_STAGE_ROOT],
@@ -120,6 +123,7 @@ def test_no_rhsm_url(command_tester):
 
 
 def test_no_aws_credentials(command_tester):
+    """Raises an error that AWS credentials were not provided to upload an image"""
     command_tester.test(
         lambda: entry_point(AmiPush),
         [
@@ -139,6 +143,7 @@ def test_no_aws_credentials(command_tester):
 
 
 def test_missing_product(command_tester):
+    """Raises an error when the product the image is realted to is missing on RHSM"""
     command_tester.test(
         lambda: entry_point(AmiPush),
         [
@@ -160,6 +165,7 @@ def test_missing_product(command_tester):
 
 
 def test_push_public_image(command_tester):
+    """Successfully pushed images to all the accounts so it's available for general public"""
     command_tester.test(
         lambda: entry_point(AmiPush),
         [
@@ -185,6 +191,7 @@ def test_push_public_image(command_tester):
 
 
 def test_create_region_failure(command_tester, requests_mocker):
+    """Push fails when the region couldn't be created on RHSM"""
     requests_mocker.register_uri("POST", re.compile("amazon/region"), status_code=500)
     command_tester.test(
         lambda: entry_point(AmiPush),
@@ -210,6 +217,7 @@ def test_create_region_failure(command_tester, requests_mocker):
 
 
 def test_create_image_failure(command_tester, requests_mocker):
+    """Push fails if the image metadata couldn't be created on RHSM for a new image"""
     requests_mocker.register_uri("PUT", re.compile("amazon/amis"), status_code=400)
     requests_mocker.register_uri("POST", re.compile("amazon/amis"), status_code=500)
     command_tester.test(
@@ -238,6 +246,7 @@ def test_create_image_failure(command_tester, requests_mocker):
 
 
 def test_not_ami_push_item(command_tester, staged_file):
+    """Non AMI pushitem is skipped from inclusion in push list"""
     temp_stage = staged_file
 
     command_tester.test(
@@ -265,6 +274,8 @@ def test_not_ami_push_item(command_tester, staged_file):
 
 
 def test_aws_publish_failures(command_tester, mock_aws_publish):
+    """Image upload to AWS is retried on upload failure till it's pushed successfully
+    or reached max retry count"""
     response = mock_aws_publish.return_value
     mock_aws_publish.side_effect = [
         Exception("Unable to publish"),

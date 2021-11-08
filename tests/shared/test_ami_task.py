@@ -25,6 +25,8 @@ class TestAmiTask(AmiTask):
 
 
 def test_skip(capsys):
+    """Checks that the method using step decorator is skipped
+    when its step name is provided with --skip option"""
     task = TestAmiTask()
     arg = ["", "--skip", "task1"]
     with patch("sys.argv", arg):
@@ -36,6 +38,7 @@ def test_skip(capsys):
 
 
 def test_task_run():
+    """raises if run() is not implemented"""
     task = AmiTask()
     with pytest.raises(NotImplementedError):
         task.run()

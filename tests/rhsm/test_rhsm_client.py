@@ -5,6 +5,7 @@ from pubtools._ami.rhsm import RHSMClient
 
 
 def test_rhsm_products(requests_mocker):
+    """Checks the api to get the products available for each provider type in RHSM"""
     url = "https://example.com/v1/internal/cloud_access_providers/amazon/provider_image_groups"
     products = {
         "body": [
@@ -25,6 +26,8 @@ def test_rhsm_products(requests_mocker):
 
 
 def test_create_region(requests_mocker):
+    """Checks the api to create region of AWS provider on RHSM for success and failure while
+    creating the region"""
     url = "https://example.com/v1/internal/cloud_access_providers/amazon/regions"
     m_create_region = requests_mocker.register_uri(
         "POST", url, [{"status_code": 200}, {"status_code": 500}]
@@ -45,6 +48,8 @@ def test_create_region(requests_mocker):
 
 
 def test_update_image(requests_mocker, caplog):
+    """Checks the api that updates the AMI metadata present on RHSM for a specifc AMI ID
+    for success and failure while updating the metadata"""
     url = "https://example.com/v1/internal/cloud_access_providers/amazon/amis"
     m_update_image = requests_mocker.register_uri(
         "PUT",
@@ -89,6 +94,8 @@ def test_update_image(requests_mocker, caplog):
 
 
 def test_create_image(requests_mocker, caplog):
+    """Checks the api that creates the AMI metadata on RHSM for success and failure
+    responses while creating the metadata"""
     url = "https://example.com/v1/internal/cloud_access_providers/amazon/amis"
     m_create_image = requests_mocker.register_uri(
         "POST",
