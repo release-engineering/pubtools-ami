@@ -111,7 +111,10 @@ def test_no_source(command_tester, capsys):
         ["test-push", "--debug", "--rhsm-url", "https://example.com"],
     )
     _, err = capsys.readouterr()
-    assert "error: too few arguments" in err
+    assert (
+        "error: too few arguments"
+        or "error: the following arguments are required" in err
+    )
 
 
 def test_no_rhsm_url(command_tester):
