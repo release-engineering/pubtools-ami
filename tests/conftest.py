@@ -56,8 +56,8 @@ def fake_collector():
     """
     collector = FakeCollector()
 
-    Collector.register_backend("pubtools-pulp-test", lambda: collector)
-    Collector.set_default_backend("pubtools-pulp-test")
+    Collector.register_backend("pubtools-ami-test", lambda: collector)
+    Collector.set_default_backend("pubtools-ami-test")
 
     yield collector
 
