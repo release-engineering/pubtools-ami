@@ -93,7 +93,7 @@ shipped to the users.</p>
 <h2>AMI Push options<a class="headerlink" href="#AMI Push options" title="Permalink to this headline">¶</a></h2>
 <dl class="option-list">
 <dt><kbd>source</kbd></dt>
-<dd><p>source location of the staged AMIs</p>
+<dd><p>source location of the staged AMIs with the source type. e.g. staged:/path/to/stage/ami or errata:https://errata.example.com?errata=RHBA-2020:1234</p>
 </dd>
 <dt><kbd>--ship</kbd></dt>
 <dd><p>publish the AMIs in public domain</p>
@@ -135,7 +135,7 @@ shipped to the users.</p>
                <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;access-1&quot;</span><span class="p">:</span> <span class="s2">&quot;secret-1&quot;</span><span class="p">}}</span><span class="s1">&#39; </span><span class="se">\</span>
 <span class="s1">  --aws-access-id access_id </span><span class="se">\</span>
 <span class="s1">  --aws-secret-key secret_key </span><span class="se">\</span>
-<span class="s1">  /stage/ami/root</span>
+<span class="s1">  staged:/stage/ami/root</span>
 </pre></div>
 </div>
 <p>All the AMIs in the given source path will be verified for
@@ -155,7 +155,7 @@ should be used. This updates the metadata on RHSM services.</p>
 <span class="s1">  --aws-access-id access_id </span><span class="se">\</span>
 <span class="s1">  --aws-secret-key secret_key </span><span class="se">\</span>
 <span class="s1">  --ship </span><span class="se">\</span>
-<span class="s1">  /stage/ami/root</span>
+<span class="s1">  staged:/stage/ami/root</span>
 </pre></div>
 </div>
 <p>Shipping the images to general public i.e. ones that are available
@@ -170,7 +170,7 @@ fee requires using –allow-public-images along with the above options.</p>
 <span class="s1">  --aws-secret-key secret_key </span><span class="se">\</span>
 <span class="s1">  --ship </span><span class="se">\</span>
 <span class="s1">  --allow-public-image </span><span class="se">\</span>
-<span class="s1">  /stage/ami/root</span>
+<span class="s1">  staged:/stage/ami/root</span>
 </pre></div>
 </div>
 </section>
@@ -187,7 +187,7 @@ for 4 times after every 30 seconds. These defaults can be modified as:</p>
 <span class="s1">  --aws-secret-key secret_key </span><span class="se">\</span>
 <span class="s1">  --max-retires 2 </span><span class="se">\</span>
 <span class="s1">  --retry-wait 10 </span><span class="se">\</span>
-<span class="s1">  /stage/ami/root</span>
+<span class="s1">  staged:/stage/ami/root</span>
 </pre></div>
 </div>
 </section>

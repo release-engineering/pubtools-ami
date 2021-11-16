@@ -20,7 +20,7 @@ A typical invocation of push would look like this:
                  "default": {"access-1": "secret-1"}}' \
     --aws-access-id access_id \
     --aws-secret-key secret_key \
-    /stage/ami/root
+    staged:/stage/ami/root
 
 All the AMIs in the given source path will be verified for
 provider and product combination in RHSM and then uploaded
@@ -44,7 +44,7 @@ should be used. This updates the metadata on RHSM services.
     --aws-access-id access_id \
     --aws-secret-key secret_key \
     --ship \
-    /stage/ami/root
+    staged:/stage/ami/root
 
 
 Shipping the images to general public i.e. ones that are available
@@ -62,7 +62,7 @@ fee requires using --allow-public-images along with the above options.
     --aws-secret-key secret_key \
     --ship \
     --allow-public-image \
-    /stage/ami/root
+    staged:/stage/ami/root
 
 
 Example: modify retry
@@ -82,4 +82,4 @@ for 4 times after every 30 seconds. These defaults can be modified as:
     --aws-secret-key secret_key \
     --max-retires 2 \
     --retry-wait 10 \
-    /stage/ami/root
+    staged:/stage/ami/root
