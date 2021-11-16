@@ -8,6 +8,7 @@ from mock import patch, MagicMock
 from pubtools._ami.tasks.push import AmiPush, entry_point
 
 AMI_STAGE_ROOT = "/tmp/aws_staged"
+AMI_SOURCE = "staged:%s" % AMI_STAGE_ROOT
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -99,7 +100,7 @@ def test_do_push(command_tester, requests_mocker):
             "secret_key",
             "--ship",
             "--debug",
-            AMI_STAGE_ROOT,
+            AMI_SOURCE,
         ],
     )
 
@@ -121,7 +122,7 @@ def test_no_rhsm_url(command_tester):
     """Raises an error that RHSM url is not provided"""
     command_tester.test(
         lambda: entry_point(AmiPush),
-        ["test-push", "--debug", AMI_STAGE_ROOT],
+        ["test-push", "--debug", AMI_SOURCE],
     )
 
 
@@ -140,7 +141,7 @@ def test_no_aws_credentials(command_tester):
             accounts,
             "--retry-wait",
             "1",
-            AMI_STAGE_ROOT,
+            AMI_SOURCE,
         ],
     )
 
@@ -162,7 +163,7 @@ def test_missing_product(command_tester):
             "--aws-secret-key",
             "secret_key",
             "--debug",
-            AMI_STAGE_ROOT,
+            AMI_SOURCE,
         ],
     )
 
@@ -188,7 +189,7 @@ def test_push_public_image(command_tester):
             "--ship",
             "--allow-public-image",
             "--debug",
-            AMI_STAGE_ROOT,
+            AMI_SOURCE,
         ],
     )
 
@@ -214,7 +215,7 @@ def test_create_region_failure(command_tester, requests_mocker):
             "secret_key",
             "--ship",
             "--debug",
-            AMI_STAGE_ROOT,
+            AMI_SOURCE,
         ],
     )
 
@@ -243,14 +244,14 @@ def test_create_image_failure(command_tester, requests_mocker):
             "secret_key",
             "--ship",
             "--debug",
-            AMI_STAGE_ROOT,
+            AMI_SOURCE,
         ],
     )
 
 
 def test_not_ami_push_item(command_tester, staged_file):
     """Non AMI pushitem is skipped from inclusion in push list"""
-    temp_stage = staged_file
+    temp_stage = "staged:%s" % staged_file
 
     command_tester.test(
         lambda: entry_point(AmiPush),
@@ -306,6 +307,6 @@ def test_aws_publish_failures(command_tester, mock_aws_publish):
             "--ship",
             "--allow-public-image",
             "--debug",
-            AMI_STAGE_ROOT,
+            AMI_SOURCE,
         ],
     )

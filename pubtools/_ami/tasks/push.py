@@ -56,7 +56,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         ami_push_items = []
 
         for source_loc in self.args.source:
-            with Source.get("staged:", url=source_loc) as source:
+            with Source.get(source_loc) as source:
                 for push_item in source:
                     if not isinstance(push_item, AmiPushItem):
                         LOG.warning(
@@ -380,7 +380,9 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         group.add_argument(
             "source",
             nargs="+",
-            help="source location of the staged AMIs",
+            help="source location of the staged AMIs with the source type. "
+            "e.g. staged:/path/to/stage/ami or "
+            "errata:https://errata.example.com?errata=RHBA-2020:1234",
             action=SplitAndExtend,
             split_on=",",
         )
