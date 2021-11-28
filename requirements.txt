@@ -14,13 +14,13 @@ attrs==21.2.0 \
     # via
     #   jsonschema
     #   pushsource
-boto3==1.20.10 \
-    --hash=sha256:20a5109a37414a52c55d2048388f02cb7cf46fc0ca7be08b3bf81f4c5c053feb \
-    --hash=sha256:e2b5ce2679424a6c2bfc2ee4bb42d9100c8c08b21eff8d74cff85a7243a76d7b
+boto3==1.20.14 \
+    --hash=sha256:97bbb57d9e37ee24e013d022a2b39b21b131a7b1364d4a44a1e2a16c3a66979f \
+    --hash=sha256:df6f0c7f57a4463c9827080690046eb9381c6216d3a2f539ba74ba5c7dc84ef5
     # via cloudimg
-botocore==1.23.10 \
-    --hash=sha256:0adda9a4a95221027312eaaee0ec9fe2239fb2f285fced3ddca54b1310b864ee \
-    --hash=sha256:11670d3ac14eed1122e0154a7e1563c2c270beef43996466f8d11fbf5cf31611
+botocore==1.23.14 \
+    --hash=sha256:28d5b0efa2d6a22232551b0b2df88a2978cbe9b1faa7ed0821dd012550b0aed6 \
+    --hash=sha256:e8d52cbf2e73c6268cf2c207f47e3cfb3ede0983f93e8b59674b54628e7ef1f1
     # via
     #   boto3
     #   s3transfer
@@ -28,9 +28,9 @@ certifi==2021.10.8 \
     --hash=sha256:78884e7c1d4b00ce3cea67b44566851c4343c120abd683433ce934a68ea58872 \
     --hash=sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569
     # via requests
-charset-normalizer==2.0.7 \
-    --hash=sha256:e019de665e2bcf9c2b64e2e5aa025fa991da8720daa3c1138cadd2fd1856aed0 \
-    --hash=sha256:f7af805c321bfa1ce6714c51f254e0d5bb5e5834039bc17db7ebe3a4cec9492b
+charset-normalizer==2.0.8 \
+    --hash=sha256:735e240d9a8506778cd7a453d97e817e536bb1fc29f4f6961ce297b9c7a917b0 \
+    --hash=sha256:83fcdeb225499d6344c8f7f34684c2981270beacc32ede2e669e94f7fa544405
     # via requests
 cloudimg==1.1.0 \
     --hash=sha256:a1a70e04710f382a8c5185afeef3cbd63319c35e0c793ecc5c6b7bb0c6517bd5
@@ -118,9 +118,9 @@ pushcollector==1.2.0 \
     # via
     #   -r requirements.in
     #   pushsource
-pushsource==2.13.0 \
-    --hash=sha256:a59c9883d359dc57c4bcff579c0ceb18558f8153e88dd8a4b49c440da9e39b9e \
-    --hash=sha256:d00302406d86140c8cb17ec66053360babdeaebcef2f83d631803eeeb35d3da1
+pushsource==2.13.1 \
+    --hash=sha256:1d2bf2b67438ff8240923e94c3d4c31ba2fbe457d7dba952092fa183688a779b \
+    --hash=sha256:5e21ff0bc2a0d2f417c9b5ab0f72a30d03272eec3db121305b20e6548230afc4
     # via -r requirements.in
 pyrsistent==0.18.0 \
     --hash=sha256:097b96f129dd36a8c9e33594e7ebb151b1515eb52cceb08474c10a5479e799f2 \
