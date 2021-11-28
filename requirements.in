@@ -2,5 +2,6 @@ more-executors
 pushsource
 pushcollector
 cloudimg
-attr
+attrs
 pubtools
+six
