@@ -284,11 +284,12 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
             "arch": push_item.release.arch,
             "product_name": self.to_rhsm_product(
                 push_item.release.product, push_item.type
-            ),
+            )["name"],
             "version": push_item.release.version or None,
             "variant": push_item.release.variant or None,
         }
         LOG.info("Attempting to update the existing image %s in rhsm", image.id)
+        LOG.info(image_meta)
         out = self.rhsm_client.update_image(**image_meta)
         response = out.result()
         if not response.ok:
@@ -301,6 +302,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
             LOG.info("Attempting to create new image %s in rhsm", image.id)
             image_meta.update({"region": push_item.region})
+            LOG.info(image_meta)
             out = self.rhsm_client.create_image(**image_meta)
             response = out.result()
             if not response.ok:

@@ -8,8 +8,10 @@
 [    INFO] Registering image ami-1234567 with rhsm
 [   DEBUG] Searching for product RHEL_HOURLY for provider awstest in rhsm
 [    INFO] Attempting to update the existing image ami-1234567 in rhsm
+[    INFO] {'variant': u'BaseOS', 'image_name': 'ami-rhel', 'image_id': 'ami-1234567', 'version': u'8.5.0', 'arch': u'x86_64', 'product_name': u'RHEL_HOURLY'}
 [ WARNING] Update to rhsm failed for ami-1234567 with error code 400. Image might not be present on rhsm for update.
 [    INFO] Attempting to create new image ami-1234567 in rhsm
+[    INFO] {'region': u'region-1', 'variant': u'BaseOS', 'image_name': 'ami-rhel', 'image_id': 'ami-1234567', 'version': u'8.5.0', 'arch': u'x86_64', 'product_name': u'RHEL_HOURLY'}
 [   ERROR] Failed to create image ami-1234567 in rhsm with error code 500
 [   ERROR] 
 [ WARNING] 500 Server Error: None for url: https://example.com/v1/internal/cloud_access_providers/amazon/amis
@@ -20,8 +22,10 @@
 [    INFO] Registering image ami-1234567 with rhsm
 [   DEBUG] Searching for product RHEL_HOURLY for provider awstest in rhsm
 [    INFO] Attempting to update the existing image ami-1234567 in rhsm
+[    INFO] {'variant': u'BaseOS', 'image_name': 'ami-rhel', 'image_id': 'ami-1234567', 'version': u'8.5.0', 'arch': u'x86_64', 'product_name': u'RHEL_HOURLY'}
 [ WARNING] Update to rhsm failed for ami-1234567 with error code 400. Image might not be present on rhsm for update.
 [    INFO] Attempting to create new image ami-1234567 in rhsm
+[    INFO] {'region': u'region-1', 'variant': u'BaseOS', 'image_name': 'ami-rhel', 'image_id': 'ami-1234567', 'version': u'8.5.0', 'arch': u'x86_64', 'product_name': u'RHEL_HOURLY'}
 [   ERROR] Failed to create image ami-1234567 in rhsm with error code 500
 [   ERROR] 
 [ WARNING] 500 Server Error: None for url: https://example.com/v1/internal/cloud_access_providers/amazon/amis
@@ -32,8 +36,10 @@
 [    INFO] Registering image ami-1234567 with rhsm
 [   DEBUG] Searching for product RHEL_HOURLY for provider awstest in rhsm
 [    INFO] Attempting to update the existing image ami-1234567 in rhsm
+[    INFO] {'variant': u'BaseOS', 'image_name': 'ami-rhel', 'image_id': 'ami-1234567', 'version': u'8.5.0', 'arch': u'x86_64', 'product_name': u'RHEL_HOURLY'}
 [ WARNING] Update to rhsm failed for ami-1234567 with error code 400. Image might not be present on rhsm for update.
 [    INFO] Attempting to create new image ami-1234567 in rhsm
+[    INFO] {'region': u'region-1', 'variant': u'BaseOS', 'image_name': 'ami-rhel', 'image_id': 'ami-1234567', 'version': u'8.5.0', 'arch': u'x86_64', 'product_name': u'RHEL_HOURLY'}
 [   ERROR] Failed to create image ami-1234567 in rhsm with error code 500
 [   ERROR] 
 [ WARNING] 500 Server Error: None for url: https://example.com/v1/internal/cloud_access_providers/amazon/amis

@@ -12,6 +12,7 @@
 [    INFO] Registering image ami-1234567 with rhsm
 [   DEBUG] Searching for product RHEL_HOURLY for provider awstest in rhsm
 [    INFO] Attempting to update the existing image ami-1234567 in rhsm
+[    INFO] {'variant': u'BaseOS', 'image_name': 'ami-rhel', 'image_id': 'ami-1234567', 'version': u'8.5.0', 'arch': u'x86_64', 'product_name': u'RHEL_HOURLY'}
 [    INFO] Successfully registered image ami-1234567 with rhsm
 [    INFO] Releasing hourly image ami-1234567 publicly
 [ WARNING] Unable to publish
@@ -22,6 +23,7 @@
 [    INFO] Registering image ami-1234567 with rhsm
 [   DEBUG] Searching for product RHEL_HOURLY for provider awstest in rhsm
 [    INFO] Attempting to update the existing image ami-1234567 in rhsm
+[    INFO] {'variant': u'BaseOS', 'image_name': 'ami-rhel', 'image_id': 'ami-1234567', 'version': u'8.5.0', 'arch': u'x86_64', 'product_name': u'RHEL_HOURLY'}
 [    INFO] Successfully registered image ami-1234567 with rhsm
 [    INFO] Releasing hourly image ami-1234567 publicly
 [    INFO] Successfully uploaded RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2 [region-1] [ami-1234567]
