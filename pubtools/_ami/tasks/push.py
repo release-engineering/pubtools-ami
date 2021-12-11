@@ -218,21 +218,23 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         else:
             accounts = list(_accounts["default"].values())
 
-        publish_meta = AWSPublishingMetadata(
-            image_path=file_path,
-            image_name=name,
-            snapshot_name=name,
-            container=container,
-            description=push_item.description,
-            arch=push_item.release.arch,
-            virt_type=push_item.virtualization,
-            root_device_name=push_item.root_device,
-            volume_type=push_item.volume,
-            billing_products=push_item.billing_codes.codes,
-            accounts=accounts,
-            sriov_net_support=push_item.sriov_net_support,
-            ena_support=push_item.ena_support or False,
-        )
+        publishing_meta_kwargs = {
+            "image_path": file_path,
+            "image_name": name,
+            "snapshot_name": name,
+            "container": container,
+            "description": push_item.description,
+            "arch": push_item.release.arch,
+            "virt_type": push_item.virtualization,
+            "root_device_name": push_item.root_device,
+            "volume_type": push_item.volume,
+            "billing_products": push_item.billing_codes.codes,
+            "accounts": accounts,
+            "sriov_net_support": push_item.sriov_net_support,
+            "ena_support": push_item.ena_support or False,
+        }
+        LOG.info(publishing_meta_kwargs)
+        publish_meta = AWSPublishingMetadata(**publishing_meta_kwargs)
 
         aws = self.aws_service(region)
         try:
@@ -265,7 +267,9 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         the image assuming it returns OK if the region is present. Then tries to update
         the existing image info. If the image info is not preset, it creates one.
         """
-        LOG.info("Creating region %s", push_item.region)
+        LOG.info(
+            "Creating region %s [%s]", push_item.region, self.args.aws_provider_name
+        )
         out = self.rhsm_client.create_region(
             push_item.region, self.args.aws_provider_name
         )
