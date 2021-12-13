@@ -4,8 +4,10 @@ import shutil
 import pytest
 import json
 import yaml
+from logging import DEBUG
+from collections import OrderedDict
 from mock import patch, MagicMock
-from pubtools._ami.tasks.push import AmiPush, entry_point
+from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
 
 AMI_STAGE_ROOT = "/tmp/aws_staged"
 AMI_SOURCE = "staged:%s" % AMI_STAGE_ROOT
@@ -77,6 +79,28 @@ def mock_rhsm_api(requests_mocker):
     requests_mocker.register_uri("POST", re.compile("amazon/region"))
     requests_mocker.register_uri("PUT", re.compile("amazon/amis"))
     requests_mocker.register_uri("POST", re.compile("amazon/amis"))
+
+
+@pytest.fixture(autouse=True)
+def mock_debug_logger():
+    # dicts are unordered in < py36. Hence, logging them may generate
+    # a different order every time. The dicts are logged via debug
+    # method in the code. LOG.debug is overridden to sort the dicts
+    # before logging for the tests, generating a consistent sequence
+    # of items everytime to match with the test_log data.
+    def _log_debug(*args):
+        debug_args = []
+        for arg in args:
+            if isinstance(arg, dict):
+                od = OrderedDict(sorted(arg.items()))
+                debug_args.append(json.dumps(od))
+            else:
+                debug_args.append(arg)
+        LOG._log(DEBUG, debug_args[0], tuple(debug_args[1:]))
+
+    with patch("pubtools._ami.tasks.push.LOG.debug") as log_debug:
+        log_debug.side_effect = _log_debug
+        yield log_debug
 
 
 def test_do_push(command_tester, requests_mocker):
