@@ -58,6 +58,6 @@ class RHSMClientService(Service):
         result = pm.hook.get_cert_key_paths(  # pylint: disable=no-member
             server_url=rhsm_url
         )
-        default_cert, default_key = result if result else None, None
+        default_cert, default_key = result if result else (None, None)
         cert = rhsm_cert or default_cert, rhsm_key or default_key
         return RHSMClient(rhsm_url, cert=cert)

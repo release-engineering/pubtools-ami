@@ -218,21 +218,23 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         else:
             accounts = list(_accounts["default"].values())
 
-        publish_meta = AWSPublishingMetadata(
-            image_path=file_path,
-            image_name=name,
-            snapshot_name=name,
-            container=container,
-            description=push_item.description,
-            arch=push_item.release.arch,
-            virt_type=push_item.virtualization,
-            root_device_name=push_item.root_device,
-            volume_type=push_item.volume,
-            billing_products=push_item.billing_codes.codes,
-            accounts=accounts,
-            sriov_net_support=push_item.sriov_net_support,
-            ena_support=push_item.ena_support or False,
-        )
+        publishing_meta_kwargs = {
+            "image_path": file_path,
+            "image_name": name,
+            "snapshot_name": name,
+            "container": container,
+            "description": push_item.description,
+            "arch": push_item.release.arch,
+            "virt_type": push_item.virtualization,
+            "root_device_name": push_item.root_device,
+            "volume_type": push_item.volume,
+            "billing_products": push_item.billing_codes.codes,
+            "accounts": accounts,
+            "sriov_net_support": push_item.sriov_net_support,
+            "ena_support": push_item.ena_support or False,
+        }
+        LOG.debug("%s", publishing_meta_kwargs)
+        publish_meta = AWSPublishingMetadata(**publishing_meta_kwargs)
 
         aws = self.aws_service(region)
         try:
@@ -265,7 +267,9 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         the image assuming it returns OK if the region is present. Then tries to update
         the existing image info. If the image info is not preset, it creates one.
         """
-        LOG.info("Creating region %s", push_item.region)
+        LOG.info(
+            "Creating region %s [%s]", push_item.region, self.args.aws_provider_name
+        )
         out = self.rhsm_client.create_region(
             push_item.region, self.args.aws_provider_name
         )
@@ -284,11 +288,12 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
             "arch": push_item.release.arch,
             "product_name": self.to_rhsm_product(
                 push_item.release.product, push_item.type
-            ),
+            )["name"],
             "version": push_item.release.version or None,
             "variant": push_item.release.variant or None,
         }
         LOG.info("Attempting to update the existing image %s in rhsm", image.id)
+        LOG.debug("%s", image_meta)
         out = self.rhsm_client.update_image(**image_meta)
         response = out.result()
         if not response.ok:
@@ -301,6 +306,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
             LOG.info("Attempting to create new image %s in rhsm", image.id)
             image_meta.update({"region": push_item.region})
+            LOG.debug("%s", image_meta)
             out = self.rhsm_client.create_image(**image_meta)
             response = out.result()
             if not response.ok:
