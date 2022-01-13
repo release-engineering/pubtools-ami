@@ -38,4 +38,5 @@
 [ WARNING] 500 Server Error: None for url: https://example.com/v1/internal/cloud_access_providers/amazon/regions
 [   ERROR] Upload failed after 5 attempts. Giving up
 [    INFO] Collecting results
-[    INFO] AMI upload completed
+[   ERROR] AMI upload failed
+# Raised: 30

@@ -301,7 +301,7 @@ def test_not_ami_push_item(command_tester, staged_file):
     )
 
 
-def test_aws_publish_failures(command_tester, mock_aws_publish):
+def test_aws_publish_failure_retry(command_tester, mock_aws_publish):
     """Image upload to AWS is retried on upload failure till it's pushed successfully
     or reached max retry count"""
     response = mock_aws_publish.return_value

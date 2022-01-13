@@ -359,7 +359,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
                 # break statement is not covered in py38
                 # https://github.com/nedbat/coveragepy/issues/772
                 break  # pragma: no cover
-            attr.evolve(push_item, state=state)
+            dest_data["push_item"] = attr.evolve(push_item, state=state)
             dest_data["state"] = state
             dest_data["image_id"] = image_id
             dest_data["image_name"] = image_name
@@ -461,9 +461,19 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         for f_out in to_await:
             result.extend(f_out.result())
 
+        # process result for failures
+        failed = False
+        for r in result:
+            if not r.get("image_id"):
+                failed = True
+
         # send to collector
         LOG.info("Collecting results")
         self.collect_push_result(result)
+
+        if failed:
+            self.fail("AMI upload failed")
+
         LOG.info("AMI upload completed")
 
 
