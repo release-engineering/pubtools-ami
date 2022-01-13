@@ -372,10 +372,19 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
             if isinstance(obj, (datetime.datetime, datetime.date)):
                 return obj.strftime("%Y%m%d")
 
+        mod_result = []
         for result in results:
-            result["push_item"] = attr.asdict(result["push_item"])
+            res_dict = attr.asdict(result["push_item"])
+            # dict can't be modified during iteration.
+            # so iterate over list of keys.
+            for key in list(res_dict):
+                if res_dict[key] is None:
+                    del res_dict[key]
+            res_dict["ami"] = result["image_id"]
+            res_dict["name"] = result["image_name"]
+            mod_result.append(res_dict)
 
-        metadata = json.dumps(results, default=convert, indent=2, sort_keys=True)
+        metadata = json.dumps(mod_result, default=convert, indent=2, sort_keys=True)
         return self.collector.attach_file("images.json", metadata).result()
 
     def add_args(self):
