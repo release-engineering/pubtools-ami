@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## 1.0.0 - 2022-01-18
+
+### Fixed
+
+- Fixed response processing so push fails now if any of the pushitem fails
+
+### Changed
+
+- Modified images.json format updating some field names and removed null values
+
+
 ## 0.1.2 - 2021-12-14
 
 ### Fixed
@@ -26,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to PyPI
 
-[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/release-engineering/pubtools-ami/compare/v1.0.0...0.1.2
 [0.1.2]: https://github.com/release-engineering/pubtools-ami/compare/v0.1.2...0.1.1
 [0.1.1]: https://github.com/release-engineering/pubtools-ami/compare/v0.1.1...0.1.0
 
