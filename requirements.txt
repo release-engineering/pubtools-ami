@@ -11,13 +11,13 @@ attrs==21.4.0 \
     #   -r requirements.in
     #   jsonschema
     #   pushsource
-boto3==1.21.3 \
-    --hash=sha256:aa00024cc1f3d24b2318dae4d5dbaa173c8da8bc6f9d12f0b2e67467ec460989 \
-    --hash=sha256:ab4ab2392f7520c01ce6e40e6df4b5b65a575ee6bd9fb78db0239cb2a06de557
+boto3==1.21.8 \
+    --hash=sha256:9b6903fe9cc92d2f6111db28675263f1ab45adbcf1483025c82a304ce7790b71 \
+    --hash=sha256:f2ce641957c1782e382548ced4a447189e45851bbe58c1f6752ff2b661527de7
     # via cloudimg
-botocore==1.24.3 \
-    --hash=sha256:979e5c5e826ff115f4903fe9887b191f3809229f694a747f910e1221fe63efc7 \
-    --hash=sha256:ca33f747c67cd0e109fab9398d39c38c1a2df352c1e1f9823839df8f1db58046
+botocore==1.24.8 \
+    --hash=sha256:9fbc5c57b31850c51c87abc3e166ed4e0f343665bec4e1a0ff814fbc9704642c \
+    --hash=sha256:a5431d806dc75fb1844463d921759fcd8d387674443af8d7fd0867f296b02759
     # via
     #   boto3
     #   s3transfer
@@ -101,18 +101,18 @@ jsonschema==4.4.0 \
 kobo==0.20.2 \
     --hash=sha256:4ba3c507beb843966509aa2229d3b5d7e17a7511750f56e918a609ae774b4532
     # via pushsource
-koji==1.27.1 \
-    --hash=sha256:2eb84ad075cfdaabd6520bf69ab01c217d18551cd200132a15f0441b45bc2a4c \
-    --hash=sha256:518a09a10f802ec5635978800d0ff0ab17d57aa31f369c01c93efcf9b9c9e61a \
-    --hash=sha256:b3db519db7bbb07edaef28d281ea463deb9b3998008e7bb47ef702e4cc871748
+koji==1.28.0 \
+    --hash=sha256:33adbd99cad9354f20e853414ddff482dbc1a5706439db81e123d64570f0abc3 \
+    --hash=sha256:54196a71e7f246727779ea941871b9ac78d6903962e76cba6dae517da6f5cfae \
+    --hash=sha256:ecea250efd07307a17ee933476a6eb9790ab49b38c8d4a2fca06119bbb6c1c27
     # via pushsource
 monotonic==1.6 \
     --hash=sha256:3a55207bcfed53ddd5c5bae174524062935efed17792e9de2ad0205ce9ad63f7 \
     --hash=sha256:68687e19a14f11f26d140dd5c86f3dba4bf5df58003000ed467e0e2a69bca96c
     # via more-executors
-more-executors==2.8.2 \
-    --hash=sha256:6e19e7155335fe15beeebdaad9a4ef6af089b137edc103ed75c3dd7e8c0d0833 \
-    --hash=sha256:b20b1ee7be21a765d622ef0388ed880c1f00999cec6a7e5f134b391303212b3d
+more-executors==2.10.0 \
+    --hash=sha256:170cdf50289f33e75379e79b1b68a0121be860a79f272d8d372c9cedeae1eb15 \
+    --hash=sha256:b65e77c07d4eec046f6872e314670fc8192106ce1f47c9bd23570af609c29de4
     # via
     #   -r requirements.in
     #   pushcollector
@@ -211,9 +211,9 @@ requests==2.27.1 \
 requests-gssapi==1.2.3 \
     --hash=sha256:20784508981401f7153c933eed095338933a40818da65a259dbf2d80dccb150e
     # via koji
-s3transfer==0.5.1 \
-    --hash=sha256:25c140f5c66aa79e1ac60be50dcd45ddc59e83895f062a3aab263b870102911f \
-    --hash=sha256:69d264d3e760e569b78aaa0f22c97e955891cd22e32b10c51f784eeda4d9d10a
+s3transfer==0.5.2 \
+    --hash=sha256:7a6f4c4d1fdb9a2b640244008e142cbc2cd3ae34b386584ef044dd0f27101971 \
+    --hash=sha256:95c58c194ce657a5f4fb0b9e60a84968c808888aed628cd98ab8771fe1db98ed
     # via boto3
 six==1.16.0 \
     --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
