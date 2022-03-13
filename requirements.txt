@@ -11,13 +11,13 @@ attrs==21.4.0 \
     #   -r requirements.in
     #   jsonschema
     #   pushsource
-boto3==1.21.13 \
-    --hash=sha256:16fae86d0c4993fd5112128bb4622a879f02363bccd045153cc0bbd7722cc9a5 \
-    --hash=sha256:e17d994d222162dac02ec32fde6ae910d819ebf239a94dddcee47def2c82b9c9
+boto3==1.21.18 \
+    --hash=sha256:8d6f3c548f0ee03d742f404c96515e7579fc6968135aaa50dd855a046698ff79 \
+    --hash=sha256:d857feb6af9932e1ee3a748060a2cd9fd6043dbbccf66976eda54586597efdc0
     # via cloudimg
-botocore==1.24.13 \
-    --hash=sha256:46e51f56f1c5784e4245e036503635fa71b722775657b6e1acf21ec5b906974c \
-    --hash=sha256:7b166096f9413b41caf7cc6f4edfd5b3c3ab9d7c61eb120a649e69485c98131a
+botocore==1.24.18 \
+    --hash=sha256:7ea8ef1ff7c4882ab59b337662f90ddf5ea860e95e7e209dca593a34ea585b1b \
+    --hash=sha256:d2da7ccbc5ddd61fe3cd45fcbd3de380d9e3a15bfa8fbfd2d9259a93dcc60c56
     # via
     #   boto3
     #   s3transfer
@@ -98,8 +98,8 @@ jsonschema==4.4.0 \
     --hash=sha256:636694eb41b3535ed608fe04129f26542b59ed99808b4f688aa32dcf55317a83 \
     --hash=sha256:77281a1f71684953ee8b3d488371b162419767973789272434bbc3f29d9c8823
     # via pushcollector
-kobo==0.20.2 \
-    --hash=sha256:4ba3c507beb843966509aa2229d3b5d7e17a7511750f56e918a609ae774b4532
+kobo==0.20.3 \
+    --hash=sha256:e10486b7092a0ef3513df66db60d5344ee3ff709c3096010ba35ecf1d401dbeb
     # via pushsource
 koji==1.28.0 \
     --hash=sha256:33adbd99cad9354f20e853414ddff482dbc1a5706439db81e123d64570f0abc3 \
@@ -130,9 +130,9 @@ pushcollector==1.2.0 \
     # via
     #   -r requirements.in
     #   pushsource
-pushsource==2.14.0 \
-    --hash=sha256:18a3f18e9ca4e444eb97abf3fced0c3ba58b1ea1e0d1717512df43a097893c41 \
-    --hash=sha256:5619f3039f456794b38abd0564803d4015457ae4fb49a1a97da31a37f8439eaf
+pushsource==2.16.0 \
+    --hash=sha256:ac9774be9cad88480832ac8457b00413d00e54fc6db9a8361baa1290b1ee6a7e \
+    --hash=sha256:c9ca25fb668b6ff77941c16655e707c6334990b3b3a4da1d6bd5b8c07c80b791
     # via -r requirements.in
 pyrsistent==0.18.1 \
     --hash=sha256:0e3e1fcc45199df76053026a51cc59ab2ea3fc7c094c6627e93b7b44cdae2c8c \
