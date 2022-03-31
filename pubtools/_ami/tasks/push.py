@@ -228,7 +228,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
             "virt_type": push_item.virtualization,
             "root_device_name": push_item.root_device,
             "volume_type": push_item.volume,
-            "billing_products": push_item.billing_codes.codes,
+            "billing_products": push_item.billing_codes.codes or None,
             "accounts": accounts,
             "sriov_net_support": push_item.sriov_net_support,
             "ena_support": push_item.ena_support or False,
