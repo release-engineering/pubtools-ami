@@ -11,13 +11,13 @@ attrs==21.4.0 \
     #   -r requirements.in
     #   jsonschema
     #   pushsource
-boto3==1.21.32 \
-    --hash=sha256:05f4438607e560624caadb073c6c63181eda9bf74f8a9e4581e7b43d641cc683 \
-    --hash=sha256:8e7a6d70cefa4e125466e0c467b489649cb72e3632997844bc3c382f948c46e4
+boto3==1.21.37 \
+    --hash=sha256:013ba57295f05da141e364191dd46f4086e8fe3eb83a3cd09730eeb684ffbab3 \
+    --hash=sha256:1e845aa92b3ad70b954329b98835135c28b3000e322ff8d3fc46a956bdb6e94b
     # via cloudimg
-botocore==1.24.32 \
-    --hash=sha256:4f08eaaa93ee03f14de760031dd060cda3bd6aab734d194a916dbb8f7e5c7085 \
-    --hash=sha256:5c2dab84f21b2a8c00bdab2150149be0ca0c8e8dd0b38712fa3562af5cfe53a2
+botocore==1.24.37 \
+    --hash=sha256:21e164a213beca36033c46026bffa62f2ee2cd2600777271f9a551fb34dba006 \
+    --hash=sha256:70c48c4ae3c2b9ec0ca025385979d01f4c7dae4d9a61c82758d4cf7caa7082cd
     # via
     #   boto3
     #   s3transfer
@@ -101,10 +101,10 @@ jsonschema==4.4.0 \
 kobo==0.22.0 \
     --hash=sha256:0ddde47130232758ddd069320ed590e3a4d054732a6ce673ca118220f802e70a
     # via pushsource
-koji==1.28.0 \
-    --hash=sha256:33adbd99cad9354f20e853414ddff482dbc1a5706439db81e123d64570f0abc3 \
-    --hash=sha256:54196a71e7f246727779ea941871b9ac78d6903962e76cba6dae517da6f5cfae \
-    --hash=sha256:ecea250efd07307a17ee933476a6eb9790ab49b38c8d4a2fca06119bbb6c1c27
+koji==1.28.1 \
+    --hash=sha256:1e8bb3ada29772971ef526fac41d53c2723e81d9c4f0a8c850bcf6df3d4a1a5a \
+    --hash=sha256:7f02d416901b056b76eb0b03439ac49e3b850c7029601d3cad7893357c1b28b7 \
+    --hash=sha256:943ffe37f22faa5d9f16ea434309d71a1a8e4952f540072e62d00bead5a32ffa
     # via pushsource
 monotonic==1.6 \
     --hash=sha256:3a55207bcfed53ddd5c5bae174524062935efed17792e9de2ad0205ce9ad63f7 \
@@ -130,9 +130,9 @@ pushcollector==1.2.0 \
     # via
     #   -r requirements.in
     #   pushsource
-pushsource==2.18.1 \
-    --hash=sha256:9be8efb44cab87fad8c46455d9efefd93727237eb3cd5b51443d53b3012b8ebc \
-    --hash=sha256:d58cc30d6ffe7b4eccd43fb810c1968747b9899e048a56c44af60a3d79873196
+pushsource==2.18.2 \
+    --hash=sha256:0342bdd955df595d17dca79a5b85722c71140dae03ad0b089a920e8cf69b9ed0 \
+    --hash=sha256:6d57984bc8cb996e1d83abba78185aca1df887299f7e380e168d71cfa14d8b30
     # via -r requirements.in
 pyrsistent==0.18.1 \
     --hash=sha256:0e3e1fcc45199df76053026a51cc59ab2ea3fc7c094c6627e93b7b44cdae2c8c \
