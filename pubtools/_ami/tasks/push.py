@@ -173,6 +173,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
         return "-".join(parts)
 
+    # pylint:disable=too-many-locals
     def upload(self, push_item):
         """
         Uploads and imports a disk image to AWS. If ship is not True, the image
@@ -230,6 +231,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
             "volume_type": push_item.volume,
             "billing_products": push_item.billing_codes.codes,
             "accounts": accounts,
+            "snapshot_account_ids": self.args.snapshot_account_ids,
             "sriov_net_support": push_item.sriov_net_support,
             "ena_support": push_item.ena_support or False,
         }
@@ -446,6 +448,15 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
             help="number of retries on failure to upload",
             type=int,
             default=4,
+        )
+
+        group.add_argument(
+            "--snapshot-account-ids",
+            help="List of account ids to give snapshot creation permissions to if a new snapshot "
+            "is created as part of the image push.",
+            action="append",
+            type=str,
+            default=["679593333241", "684062674729", "425685993791", "582767206473"],
         )
 
     def run(self):

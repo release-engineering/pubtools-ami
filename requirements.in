@@ -1,7 +1,7 @@
 more-executors
 pushsource>=2.13.3
 pushcollector
-cloudimg
+cloudimg>=1.2.0
 attrs
 pubtools
 six

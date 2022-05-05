@@ -29,8 +29,9 @@ charset-normalizer==2.0.12 \
     --hash=sha256:2857e29ff0d34db842cd7ca3230549d1a697f96ee6d3fb071cfa6c7393832597 \
     --hash=sha256:6881edbebdb17b39b4eaaa821b438bf6eddffb4468cf344f09f89def34a8b1df
     # via requests
-cloudimg==1.1.0 \
-    --hash=sha256:a1a70e04710f382a8c5185afeef3cbd63319c35e0c793ecc5c6b7bb0c6517bd5
+cloudimg==1.2.0 \
+    --hash=sha256:5ef687d8a81ae5c962c77bb2a0532ca39840b4a2948aa086e0d57860901d8f0c \
+    --hash=sha256:f2703245459da9eaffa0a475912e5ebc465284b39a5e6ff2ceac5635ffa95edb
     # via -r requirements.in
 decorator==5.1.1 \
     --hash=sha256:637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330 \
