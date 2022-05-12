@@ -77,8 +77,9 @@ click==8.1.3 \
     --hash=sha256:7682dc8afb30297001674575ea00d1814d808d6a36af415a82bd481d37ba7b8e \
     --hash=sha256:bb4d8133cb15a609f44e8213d9b391b0809795062913b383c62be0ee95b1db48
     # via black
-cloudimg==1.1.0 \
-    --hash=sha256:a1a70e04710f382a8c5185afeef3cbd63319c35e0c793ecc5c6b7bb0c6517bd5
+cloudimg==1.2.0 \
+    --hash=sha256:5ef687d8a81ae5c962c77bb2a0532ca39840b4a2948aa086e0d57860901d8f0c \
+    --hash=sha256:f2703245459da9eaffa0a475912e5ebc465284b39a5e6ff2ceac5635ffa95edb
     # via -r requirements.in
 coverage[toml]==6.3.2 \
     --hash=sha256:03e2a7826086b91ef345ff18742ee9fc47a6839ccd517061ef8fa1976e652ce9 \
