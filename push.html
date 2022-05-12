@@ -50,6 +50,7 @@ shipped to the users.</p>
                          <span class="p">[</span><span class="o">--</span><span class="n">accounts</span> <span class="n">ACCOUNTS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">public</span><span class="o">-</span><span class="n">images</span><span class="p">]</span>
                          <span class="p">[</span><span class="o">--</span><span class="n">aws</span><span class="o">-</span><span class="n">provider</span><span class="o">-</span><span class="n">name</span> <span class="n">AWS_PROVIDER_NAME</span><span class="p">]</span>
                          <span class="p">[</span><span class="o">--</span><span class="n">retry</span><span class="o">-</span><span class="n">wait</span> <span class="n">RETRY_WAIT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">retries</span> <span class="n">MAX_RETRIES</span><span class="p">]</span>
+                         <span class="p">[</span><span class="o">--</span><span class="n">snapshot</span><span class="o">-</span><span class="n">account</span><span class="o">-</span><span class="n">ids</span> <span class="n">SNAPSHOT_ACCOUNT_IDS</span><span class="p">]</span>
                          <span class="n">source</span> <span class="p">[</span><span class="n">source</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -122,6 +123,10 @@ shipped to the users.</p>
 <dt><kbd>--max-retries</kbd></dt>
 <dd><p>number of retries on failure to upload</p>
 <p>Default: 4</p>
+</dd>
+<dt><kbd>--snapshot-account-ids</kbd></dt>
+<dd><p>List of account ids to give snapshot creation permissions to if a new snapshot is created as part of the image push.</p>
+<p>Default: [‘679593333241’, ‘684062674729’, ‘425685993791’, ‘582767206473’]</p>
 </dd>
 </dl>
 </section>
@@ -264,7 +269,7 @@ for 4 times after every 30 seconds. These defaults can be modified as:</p>
       &copy;2021, Red Hat.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
