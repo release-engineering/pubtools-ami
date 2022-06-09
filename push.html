@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>push &#8212; pubtools-ami  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -33,7 +34,7 @@
           <div class="body" role="main">
             
   <section id="push">
-<h1>push<a class="headerlink" href="#push" title="Permalink to this headline">¶</a></h1>
+<h1>push<a class="headerlink" href="#push" title="Permalink to this heading">¶</a></h1>
 <p><p>Pushes one or more Amazon Machine Images to AWS from the specified
 sources.</p>
 <p>This command gets the AMIs from the provided sources, checks for the
@@ -55,7 +56,7 @@ shipped to the users.</p>
 </pre></div>
 </div>
 <section id="Named Arguments">
-<h2>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h2>
+<h2>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this heading">¶</a></h2>
 <dl class="option-list">
 <dt><kbd>--debug, -d</kbd></dt>
 <dd><p>Show debug logs; can be provided up to three times to enable more logs</p>
@@ -64,7 +65,7 @@ shipped to the users.</p>
 </dl>
 </section>
 <section id="AWS Service">
-<h2>AWS Service<a class="headerlink" href="#AWS Service" title="Permalink to this headline">¶</a></h2>
+<h2>AWS Service<a class="headerlink" href="#AWS Service" title="Permalink to this heading">¶</a></h2>
 <dl class="option-list">
 <dt><kbd>--aws-access-id</kbd></dt>
 <dd><p>The AWS Service ID or Login to access the service (or set AWS_ACCESS_ID environment variable)</p>
@@ -77,7 +78,7 @@ shipped to the users.</p>
 </dl>
 </section>
 <section id="RHSM service">
-<h2>RHSM service<a class="headerlink" href="#RHSM service" title="Permalink to this headline">¶</a></h2>
+<h2>RHSM service<a class="headerlink" href="#RHSM service" title="Permalink to this heading">¶</a></h2>
 <dl class="option-list">
 <dt><kbd>--rhsm-url</kbd></dt>
 <dd><p>Base URL of the RHSM API</p>
@@ -91,7 +92,7 @@ shipped to the users.</p>
 </dl>
 </section>
 <section id="AMI Push options">
-<h2>AMI Push options<a class="headerlink" href="#AMI Push options" title="Permalink to this headline">¶</a></h2>
+<h2>AMI Push options<a class="headerlink" href="#AMI Push options" title="Permalink to this heading">¶</a></h2>
 <dl class="option-list">
 <dt><kbd>source</kbd></dt>
 <dd><p>source location of the staged AMIs with the source type. e.g. staged:/path/to/stage/ami or errata:https://errata.example.com?errata=RHBA-2020:1234</p>
@@ -131,7 +132,7 @@ shipped to the users.</p>
 </dl>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
 <p>A typical invocation of push would look like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pubtools</span><span class="o">-</span><span class="n">ami</span><span class="o">-</span><span class="n">push</span> \
   <span class="o">--</span><span class="n">rhsm</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">rhsm</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span> \
@@ -149,7 +150,7 @@ to AWS for the accounts of the region the image is pushed to
 or the default accounts.</p>
 </section>
 <section id="example-ship-images">
-<h2>Example: ship images<a class="headerlink" href="#example-ship-images" title="Permalink to this headline">¶</a></h2>
+<h2>Example: ship images<a class="headerlink" href="#example-ship-images" title="Permalink to this heading">¶</a></h2>
 <p>To the ship the images to be available to users, –ship option
 should be used. This updates the metadata on RHSM services.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pubtools</span><span class="o">-</span><span class="n">ami</span><span class="o">-</span><span class="n">push</span> \
@@ -180,7 +181,7 @@ fee requires using –allow-public-images along with the above options.</p>
 </div>
 </section>
 <section id="example-modify-retry">
-<h2>Example: modify retry<a class="headerlink" href="#example-modify-retry" title="Permalink to this headline">¶</a></h2>
+<h2>Example: modify retry<a class="headerlink" href="#example-modify-retry" title="Permalink to this heading">¶</a></h2>
 <p>Uploads might fail on the first try for any reason. It gets retired by default
 for 4 times after every 30 seconds. These defaults can be modified as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pubtools</span><span class="o">-</span><span class="n">ami</span><span class="o">-</span><span class="n">push</span> \
@@ -252,7 +253,7 @@ for 4 times after every 30 seconds. These defaults can be modified as:</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -269,7 +270,7 @@ for 4 times after every 30 seconds. These defaults can be modified as:</p>
       &copy;2021, Red Hat.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
