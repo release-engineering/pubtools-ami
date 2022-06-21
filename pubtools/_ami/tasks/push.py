@@ -452,10 +452,11 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
         group.add_argument(
             "--snapshot-account-ids",
-            help="List of account ids to give snapshot creation permissions to if a new snapshot "
-            "is created as part of the image push.",
-            action="append",
-            type=str,
+            help="Comma separated list of account ids to give snapshot "
+            "creation permissions to if a new snapshot is created as "
+            "part of the image push.",
+            action=SplitAndExtend,
+            split_on=",",
             default=["679593333241", "684062674729", "425685993791", "582767206473"],
         )
 
