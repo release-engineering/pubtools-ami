@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## [1.2.0] - 2022-06-22
+
+### Added
+
+- `pubtools-ami-push`: `--snapshot-account-ids` now accepts comma-separated values.
+
 ## [1.1.0] - 2022-05-13
 
 ### Added
@@ -43,5 +49,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to PyPI
 
-[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/release-engineering/pubtools-ami/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/release-engineering/pubtools-ami/compare/v1.0.0...v1.1.0
