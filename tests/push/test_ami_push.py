@@ -123,7 +123,7 @@ def test_do_push(command_tester, requests_mocker):
             "--aws-secret-key",
             "secret_key",
             "--snapshot-account-ids",
-            "1234567890",
+            "1234567890,0987654321,684062674729",
             "--ship",
             "--debug",
             AMI_SOURCE,
