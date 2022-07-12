@@ -11,13 +11,13 @@ attrs==21.4.0 \
     #   -r requirements.in
     #   jsonschema
     #   pushsource
-boto3==1.24.22 \
-    --hash=sha256:67d404c643091d4aa37fc485193289ad859f1f65f94d0fa544e13bdd1d4187c1 \
-    --hash=sha256:c9a9f893561f64f5b81de197714ac4951251a328672a8dba28ad4c4a589c3adf
+boto3==1.24.26 \
+    --hash=sha256:46b0909379955d70ae995ecd26a03e4842104da81ecdc38b83b5701d70e87c2e \
+    --hash=sha256:b8e79df81b57c40b3ddf7bfe657bf239c0ae70f6c6fab9fa3784d4f30253d29c
     # via cloudimg
-botocore==1.27.22 \
-    --hash=sha256:7145d9b7cae87999a9f074de700d02a1b3222ee7d1863aa631ff56c5fc868035 \
-    --hash=sha256:f57cb33446deef92e552b0be0e430d475c73cf64bc9e46cdb4783cdfe39cb6bb
+botocore==1.27.26 \
+    --hash=sha256:0436b1e3fae36ea53760380e87cd80f94c8cdd3085c84a8a431d1182cf5b99e8 \
+    --hash=sha256:4a46d0508470883dc97ab8e9769617f21229f4ff8c146a47379f4042d917e520
     # via
     #   boto3
     #   s3transfer
@@ -95,9 +95,9 @@ jmespath==1.0.1 \
     # via
     #   boto3
     #   botocore
-jsonschema==4.6.1 \
-    --hash=sha256:5eb781753403847fb320f05e9ab2191725b58c5e7f97f1bed63285ca423159bc \
-    --hash=sha256:ec2802e6a37517f09d47d9ba107947589ae1d25ff557b925d83a321fc2aa5d3b
+jsonschema==4.6.2 \
+    --hash=sha256:b19f62322b0f06927e8ae6215c01654e1885857cdcaf58ae1772b1aa97f1faf2 \
+    --hash=sha256:e331e32e29743014fa59fa77895b5d8669382a4904c8ef23144f7f078ec031c7
     # via pushcollector
 kobo==0.24.2 \
     --hash=sha256:1b3c17260a93d933d2238884373fbf3485ecd417d930acf984285dc012410e2b
@@ -227,9 +227,9 @@ six==1.16.0 \
     #   more-executors
     #   pushsource
     #   python-dateutil
-urllib3==1.26.9 \
-    --hash=sha256:44ece4d53fb1706f667c9bd1c648f5469a2ec925fcf3a776667042d645472c14 \
-    --hash=sha256:aabaf16477806a5e1dd19aa41f8c2b7950dd3c746362d7e3223dbe6de6ac448e
+urllib3==1.26.10 \
+    --hash=sha256:8298d6d56d39be0e3bc13c1c97d133f9b45d797169a0e11cdd0e0489d786f7ec \
+    --hash=sha256:879ba4d1e89654d9769ce13121e0f94310ea32e8d2f8cf587b77c08bbcdb30d6
     # via
     #   botocore
     #   requests
