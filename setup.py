@@ -21,7 +21,7 @@ def get_requirements():
 
 setup(
     name="pubtools-ami",
-    version="1.2.0",
+    version="1.2.1",
     packages=find_packages(exclude=["tests"]),
     url="https://github.com/release-engineering/pubtools-ami",
     license="GNU General Public License",
