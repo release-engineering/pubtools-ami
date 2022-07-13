@@ -457,7 +457,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
             "part of the image push.",
             action=SplitAndExtend,
             split_on=",",
-            default=["679593333241", "684062674729", "425685993791", "582767206473"],
+            remove_duplicates=True,
         )
 
     def run(self):
