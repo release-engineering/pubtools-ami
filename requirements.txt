@@ -4,20 +4,20 @@
 #
 #    pip-compile --generate-hashes requirements.in
 #
-attrs==21.4.0 \
-    --hash=sha256:2d27e3784d7a565d36ab851fe94887c5eccd6a463168875832a1be79c82828b4 \
-    --hash=sha256:626ba8234211db98e869df76230a137c4c40a12d72445c45d5f5b716f076e2fd
+attrs==22.1.0 \
+    --hash=sha256:29adc2665447e5191d0e7c568fde78b21f9672d344281d0c6e1ab085429b22b6 \
+    --hash=sha256:86efa402f67bf2df34f51a335487cf46b1ec130d02b8d39fd248abfd30da551c
     # via
     #   -r requirements.in
     #   jsonschema
     #   pushsource
-boto3==1.24.38 \
-    --hash=sha256:bcf97fd7c494f4e2bbbe2511625500654179c0a6b3bea977d46f97af764e85a4 \
-    --hash=sha256:f4c6b025f392c934338c7f01badfddbd0d3cf2397ff5df35c31409798dce33f5
+boto3==1.24.42 \
+    --hash=sha256:aec404d06690a0ca806592efc6bbe30a9ac88fa2ad73b6d907f7794a8b3b1459 \
+    --hash=sha256:df3d6ef02304bd7c3711090936c092d5db735dda109decac1e236c3ef7fdb7af
     # via cloudimg
-botocore==1.27.38 \
-    --hash=sha256:46a0264ff3335496bd9cb404f83ec0d8eb7bfdef8f74a830c13e6a6b9612adea \
-    --hash=sha256:56a7682564ea57ceecfef5648f77b77e0543b9c904212fc9ef4416517d24fa45
+botocore==1.27.42 \
+    --hash=sha256:38a180a6666c5a9b069a75ec3cf374ff2a64c3e90c9f24a916858bcdeb04456d \
+    --hash=sha256:f8e6c2f69a9d577fb9c69e4e74f49f4315a48decee0e7dc88b6e470772110884
     # via
     #   boto3
     #   s3transfer
@@ -95,9 +95,9 @@ jmespath==1.0.1 \
     # via
     #   boto3
     #   botocore
-jsonschema==4.7.2 \
-    --hash=sha256:73764f461d61eb97a057c929368610a134d1d1fffd858acfe88864ee94f1f1d3 \
-    --hash=sha256:c7448a421b25e424fccfceea86b4e3a8672b4436e1988ccbde92c80828d4f085
+jsonschema==4.9.0 \
+    --hash=sha256:5d0be0cd1b670438b71c3d3145b2abba1f9d197e3e91adc4c4bae4c0e114e252 \
+    --hash=sha256:df10e65c8f3687a48e93d0d348ce0ce5f897b5a28e9bbcbbe8f7c7eaf019e850
     # via pushcollector
 kobo==0.24.2 \
     --hash=sha256:1b3c17260a93d933d2238884373fbf3485ecd417d930acf984285dc012410e2b
@@ -118,6 +118,10 @@ more-executors==2.11.1 \
     #   -r requirements.in
     #   pushcollector
     #   pushsource
+pkgutil-resolve-name==1.3.10 \
+    --hash=sha256:357d6c9e6a755653cfd78893817c0853af365dd51ec97f3d358a819373bbd174 \
+    --hash=sha256:ca27cc078d25c5ad71a9de0a7a330146c4e014c2462d9af19c6b828280649c5e
+    # via jsonschema
 pluggy==1.0.0 \
     --hash=sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159 \
     --hash=sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3
