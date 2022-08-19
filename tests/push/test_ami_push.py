@@ -9,7 +9,7 @@ from collections import OrderedDict
 from mock import patch, MagicMock
 from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
 
-AMI_STAGE_ROOT = "/tmp/aws_staged"
+AMI_STAGE_ROOT = "/tmp/aws_staged"  # nosec B108
 AMI_SOURCE = "staged:%s" % AMI_STAGE_ROOT
 
 
@@ -48,7 +48,7 @@ def staged_file():
             ]
         },
     }
-    temp_stage = "/tmp/test_staged"
+    temp_stage = "/tmp/test_staged"  # nosec B108
     if os.path.exists(temp_stage):
         shutil.rmtree(temp_stage)
     os.makedirs(os.path.join(temp_stage, "test_x86_64/FILES"), mode=0o777)
