@@ -11,13 +11,13 @@ attrs==22.1.0 \
     #   -r requirements.in
     #   jsonschema
     #   pushsource
-boto3==1.24.84 \
-    --hash=sha256:6194763348545bb1669ce8d03ba104be1ba822daa184613aa10b9303a6a79017 \
-    --hash=sha256:be151711bbb4db53e85dd5bbe506002ce6f2f21fc4e45fcf6d2cf356d32cc4c6
+boto3==1.24.89 \
+    --hash=sha256:346f8f0d101a4261dac146a959df18d024feda6431e1d9d84f94efd24d086cae \
+    --hash=sha256:d0d8ffcdc10821c4562bc7f935cdd840033bbc342ac0e14b6bdd348b3adf4c04
     # via cloudimg
-botocore==1.27.84 \
-    --hash=sha256:11f05d2acdf9a5f722856704b7b951b180647fb4340e1b5048b27273dc323909 \
-    --hash=sha256:da15026329706caf83323d84996f5ff5c527837347633fca9b3b1be0efa60841
+botocore==1.27.89 \
+    --hash=sha256:238f1dfdb8d8d017c2aea082609a3764f3161d32745900f41bcdcf290d95a048 \
+    --hash=sha256:621f5413be8f97712b7e36c1b075a8791d1d1b9971a7ee060cdcdf5e2debf6c1
     # via
     #   boto3
     #   s3transfer
@@ -82,9 +82,9 @@ idna==3.4 \
     --hash=sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4 \
     --hash=sha256:90b77e79eaa3eba6de819a0c442c0b4ceefc341a7a2ab77d7562bf49f425c5c2
     # via requests
-importlib-resources==5.9.0 \
-    --hash=sha256:5481e97fb45af8dcf2f798952625591c58fe599d0735d86b10f54de086a61681 \
-    --hash=sha256:f78a8df21a79bcc30cfd400bdc38f314333de7c0fb619763f6b9dabab8268bb7
+importlib-resources==5.10.0 \
+    --hash=sha256:c01b1b94210d9849f286b86bb51bcea7cd56dde0600d8db721d7b81330711668 \
+    --hash=sha256:ee17ec648f85480d523596ce49eae8ead87d5631ae1551f913c0100b5edd3437
     # via jsonschema
 jmespath==1.0.1 \
     --hash=sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980 \
@@ -99,10 +99,10 @@ jsonschema==4.16.0 \
 kobo==0.25.0 \
     --hash=sha256:bc1839425c9a0946cd1bdd9bb63add8ee348d4541eb64d3060f2ddd4fad54f3b
     # via pushsource
-koji==1.30.0 \
-    --hash=sha256:0250d11d10dae9f58ec67318a230f2d5154ced05c0078980ec7ba438dc98bb77 \
-    --hash=sha256:7ceaea01542a1f3d23fc99e893cf3f86cc2b53f2c86c18ba9366d6e3975c312d \
-    --hash=sha256:a54e78b097a0da76e5f30eb5fb4ba7e0752b7bd080ffc2f723da67078c2e321e
+koji==1.30.1 \
+    --hash=sha256:0981e848e556c8299678d7eb0cebc6f2f79485414d955d96cc618e86d03aece2 \
+    --hash=sha256:4b07530e73815cb059c3e8f4f086f0539c3d06033e572146f320fc7b8d14b9b5 \
+    --hash=sha256:86e7a50143f2dd4f8b34ee87680a7f49d788bf12ada0c9bc9d827732c0381afc
     # via pushsource
 monotonic==1.6 \
     --hash=sha256:3a55207bcfed53ddd5c5bae174524062935efed17792e9de2ad0205ce9ad63f7 \
@@ -133,9 +133,9 @@ pushcollector==1.3.0 \
     # via
     #   -r requirements.in
     #   pushsource
-pushsource==2.23.1 \
-    --hash=sha256:62d45c05772c6a0cc9d393c3d0369a415aec4a0b01c116d5c467e370d8d2bd78 \
-    --hash=sha256:c63ad051b64c973ae125618cf14a46bcf3b3bc32937c9446fa95c1856b053418
+pushsource==2.23.2 \
+    --hash=sha256:11973921f3618462df9995f53446b83d274dc9b15df4ad291b6f46e0f6eea882 \
+    --hash=sha256:1bb7d63d147dac5411eeec43f91d549e6cb2f31e4931ee71b8abada8e0e66ca9
     # via -r requirements.in
 pyrsistent==0.18.1 \
     --hash=sha256:0e3e1fcc45199df76053026a51cc59ab2ea3fc7c094c6627e93b7b44cdae2c8c \
@@ -241,9 +241,9 @@ urllib3==1.26.12 \
     # via
     #   botocore
     #   requests
-zipp==3.8.1 \
-    --hash=sha256:05b45f1ee8f807d0cc928485ca40a07cb491cf092ff587c0df9cb1fd154848d2 \
-    --hash=sha256:47c40d7fe183a6f21403a199b3e4192cca5774656965b0a4988ad2f8feb5f009
+zipp==3.9.0 \
+    --hash=sha256:3a7af91c3db40ec72dd9d154ae18e008c69efe8ca88dde4f9a731bb82fe2f9eb \
+    --hash=sha256:972cfa31bc2fedd3fa838a51e9bc7e64b7fb725a8c00e7431554311f180e9980
     # via importlib-resources
 
 # WARNING: The following packages were not pinned, but pip requires them to be
