@@ -11,13 +11,13 @@ attrs==22.1.0 \
     #   -r requirements.in
     #   jsonschema
     #   pushsource
-boto3==1.26.8 \
-    --hash=sha256:b39303fdda9b5d77a152e3ec9f264ae318ccdaa853eaf694626dc335464ded98 \
-    --hash=sha256:c02fc93a926944b4b426a170d2dae274b4c8c09ec5259450b94269a8ce990dd7
+boto3==1.26.13 \
+    --hash=sha256:853cf4b2136c4deec4e01a17b89126377bfca30223535795d879ca65af4c4a69 \
+    --hash=sha256:a8ad13a23745b6d4a56d5bdde53a7a80cd7b40016cd411b9a94e6bbfb2ca5dd2
     # via cloudimg
-botocore==1.29.8 \
-    --hash=sha256:48cf33d7c513320711321c3b303b0c9810b23e15fa03424f7323883e4ce6cef8 \
-    --hash=sha256:9c6adcf4e080be63b92f50d01e176ef2d1d2a3da7d8387a964abb9eb65fc8aad
+botocore==1.29.13 \
+    --hash=sha256:9c73a180fad9a7da7797530ced3b5069872bff915b1ae9fa11fc1ed79b584c8e \
+    --hash=sha256:9d39db398f472c0aa97098870c8c4cf12636b2667a18e694fea5fae046af907e
     # via
     #   boto3
     #   s3transfer
