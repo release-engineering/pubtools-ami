@@ -11,13 +11,13 @@ attrs==22.1.0 \
     #   -r requirements.in
     #   jsonschema
     #   pushsource
-boto3==1.26.13 \
-    --hash=sha256:853cf4b2136c4deec4e01a17b89126377bfca30223535795d879ca65af4c4a69 \
-    --hash=sha256:a8ad13a23745b6d4a56d5bdde53a7a80cd7b40016cd411b9a94e6bbfb2ca5dd2
+boto3==1.26.18 \
+    --hash=sha256:3c7315da16eb0b41823965e5ce55f99cb07e94680e0ed7830c581f505fb5bd15 \
+    --hash=sha256:933c88b189112a5fdd82d49ef00f95b9dd649d195e557a81aecb773a3e01c517
     # via cloudimg
-botocore==1.29.13 \
-    --hash=sha256:9c73a180fad9a7da7797530ced3b5069872bff915b1ae9fa11fc1ed79b584c8e \
-    --hash=sha256:9d39db398f472c0aa97098870c8c4cf12636b2667a18e694fea5fae046af907e
+botocore==1.29.18 \
+    --hash=sha256:26e86fce95049f6cc18b5611901549943c4c22522fa8a3b6b265404f673977b2 \
+    --hash=sha256:2aba44433b6eac6d3a12cf93f2985e2d7a843307c1a527042fc48dd09b273992
     # via
     #   boto3
     #   s3transfer
@@ -96,17 +96,17 @@ jmespath==1.0.1 \
     # via
     #   boto3
     #   botocore
-jsonschema==4.17.0 \
-    --hash=sha256:5bfcf2bca16a087ade17e02b282d34af7ccd749ef76241e7f9bd7c0cb8a9424d \
-    --hash=sha256:f660066c3966db7d6daeaea8a75e0b68237a48e51cf49882087757bb59916248
+jsonschema==4.17.1 \
+    --hash=sha256:05b2d22c83640cde0b7e0aa329ca7754fbd98ea66ad8ae24aa61328dfe057fa3 \
+    --hash=sha256:410ef23dcdbca4eaedc08b850079179883c2ed09378bd1f760d4af4aacfa28d7
     # via pushcollector
 kobo==0.25.0 \
     --hash=sha256:bc1839425c9a0946cd1bdd9bb63add8ee348d4541eb64d3060f2ddd4fad54f3b
     # via pushsource
-koji==1.30.1 \
-    --hash=sha256:0981e848e556c8299678d7eb0cebc6f2f79485414d955d96cc618e86d03aece2 \
-    --hash=sha256:4b07530e73815cb059c3e8f4f086f0539c3d06033e572146f320fc7b8d14b9b5 \
-    --hash=sha256:86e7a50143f2dd4f8b34ee87680a7f49d788bf12ada0c9bc9d827732c0381afc
+koji==1.31.0 \
+    --hash=sha256:3debce3a4a41e3dacb3962aaf149f3f7dabfbc04e321ae171e10c768ce311ee2 \
+    --hash=sha256:5689ae1386a188b3a7cd89c47f46613e0255bfe33f27e9e1d275e6ef48352584 \
+    --hash=sha256:906c520834106ece96b941714cd45d16e98e340cd8c2e647a97abc0542a1b9f0
     # via pushsource
 monotonic==1.6 \
     --hash=sha256:3a55207bcfed53ddd5c5bae174524062935efed17792e9de2ad0205ce9ad63f7 \
@@ -240,15 +240,15 @@ six==1.16.0 \
     #   more-executors
     #   pushsource
     #   python-dateutil
-urllib3==1.26.12 \
-    --hash=sha256:3fa96cf423e6987997fc326ae8df396db2a8b7c667747d47ddd8ecba91f4a74e \
-    --hash=sha256:b930dd878d5a8afb066a637fbb35144fe7901e3b209d1cd4f524bd0e9deee997
+urllib3==1.26.13 \
+    --hash=sha256:47cc05d99aaa09c9e72ed5809b60e7ba354e64b59c9c173ac3018642d8bb41fc \
+    --hash=sha256:c083dd0dce68dbfbe1129d5271cb90f9447dea7d52097c6e0126120c521ddea8
     # via
     #   botocore
     #   requests
-zipp==3.10.0 \
-    --hash=sha256:4fcb6f278987a6605757302a6e40e896257570d11c51628968ccb2a47e80c6c1 \
-    --hash=sha256:7a7262fd930bd3e36c50b9a64897aec3fafff3dfdeec9623ae22b40e93f99bb8
+zipp==3.11.0 \
+    --hash=sha256:83a28fcb75844b5c0cdaf5aa4003c2d728c77e05f5aeabe8e95e56727005fbaa \
+    --hash=sha256:a7a22e05929290a67401440b39690ae6563279bced5f314609d9d03798f56766
     # via importlib-resources
 
 # WARNING: The following packages were not pinned, but pip requires them to be
