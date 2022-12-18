@@ -11,13 +11,13 @@ attrs==22.1.0 \
     #   -r requirements.in
     #   jsonschema
     #   pushsource
-boto3==1.26.27 \
-    --hash=sha256:255a7565226c21c5d500f69aabb977e1ac07dbaf576f4428d00558e8e508a23b \
-    --hash=sha256:6d633563802065dba2ccab48c6cab3213ca2f672ade10d096db62f686f11ea9b
+boto3==1.26.32 \
+    --hash=sha256:672b97a634f3408d455bf94a6dfd59ef0c6150019885bc7107e465f062d58c26 \
+    --hash=sha256:e0d6215313b03f09a9a38eccc88c1d3ba9868bcaaeb8b20eeb6d88fc3018b94d
     # via cloudimg
-botocore==1.29.27 \
-    --hash=sha256:03ead47c52c5caee4c69498a655444569e9d86c0e15e3884ce8c3eca01b4f658 \
-    --hash=sha256:0932b22d8737b11037adf7e734f9b90425b575d0757e4c1a035e99f382955221
+botocore==1.29.32 \
+    --hash=sha256:27bc3903f7f8c813efd1605ff13ffdfca2c37dc78cadfa488cfda78fca323deb \
+    --hash=sha256:b1a65edca151665a6844bf9f317440e31d8d5e4cbce3477f2661462e20c213b1
     # via
     #   boto3
     #   s3transfer
@@ -108,9 +108,9 @@ koji==1.31.0 \
     --hash=sha256:5689ae1386a188b3a7cd89c47f46613e0255bfe33f27e9e1d275e6ef48352584 \
     --hash=sha256:906c520834106ece96b941714cd45d16e98e340cd8c2e647a97abc0542a1b9f0
     # via pushsource
-more-executors==2.11.2 \
-    --hash=sha256:95d17e790cfd20007b39e35cf0aed2d3b7857cf82827818dd5b6f3a7a6f5fb10 \
-    --hash=sha256:b98fba2739018150420b4435d0a9f937b149bf36410f0ee7000f40d48bb23615
+more-executors==2.11.3 \
+    --hash=sha256:13b55a9ee053ae91ecaa8f327adbf9fec55ad4b434a6123e996f09acffaecaf2 \
+    --hash=sha256:859e7881efee83409fbb2d5a2d7d39d4a3dd1b981d0657e3d00148d1e6303396
     # via
     #   -r requirements.in
     #   pushcollector
