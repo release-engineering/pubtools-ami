@@ -118,7 +118,6 @@ class SplitAndExtend(Action):
 
     def __init__(self, *args, **kwargs):
         self.__split_on = kwargs.pop("split_on", ",")
-        self.__remove_duplicates = kwargs.pop("remove_duplicates", False)
         super(SplitAndExtend, self).__init__(*args, **kwargs)
 
     def __call__(self, _, namespace, values, options=None):
@@ -131,18 +130,8 @@ class SplitAndExtend(Action):
         # should not be the case.
         split = values.split(self.split_on) if isinstance(values, _STRING) else values
         items.extend(split)
-        if self.remove_duplicates:
-            items = list(set(items))
-            # We don't actually care about the order, but converting to set
-            # seems to result in a different order depending on the version of
-            # python used. Sorting lets us test with consistency.
-            items.sort()
         setattr(namespace, self.dest, items)
 
     @property
     def split_on(self):
         return self.__split_on
-
-    @property
-    def remove_duplicates(self):
-        return self.__remove_duplicates

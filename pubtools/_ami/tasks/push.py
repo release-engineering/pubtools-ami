@@ -219,6 +219,12 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         else:
             accounts = list(_accounts["default"].values())
 
+        snapshot_account_ids = (
+            self.args.snapshot_account_ids[region]
+            if region in self.args.snapshot_account_ids
+            else self.args.snapshot_account_ids["default"]
+        )
+
         publishing_meta_kwargs = {
             "image_path": file_path,
             "image_name": name,
@@ -231,7 +237,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
             "volume_type": push_item.volume,
             "billing_products": push_item.billing_codes.codes,
             "accounts": accounts,
-            "snapshot_account_ids": self.args.snapshot_account_ids,
+            "snapshot_account_ids": snapshot_account_ids,
             "sriov_net_support": push_item.sriov_net_support,
             "ena_support": push_item.ena_support or False,
         }
@@ -452,12 +458,11 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
         group.add_argument(
             "--snapshot-account-ids",
-            help="Comma separated list of account ids to give snapshot "
-            "creation permissions to if a new snapshot is created as "
-            "part of the image push.",
-            action=SplitAndExtend,
-            split_on=",",
-            remove_duplicates=True,
+            help="JSON string mapping region to a list of account ids to give "
+            "snapshot  creation permissions to if a new snapshot is created "
+            "as part of the image push.",
+            type=json.loads,
+            default={},
         )
 
     def run(self):
