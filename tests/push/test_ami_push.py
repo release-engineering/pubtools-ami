@@ -36,6 +36,12 @@ accounts = json.dumps({"default": {"access-1": "secret-1"}})
 region_acc = json.dumps(
     {"region-1": {"access-r": "secret-r"}, "default": {"access-1": "secret-1"}}
 )
+snapshot_acc = json.dumps(
+    {
+        "region-1": ["0987654321", "1234567890", "684062674729"],
+        "default": ["1300655506"],
+    }
+)
 
 
 @pytest.fixture
@@ -123,9 +129,7 @@ def test_do_push(command_tester, requests_mocker):
             "--aws-secret-key",
             "secret_key",
             "--snapshot-account-ids",
-            "1234567890,0987654321,684062674729",
-            "--snapshot-account-ids",
-            "1234567890",
+            snapshot_acc,
             "--ship",
             "--debug",
             AMI_SOURCE,
@@ -167,6 +171,8 @@ def test_no_aws_credentials(command_tester):
             "awstest",
             "--accounts",
             accounts,
+            "--snapshot-account-ids",
+            snapshot_acc,
             "--retry-wait",
             "1",
             AMI_SOURCE,
@@ -210,6 +216,8 @@ def test_push_public_image(command_tester):
             "1",
             "--accounts",
             accounts,
+            "--snapshot-account-ids",
+            snapshot_acc,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
@@ -237,6 +245,8 @@ def test_create_region_failure(command_tester, requests_mocker):
             "1",
             "--accounts",
             accounts,
+            "--snapshot-account-ids",
+            snapshot_acc,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
@@ -266,6 +276,8 @@ def test_create_image_failure(command_tester, requests_mocker):
             "2",
             "--accounts",
             accounts,
+            "--snapshot-account-ids",
+            snapshot_acc,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
@@ -328,6 +340,8 @@ def test_aws_publish_failure_retry(command_tester, mock_aws_publish):
             "1",
             "--accounts",
             accounts,
+            "--snapshot-account-ids",
+            snapshot_acc,
             "--aws-access-id",
             "access_id",
             "--aws-secret-key",
