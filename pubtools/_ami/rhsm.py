@@ -2,7 +2,7 @@ import threading
 import os
 import logging
 from datetime import datetime
-from six.moves.urllib.parse import urljoin
+from urllib.parse import urljoin
 
 import requests
 from more_executors import Executors

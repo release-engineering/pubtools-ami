@@ -4,4 +4,3 @@ pushcollector
 cloudimg>=1.2.0
 attrs
 pubtools
-six

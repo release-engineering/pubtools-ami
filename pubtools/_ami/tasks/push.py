@@ -7,7 +7,6 @@ import json
 import attr
 
 from requests import HTTPError
-from six import raise_from
 from more_executors import Executors
 from cloudimg.aws import AWSPublishingMetadata
 from pushsource import Source, AmiPushItem
@@ -248,7 +247,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         try:
             image = aws.publish(publish_meta)
         except Exception as exc:  # pylint:disable=broad-except
-            raise_from(AWSPublishError(exc), exc)
+            raise AWSPublishError(exc) from exc
 
         if ship:
             self.update_rhsm_metadata(image, push_item)
@@ -264,7 +263,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
                 try:
                     aws.publish(publish_meta)
                 except Exception as exc:  # pylint:disable=broad-except
-                    raise_from(AWSPublishError(exc), exc)
+                    raise AWSPublishError(exc) from exc
 
         LOG.info("Successfully uploaded %s [%s] [%s]", name, region, image.id)
 
