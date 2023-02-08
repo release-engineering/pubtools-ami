@@ -136,7 +136,6 @@ class CommandTester(object):
             raise AssertionError(message)
 
     def _compare_outcome(self, records, exception):
-
         plaintext = self._get_actual_plaintext(records)
         if exception:
             plaintext += "# Raised: %s\n" % exception
