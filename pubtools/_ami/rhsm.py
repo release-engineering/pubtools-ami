@@ -50,7 +50,7 @@ class RHSMClient(object):
     def _session(self):
         if not hasattr(self._tls, "session"):
             self._tls.session = requests.Session()
-            for (key, value) in self._session_attrs.items():
+            for key, value in self._session_attrs.items():
                 setattr(self._tls.session, key, value)
         return self._tls.session
 
