@@ -5,7 +5,6 @@ requests_mock
 rpm-py-installer
 
 # The following deps are not relevant for the legacy test env.
-black; python_version>='3'
 pre-commit; python_version>='3'
 pylint; python_version>='3'
 sphinx; python_version>='3'
