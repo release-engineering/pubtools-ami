@@ -31,17 +31,17 @@ azure-mgmt-storage==21.0.0 \
     --hash=sha256:6eb13eeecf89195b2b5f47be0679e3f27888efd7bd2132eec7ebcbce75cb1377 \
     --hash=sha256:89d644c6192118b0b097deaa9c4925832d8f7ea4693d38d5fce3f0125b43a1c5
     # via cloudimg
-azure-storage-blob==12.14.1 \
-    --hash=sha256:52b84658e8df7853a3cf1c563814655b5028b979b2a87905b92aa6bb30be240e \
-    --hash=sha256:860d4d82985a4bfc7d3271e71275af330f54f330a754355435a7ba749ccde997
+azure-storage-blob==12.15.0 \
+    --hash=sha256:08d8807c577c63a436740627927c1a03a97c963efc29af5c818aed906590e1cf \
+    --hash=sha256:f8b8d582492740ab16744455408342fb8e4c8897b64a8a3fc31743844722c2f2
     # via cloudimg
-boto3==1.26.74 \
-    --hash=sha256:57f1696cbf5927180521ddabc37f10eb6650ccedc2b784dfb04502193bb65df9 \
-    --hash=sha256:a3cf126d18194e5d350ec46f99f1fff15beacdf091d1979e8471681688e14ba1
+boto3==1.26.79 \
+    --hash=sha256:049de631cc03726a14b8eb24ac9ec2a48b0624197796f36166da809fdc9b9a7f \
+    --hash=sha256:73d7bd1f16118ef0dfe936e0420cd76b02d1aedb75330ebda51168458ab752ac
     # via cloudimg
-botocore==1.29.74 \
-    --hash=sha256:bf1515908c8ffdffa249e112fd9bbb54d919ce8fb5ee88baf9c198dda6172fd5 \
-    --hash=sha256:cb1e1a584c0bea3b1bcf39710eb7b2e58add56945598d95356bf9f6d4cc8b6ae
+botocore==1.29.79 \
+    --hash=sha256:5f254f019e8641f8b2ba6dddc1f7541e8c6d25d976802392710b2fc4bac925b1 \
+    --hash=sha256:c7ded44062bed3b928944cfb09e1578ed3fed0e4c98de4f233f3c2056a8d491e
     # via
     #   boto3
     #   s3transfer
@@ -295,7 +295,9 @@ importlib-resources==5.12.0 \
 isodate==0.6.1 \
     --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96 \
     --hash=sha256:48c5881de7e8b0a0d648cb024c8062dc84e7b840ed81e864c7614fd3c127bde9
-    # via msrest
+    # via
+    #   azure-storage-blob
+    #   msrest
 jmespath==1.0.1 \
     --hash=sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980 \
     --hash=sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe
@@ -325,9 +327,7 @@ more-executors==2.11.4 \
 msrest==0.7.1 \
     --hash=sha256:21120a810e1233e5e6cc7fe40b474eeb4ec6f757a15d7cf86702c369f9567c32 \
     --hash=sha256:6e7661f46f3afd88b75667b7187a92829924446c7ea1d169be8c4bb7eeb788b9
-    # via
-    #   azure-mgmt-storage
-    #   azure-storage-blob
+    # via azure-mgmt-storage
 oauthlib==3.2.2 \
     --hash=sha256:8139f29aac13e25d502680e9e19963e83f16838d48a0d71c287fe40e7067fbca \
     --hash=sha256:9859c40929662bec5d64f34d01c99e093149682a3f38915dc0655d5a633dd918
@@ -350,9 +350,9 @@ pushcollector==1.3.0 \
     # via
     #   -r requirements.in
     #   pushsource
-pushsource==2.25.0 \
-    --hash=sha256:0e9c640fe95e22ceb505205986b154a8e54a28cfb4767551443304f390f797a3 \
-    --hash=sha256:f5015fe32b8363ff3428d4b12f8ed678a42bd385f8199bf690d81bcb92d8a20a
+pushsource==2.26.0 \
+    --hash=sha256:0bf99cc78cc732830e623d1c99de4a5cfca9bc4cabcf355f53a663fb0ef6e2d8 \
+    --hash=sha256:a08cdc68e4765383860a63647c7b87dbe3f70ae33f81641e222c666ca4770190
     # via -r requirements.in
 pycparser==2.21 \
     --hash=sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9 \
@@ -472,16 +472,18 @@ six==1.16.0 \
 typing-extensions==4.5.0 \
     --hash=sha256:5cb5f4a79139d699607b3ef622a1dedafa84e115ab0024e0d9c044a9479ca7cb \
     --hash=sha256:fb33085c39dd998ac16d1431ebc293a8b3eedd00fd4a32de0ff79002c19511b4
-    # via azure-core
+    # via
+    #   azure-core
+    #   azure-storage-blob
 urllib3==1.26.14 \
     --hash=sha256:076907bf8fd355cde77728471316625a4d2f7e713c125f51953bb5b3eecf4f72 \
     --hash=sha256:75edcdc2f7d85b137124a6c3c9fc3933cdeaa12ecb9a6a959f22797a0feca7e1
     # via
     #   botocore
     #   requests
-zipp==3.14.0 \
-    --hash=sha256:188834565033387710d046e3fe96acfc9b5e86cbca7f39ff69cf21a4128198b7 \
-    --hash=sha256:9e5421e176ef5ab4c0ad896624e87a7b2f07aca746c9b2aa305952800cb8eecb
+zipp==3.15.0 \
+    --hash=sha256:112929ad649da941c23de50f356a2b5570c954b65150642bccdd66bf194d224b \
+    --hash=sha256:48904fc76a60e542af151aded95726c1a5c34ed43ab4134b597665c86d7ad556
     # via importlib-resources
 
 # WARNING: The following packages were not pinned, but pip requires them to be
