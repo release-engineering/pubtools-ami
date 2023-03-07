@@ -252,12 +252,17 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         if ship:
             self.update_rhsm_metadata(image, push_item)
 
-            if image_type == "hourly" and self.args.allow_public_images:
-                LOG.info("Releasing hourly image %s publicly", image.id)
+            public_image = push_item.public_image
+            if public_image is None and image_type == "hourly":
+                # Backwards compatibility for push items without public_image flag.
                 # The "all" group grants access to the general public. This
                 # should only be done for hourly images since they are the only
                 # type to charge an additional Red Hat fee.
                 # http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-intro.html
+                public_image = True
+
+            if public_image and self.args.allow_public_images:
+                LOG.info("Releasing image %s publicly", image.id)
                 publish_meta.groups = ["all"]
                 # A repeat call to publish will only update the groups
                 try:

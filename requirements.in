@@ -1,5 +1,5 @@
 more-executors
-pushsource>=2.13.3
+pushsource>=2.28.0
 pushcollector
 cloudimg>=1.2.0
 attrs
