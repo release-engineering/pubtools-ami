@@ -61,8 +61,18 @@ class RHSMClient(object):
     def _get(self, *args, **kwargs):
         return self._session.get(*args, **kwargs)
 
-    def _send(self, *args, **kwargs):
-        return self._session.send(*args, **kwargs)
+    def _send(self, prepped_req, **kwargs):
+        settings = {
+            "url": prepped_req.url,
+            "proxies": kwargs.get("proxies") or None,
+            "stream": kwargs.get("stream") or None,
+            "verify": kwargs.get("verify") or None,
+            "cert": kwargs.get("cert") or None,
+            }
+
+        merged = self._session.merge_environment_settings(**settings)
+        kwargs.update(merged)
+        return self._session.send(prepped_req, **kwargs)
 
     def rhsm_products(self):
         url = urljoin(
