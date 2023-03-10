@@ -68,7 +68,7 @@ class RHSMClient(object):
             "stream": kwargs.get("stream") or None,
             "verify": kwargs.get("verify") or None,
             "cert": kwargs.get("cert") or None,
-            }
+        }
 
         merged = self._session.merge_environment_settings(**settings)
         kwargs.update(merged)
