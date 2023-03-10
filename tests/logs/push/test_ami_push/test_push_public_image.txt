@@ -11,7 +11,7 @@
 [    INFO] Attempting to update the existing image ami-1234567 in rhsm
 [   DEBUG] {"arch": "x86_64", "image_id": "ami-1234567", "image_name": "ami-rhel", "product_name": "RHEL_HOURLY", "variant": "BaseOS", "version": "8.5.0"}
 [    INFO] Successfully registered image ami-1234567 with rhsm
-[    INFO] Releasing hourly image ami-1234567 publicly
+[    INFO] Releasing image ami-1234567 publicly
 [    INFO] Successfully uploaded RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2 [region-1] [ami-1234567]
 [    INFO] Collecting results
 [    INFO] AMI upload completed
