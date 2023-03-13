@@ -61,8 +61,19 @@ class RHSMClient(object):
     def _get(self, *args, **kwargs):
         return self._session.get(*args, **kwargs)
 
-    def _send(self, *args, **kwargs):
-        return self._session.send(*args, **kwargs)
+    def _send(self, prepped_req, **kwargs):
+        settings = {
+            "url": prepped_req.url,
+            "proxies": kwargs.get("proxies"),
+            "stream": kwargs.get("stream"),
+            "verify": kwargs.get("verify"),
+            "cert": kwargs.get("cert"),
+        }
+        # merging environment settings because prepared request doesn't take them into account
+        # details: https://requests.readthedocs.io/en/latest/user/advanced/#prepared-requests
+        merged = self._session.merge_environment_settings(**settings)
+        kwargs.update(merged)
+        return self._session.send(prepped_req, **kwargs)
 
     def rhsm_products(self):
         url = urljoin(
