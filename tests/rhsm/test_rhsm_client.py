@@ -132,3 +132,49 @@ def test_create_image(requests_mocker, caplog):
     out = client.create_image("ami-123", "ami-rhel", "x86_64", "RHEL", "us-east-1")
     assert isinstance(out.exception(), ConnectionError)
     assert caplog.messages == ["Failed to process request to RHSM with exception "]
+
+
+def test_list_images(requests_mocker, caplog):
+    """
+    Test listing of all images from rhsm and checks requests sent and
+    data received while using pagination logic.
+    """
+    url = "https://example.com/v1/internal/cloud_access_providers/amazon/amis"
+    caplog.set_level(logging.DEBUG)
+
+    def create_response(amis_count, start):
+        return {
+            "status_code": 200,
+            "json": {
+                "pagination": {"count": amis_count},
+                "body": [
+                    {"amiID": f"ami-{i}"} for i in range(start, start + amis_count)
+                ],
+            },
+        }
+
+    responses = [
+        create_response(750, 1),
+        create_response(1, 751),
+        create_response(0, 752),
+    ]
+
+    m_list_images = requests_mocker.register_uri("GET", url, responses)
+
+    client = RHSMClient(
+        "https://example.com", cert=("client.crt", "client.key"), max_retry_sleep=0.001
+    )
+
+    image_ids = client.list_image_ids()
+
+    # there should be 3 calls, last won't get any data, so we stop requesting another page.
+    # offset changes accordingly to items received
+    assert m_list_images.call_count == 3
+    for req_history, offset in zip(m_list_images.request_history, [0, 750, 751]):
+        assert req_history.qs == {"limit": ["1000"], "offset": [str(offset)]}
+
+    assert len(image_ids) == 751
+    assert (
+        "Listing all images from rhsm, https://example.com/v1/internal/cloud_access_providers/amazon/amis"
+        in caplog.messages[0]
+    )

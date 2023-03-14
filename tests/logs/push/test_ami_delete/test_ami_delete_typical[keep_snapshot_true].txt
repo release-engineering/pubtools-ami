@@ -1,0 +1,16 @@
+[    INFO] Prepare data: started
+[    INFO] Prepare data: finished
+[    INFO] Update RHSM metadata: started
+[   DEBUG] Listing all images from rhsm, https://rhsm.example.com/v1/internal/cloud_access_providers/amazon/amis
+[   DEBUG] Searching for product fake-product for provider awstest in rhsm
+[   DEBUG] Fetching product from https://rhsm.example.com/v1/internal/cloud_access_providers/amazon/provider_image_groups
+[   DEBUG] 1 Products(AWS provider) in rhsm: fake-product(awstest)
+[    INFO] Attempting to update the existing image ami-fake-id-01 in rhsm
+[    INFO] Existing image ami-fake-id-01 succesfully updated in rhsm
+[    INFO] Update RHSM metadata: finished
+[    INFO] Delete AWS data: started
+[    INFO] Attempting to delete image fake-product-FAKE-VIRT-20230306-fake-arch-1-fake-bc-FAKE-VOLUME and related snapshot on AWS (awstest)
+[    INFO] Successfully deleted image: fake-product-FAKE-VIRT-20230306-fake-arch-1-fake-bc-FAKE-VOLUME [awstest] [ami-fake-id-01]
+[    INFO] Delete AWS data: finished
+[    INFO] Collecting results
+[    INFO] AMI delete completed

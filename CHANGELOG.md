@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- n/a
+### Added
+- Introduced new command `pubtools-ami-delete`
 
 ## [2.1.0] - 2023-03-14
 

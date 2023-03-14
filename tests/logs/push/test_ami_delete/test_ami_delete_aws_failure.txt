@@ -1,0 +1,20 @@
+[    INFO] Prepare data: started
+[    INFO] Prepare data: finished
+[    INFO] Update RHSM metadata: started
+[   DEBUG] Listing all images from rhsm, https://rhsm.example.com/v1/internal/cloud_access_providers/amazon/amis
+[   DEBUG] Searching for product fake-product for provider awstest in rhsm
+[   DEBUG] Fetching product from https://rhsm.example.com/v1/internal/cloud_access_providers/amazon/provider_image_groups
+[   DEBUG] 1 Products(AWS provider) in rhsm: fake-product(awstest)
+[    INFO] Attempting to update the existing image ami-fake-id-01-aws-failure in rhsm
+[    INFO] Existing image ami-fake-id-01-aws-failure succesfully updated in rhsm
+[    INFO] Update RHSM metadata: finished
+[    INFO] Delete AWS data: started
+[    INFO] Attempting to delete image fake-product-FAKE-VIRT-20230306-fake-arch-1-fake-bc-FAKE-VOLUME and related snapshot on AWS (awstest)
+[   ERROR] AWS delete failed for AMI ami-fake-id-01-aws-failure
+[    INFO] Attempting to delete image fake-product-FAKE-VIRT-20230306-fake-arch-1-fake-bc-FAKE-VOLUME and related snapshot on AWS (awstest)
+[   ERROR] AWS delete failed for AMI ami-fake-id-01-aws-failure
+[   ERROR] AMI delete failed
+[    INFO] Delete AWS data: finished
+[    INFO] Collecting results
+[   ERROR] AMI delete finished with failure
+# Raised: 30

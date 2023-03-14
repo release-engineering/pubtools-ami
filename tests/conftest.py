@@ -62,6 +62,7 @@ def fake_collector():
     yield collector
 
     Collector.set_default_backend(None)
+    Collector.register_backend("pubtools-ami-test", None)
 
 
 @pytest.fixture
