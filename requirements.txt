@@ -35,13 +35,13 @@ azure-storage-blob==12.15.0 \
     --hash=sha256:08d8807c577c63a436740627927c1a03a97c963efc29af5c818aed906590e1cf \
     --hash=sha256:f8b8d582492740ab16744455408342fb8e4c8897b64a8a3fc31743844722c2f2
     # via cloudimg
-boto3==1.26.89 \
-    --hash=sha256:09929b24aaec4951e435d53d31f800e2ca52244af049dc11e5385ce062e106e9 \
-    --hash=sha256:e819812f16fab46fadf9b2853a46aaa126e108e7f038502dde555ebbbfc80133
+boto3==1.26.94 \
+    --hash=sha256:619022059e255731f33cd9fe083b8fd62406efcbc07dc15660037bcaa1ba1255 \
+    --hash=sha256:9f156f4da4b0a15924196e1a8e3439d1b99cd4a463588e4bb103d1cfaf5618fa
     # via cloudimg
-botocore==1.29.89 \
-    --hash=sha256:ac8da651f73a9d5759cf5d80beba68deda407e56aaaeb10d249fd557459f3b56 \
-    --hash=sha256:b757e59feca82ac62934f658918133116b4535cf66f1d72ff4935fa24e522527
+botocore==1.29.94 \
+    --hash=sha256:01b9e066b9eea719ee852e91841b92c7371f6bd388cf6186b5d55508e0f7fa1b \
+    --hash=sha256:3748b79e6fc95c19d890aa7439a53b9d468a4c4918439b2ba5cc3c13bfaff817
     # via
     #   boto3
     #   s3transfer
@@ -194,9 +194,9 @@ charset-normalizer==3.1.0 \
     --hash=sha256:f8303414c7b03f794347ad062c0516cee0e15f7a612abd0ce1e25caf6ceb47df \
     --hash=sha256:fca62a8301b605b954ad2e9c3666f9d97f63872aa4efcae5492baca2056b74ab
     # via requests
-cloudimg==1.4.0 \
-    --hash=sha256:5f9cf48532f4ff7190f94da37643e366e9dba21edd2d7363c0a6740ccbca1fdf \
-    --hash=sha256:b7227e2e9e216b760890f1c07bd050990b879aec73a4ad78a7c9387b5fed2f7f
+cloudimg==1.5.0 \
+    --hash=sha256:c000da58fbe6dd9a435620e265f9cb5626211c8d00abc84f9101d02136658fb1 \
+    --hash=sha256:d49c5ff25b5526bf12509ba81c7f1b707efd8f440b73e8015b314cdc5b203402
     # via -r requirements.in
 cryptography==39.0.2 \
     --hash=sha256:103e8f7155f3ce2ffa0049fe60169878d47a4364b277906386f8de21c9234aa1 \
@@ -337,9 +337,9 @@ pushcollector==1.3.0 \
     # via
     #   -r requirements.in
     #   pushsource
-pushsource==2.28.0 \
-    --hash=sha256:49297f06b5ef4e20da8dae6a1e19bbd2c8f1e83257d8be6dc9225885812fbe56 \
-    --hash=sha256:e4fe524c6f96b424a06cf20c690fd85b8133c9fdb7f87f2a0e7c8b85596eafff
+pushsource==2.30.0 \
+    --hash=sha256:17fa4438d57352542faf6ccdab312b0735f5f03e7fc70d5f49dd091e4b1e19be \
+    --hash=sha256:9e98f81f939e26a7983c4f4d183309ed6effa407d2ebead497be891266616871
     # via -r requirements.in
 pycparser==2.21 \
     --hash=sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9 \
