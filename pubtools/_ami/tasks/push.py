@@ -272,7 +272,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
         LOG.info("Successfully uploaded %s [%s] [%s]", name, region, image.id)
 
-        return image.id, name
+        return image.id
 
     def update_rhsm_metadata(self, image, push_item):
         """Update rhsm with the uploaded image info. First it creates the region of
@@ -350,12 +350,12 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
 
         for dest_data in region_data:
             push_item = dest_data["push_item"]
-            image_id = image_name = None
+            image_id = None
             retries = max_retries
 
             while True:
                 try:
-                    image_id, image_name = self.upload(push_item)
+                    image_id = self.upload(push_item)
                     state = "PUSHED"
                 except (HTTPError, AWSPublishError) as exc:
                     LOG.warning(str(exc))
@@ -374,7 +374,7 @@ class AmiPush(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
             dest_data["push_item"] = attr.evolve(push_item, state=state)
             dest_data["state"] = state
             dest_data["image_id"] = image_id
-            dest_data["image_name"] = image_name
+            dest_data["image_name"] = self.name_from_metadata(push_item)
         return region_data
 
     def collect_push_result(self, results):
