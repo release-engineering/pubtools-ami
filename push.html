@@ -14,6 +14,7 @@
     <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="delete" href="delete.html" />
     <link rel="prev" title="pubtools-ami" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -44,11 +45,11 @@ shipped to the users.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">pubtools</span><span class="o">-</span><span class="n">ami</span><span class="o">-</span><span class="n">push</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">debug</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">aws</span><span class="o">-</span><span class="n">access</span><span class="o">-</span><span class="nb">id</span> <span class="n">AWS_ACCESS_ID</span><span class="p">]</span>
                          <span class="p">[</span><span class="o">--</span><span class="n">aws</span><span class="o">-</span><span class="n">secret</span><span class="o">-</span><span class="n">key</span> <span class="n">AWS_SECRET_KEY</span><span class="p">]</span>
                          <span class="p">[</span><span class="o">--</span><span class="n">rhsm</span><span class="o">-</span><span class="n">url</span> <span class="n">RHSM_URL</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">rhsm</span><span class="o">-</span><span class="n">cert</span> <span class="n">RHSM_CERT</span><span class="p">]</span>
-                         <span class="p">[</span><span class="o">--</span><span class="n">rhsm</span><span class="o">-</span><span class="n">key</span> <span class="n">RHSM_KEY</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ship</span><span class="p">]</span>
-                         <span class="p">[</span><span class="o">--</span><span class="n">container</span><span class="o">-</span><span class="n">prefix</span> <span class="n">CONTAINER_PREFIX</span><span class="p">]</span>
-                         <span class="p">[</span><span class="o">--</span><span class="n">accounts</span> <span class="n">ACCOUNTS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">public</span><span class="o">-</span><span class="n">images</span><span class="p">]</span>
+                         <span class="p">[</span><span class="o">--</span><span class="n">rhsm</span><span class="o">-</span><span class="n">key</span> <span class="n">RHSM_KEY</span><span class="p">]</span>
                          <span class="p">[</span><span class="o">--</span><span class="n">aws</span><span class="o">-</span><span class="n">provider</span><span class="o">-</span><span class="n">name</span> <span class="n">AWS_PROVIDER_NAME</span><span class="p">]</span>
                          <span class="p">[</span><span class="o">--</span><span class="n">retry</span><span class="o">-</span><span class="n">wait</span> <span class="n">RETRY_WAIT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">max</span><span class="o">-</span><span class="n">retries</span> <span class="n">MAX_RETRIES</span><span class="p">]</span>
+                         <span class="p">[</span><span class="o">--</span><span class="n">ship</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">container</span><span class="o">-</span><span class="n">prefix</span> <span class="n">CONTAINER_PREFIX</span><span class="p">]</span>
+                         <span class="p">[</span><span class="o">--</span><span class="n">accounts</span> <span class="n">ACCOUNTS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">public</span><span class="o">-</span><span class="n">images</span><span class="p">]</span>
                          <span class="p">[</span><span class="o">--</span><span class="n">snapshot</span><span class="o">-</span><span class="n">account</span><span class="o">-</span><span class="n">ids</span> <span class="n">SNAPSHOT_ACCOUNT_IDS</span><span class="p">]</span>
                          <span class="n">source</span> <span class="p">[</span><span class="n">source</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
@@ -89,12 +90,29 @@ shipped to the users.</p>
 </dd>
 </dl>
 </section>
+<section id="ami-common-options">
+<h2>AMI common options<a class="headerlink" href="#ami-common-options" title="Permalink to this heading">¶</a></h2>
+<dl class="option-list">
+<dt><kbd>source</kbd></dt>
+<dd><p>source location of the staged AMIs with the source type. e.g. staged:/path/to/stage/ami or errata:https://errata.example.com?errata=RHBA-2020:1234 or pub:https://pub.example.com?task_id=125222</p>
+</dd>
+<dt><kbd>--aws-provider-name</kbd></dt>
+<dd><p>AWS provider e.g. AWS, ACN (AWS China), AGOV (AWS US Gov)</p>
+<p>Default: “AWS”</p>
+</dd>
+<dt><kbd>--retry-wait</kbd></dt>
+<dd><p>duration to wait in sec before retrying action on AWS</p>
+<p>Default: 30</p>
+</dd>
+<dt><kbd>--max-retries</kbd></dt>
+<dd><p>number of retries on failure with action on AWS</p>
+<p>Default: 4</p>
+</dd>
+</dl>
+</section>
 <section id="ami-push-options">
 <h2>AMI Push options<a class="headerlink" href="#ami-push-options" title="Permalink to this heading">¶</a></h2>
 <dl class="option-list">
-<dt><kbd>source</kbd></dt>
-<dd><p>source location of the staged AMIs with the source type. e.g. staged:/path/to/stage/ami or errata:https://errata.example.com?errata=RHBA-2020:1234</p>
-</dd>
 <dt><kbd>--ship</kbd></dt>
 <dd><p>publish the AMIs in public domain</p>
 <p>Default: False</p>
@@ -110,18 +128,6 @@ shipped to the users.</p>
 <dt><kbd>--allow-public-images</kbd></dt>
 <dd><p>images are released for general use</p>
 <p>Default: False</p>
-</dd>
-<dt><kbd>--aws-provider-name</kbd></dt>
-<dd><p>AWS provider e.g. AWS, ACN (AWS China), AGOV (AWS US Gov)</p>
-<p>Default: “AWS”</p>
-</dd>
-<dt><kbd>--retry-wait</kbd></dt>
-<dd><p>duration to wait in sec before retrying upload</p>
-<p>Default: 30</p>
-</dd>
-<dt><kbd>--max-retries</kbd></dt>
-<dd><p>number of retries on failure to upload</p>
-<p>Default: 4</p>
 </dd>
 <dt><kbd>--snapshot-account-ids</kbd></dt>
 <dd><p>JSON string mapping region to a list of account ids to give snapshot creation permissions to if a new snapshot is created as part of the image push.</p>
@@ -221,6 +227,7 @@ for 4 times after every 30 seconds. These defaults can be modified as:</p>
 <p class="caption" role="heading"><span class="caption-text">Command Reference:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">push</a></li>
+<li class="toctree-l1"><a class="reference internal" href="delete.html">delete</a></li>
 </ul>
 
 
@@ -239,6 +246,7 @@ for 4 times after every 30 seconds. These defaults can be modified as:</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="index.html" title="previous chapter">pubtools-ami</a></li>
+      <li>Next: <a href="delete.html" title="next chapter">delete</a></li>
   </ul></li>
 </ul>
 </div>
