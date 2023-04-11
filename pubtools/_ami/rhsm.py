@@ -100,7 +100,14 @@ class RHSMClient(object):
         return out
 
     def update_image(
-        self, image_id, image_name, arch, product_name, version=None, variant=None
+        self,
+        image_id,
+        image_name,
+        arch,
+        product_name,
+        version=None,
+        variant=None,
+        status="VISIBLE",
     ):
         url = urljoin(self._url, "/v1/internal/cloud_access_providers/amazon/amis")
 
@@ -112,7 +119,7 @@ class RHSMClient(object):
             "version": version or "none",
             "variant": variant or "none",
             "description": "Released %s on %s" % (image_name, now),
-            "status": "VISIBLE",
+            "status": status,
         }
         req = requests.Request("PUT", url, json=rhsm_image)
         prepped_req = self._session.prepare_request(req)
@@ -152,3 +159,28 @@ class RHSMClient(object):
         out = f_map(out, error_fn=self._on_failure)
 
         return out
+
+    def list_image_ids(self):
+        url = urljoin(self._url, "/v1/internal/cloud_access_providers/amazon/amis")
+        image_ids = set()
+
+        def handle_page(offset=0):
+            params = {"limit": 1000, "offset": offset}
+            req = requests.Request("GET", url, params=params)
+            prepped_req = self._session.prepare_request(req)
+
+            resp_f = self._executor.submit(self._send, prepped_req)
+            resp_f = f_map(
+                resp_f, fn=self._check_http_response, error_fn=self._on_failure
+            )
+            resp = resp_f.result().json()
+            items_count = resp["pagination"]["count"]
+            if items_count:
+                offset += items_count
+                for item in resp.get("body") or []:
+                    image_ids.add(item["amiID"])
+                return handle_page(offset)
+
+        LOG.debug("Listing all images from rhsm, %s", url)
+        handle_page()
+        return image_ids

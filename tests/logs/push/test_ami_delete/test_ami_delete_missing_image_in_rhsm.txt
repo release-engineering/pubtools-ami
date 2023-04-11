@@ -1,0 +1,13 @@
+[    INFO] Prepare data: started
+[    INFO] Prepare data: finished
+[    INFO] Update RHSM metadata: started
+[   DEBUG] Listing all images from rhsm, https://example.com/v1/internal/cloud_access_providers/amazon/amis
+[ WARNING] AMI image: ami-fake-id-01-not-in-rhsm not found, skipping update in rhsm.
+[    INFO] Update RHSM metadata: finished
+[    INFO] Delete AWS data: started
+[    INFO] Attempting to delete image fake-product-FAKE-VIRT-20230306-fake-arch-1-fake-bc-FAKE-VOLUME and related snapshot on AWS (awstest)
+[    INFO] Successfully deleted image: fake-product-FAKE-VIRT-20230306-fake-arch-1-fake-bc-FAKE-VOLUME [awstest] [ami-fake-id-01-not-in-rhsm]
+[    INFO] Successfully deleted snapshot: fake-product-FAKE-VIRT-20230306-fake-arch-1-fake-bc-FAKE-VOLUME [awstest] [snap-fake-id-01-not-in-rhsm]
+[    INFO] Delete AWS data: finished
+[    INFO] Collecting results
+[    INFO] AMI delete completed

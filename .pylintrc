@@ -2,7 +2,6 @@
 disable=all
 
 enable=abstract-class-instantiated,
-  abstract-method,
   access-member-before-definition,
   anomalous-backslash-in-string,
   anomalous-unicode-escape-in-string,
