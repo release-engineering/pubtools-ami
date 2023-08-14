@@ -109,6 +109,7 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
             "virt_type": push_item.virtualization,
             "root_device_name": push_item.root_device,
             "volume_type": push_item.volume,
+            "uefi_support": push_item.uefi_support,
             "billing_products": push_item.billing_codes.codes,
             "accounts": accounts,
             "snapshot_account_ids": snapshot_account_ids,

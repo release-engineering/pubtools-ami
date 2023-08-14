@@ -28,7 +28,8 @@
             }, 
             "root_device": "/dev/sda1", 
             "sriov_net_support": "simple", 
-            "type": "hourly", 
+            "type": "hourly",
+            "uefi_support": false,
             "virtualization": "hvm", 
             "volume": "gp2"
           }, 
