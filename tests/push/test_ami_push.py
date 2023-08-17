@@ -8,10 +8,22 @@ from logging import DEBUG
 from collections import OrderedDict
 from mock import patch, MagicMock
 from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
+from pushsource import AmiPushItem
+from requests import HTTPError
 
 AMI_STAGE_ROOT = "/tmp/aws_staged"  # nosec B108
 AMI_SOURCE = "staged:%s" % AMI_STAGE_ROOT
 
+
+def compare_metadata(metadata, exp_metadata):
+    """
+    Helper fction to compare metadata object with a dictionary of expected metadata
+    """
+    result = True
+    for key, value in exp_metadata.items():
+        if getattr(metadata, key) != value:
+            result = False
+    return result
 
 @pytest.fixture(scope="session", autouse=True)
 def stage_ami():
@@ -75,6 +87,51 @@ def mock_aws_publish():
         yield m
 
 
+@pytest.fixture()
+def mock_ami_upload():
+    with patch("pubtools._ami.tasks.push.AmiPush.upload") as m:
+        yield m
+
+
+@pytest.fixture()
+def mock_region_data():
+    with patch("pubtools._ami.tasks.base.AmiBase.region_data") as m:
+        first_ami_data = {
+            "name": "ami-01",
+            "billing_codes": {"codes": ["code-0001"], "name": "Hourly2"},
+            "description": "Provided by Red Hat, Inc.",
+            "ena_support": True,
+            "region": "region-1",
+            "release": {
+                "arch": "x86_64",
+                "base_product": "RHEL",
+                "base_version": "8.5",
+                "date": "20210902",
+                "product": "RHEL",
+                "respin": 5,
+                "type": "beta",
+                "variant": "BaseOS",
+                "version": "8.5.0",
+            },
+            "root_device": "/dev/sda1",
+            "sriov_net_support": "simple",
+            "type": "hourly",
+            "uefi_support": False,
+            "virtualization": "hvm",
+            "volume": "gp2",
+        }
+
+        second_ami_data = first_ami_data.copy()
+        second_ami_data["name"] = "ami-02"
+
+        first_ami = AmiPushItem._from_data(first_ami_data)
+        second_ami = AmiPushItem._from_data(second_ami_data)
+
+        region_data_rv = [[{"push_item": first_ami}, {"push_item": second_ami}]]
+        m.return_value = region_data_rv
+        yield m
+
+
 @pytest.fixture(autouse=True)
 def mock_rhsm_api(requests_mocker):
     requests_mocker.register_uri(
@@ -109,7 +166,7 @@ def mock_debug_logger():
         yield log_debug
 
 
-def test_do_push(command_tester, requests_mocker):
+def test_do_push(command_tester, requests_mocker, mock_aws_publish, fake_collector):
     """Successful push and ship of an image that's not present on RHSM"""
     requests_mocker.register_uri("PUT", re.compile("amazon/amis"), status_code=400)
     command_tester.test(
@@ -136,6 +193,42 @@ def test_do_push(command_tester, requests_mocker):
         ],
     )
 
+    # Check that aws publish has been called once
+    mock_aws_publish.assert_called_once()
+
+    # Assert that correct metadata was used
+    expected_metadata = {
+        "ena_support": True,
+        "sriov_net_support": "simple",
+        "billing_products": ["code-0001"],
+        "image_path": "/tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw",  # nosec B108
+        "image_name": "RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2",
+        "snapshot_name": "RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2",
+        "snapshot_account_ids": ["0987654321", "1234567890", "684062674729"],
+        "description": "Provided by Red Hat, Inc.",
+        "container": "redhat-cloudimg-region-1",
+        "arch": "x86_64",
+        "virt_type": "hvm",
+        "root_device_name": "/dev/sda1",
+        "volume_type": "gp2",
+        "accounts": ["secret-r"],
+        "groups": [],
+        "tags": None,
+    }
+    aws_publish_args, _ = mock_aws_publish.call_args_list[0]
+    aws_metadata = aws_publish_args[0]
+    assert compare_metadata(aws_metadata, expected_metadata)
+
+    # Check state of items pushed
+    stored_items = fake_collector.items
+    assert len(stored_items) == 1
+    assert "PUSHED" == stored_items[0]["state"]
+
+    # Check contents of files pushed
+    images_json = json.loads(fake_collector.file_content["images.json"])
+    assert len(images_json) == 1
+    assert "ami-1234567" == images_json[0]["ami"]
+
 
 def test_no_source(command_tester, capsys):
     """Checks that exception is raised when the source is missing"""
@@ -150,7 +243,7 @@ def test_no_source(command_tester, capsys):
     )
 
 
-def test_no_rhsm_url(command_tester):
+def test_no_rhsm_url(command_tester, caplog):
     """Raises an error that RHSM url is not provided"""
     command_tester.test(
         lambda: entry_point(AmiPush),
@@ -202,7 +295,9 @@ def test_missing_product(command_tester):
     )
 
 
-def test_push_public_image(command_tester):
+def test_push_public_image(
+    command_tester, requests_mocker, mock_aws_publish, fake_collector
+):
     """Successfully pushed images to all the accounts so it's available for general public"""
     command_tester.test(
         lambda: entry_point(AmiPush),
@@ -228,6 +323,46 @@ def test_push_public_image(command_tester):
             AMI_SOURCE,
         ],
     )
+
+    # Check that aws publish has been called twice - once for normal publish
+    # with restricted groups and once to publish public image
+    assert len(mock_aws_publish.call_args_list) == 2
+
+    # Assert that correct metadata was used
+    expected_metadata = {
+        "ena_support": True,
+        "sriov_net_support": "simple",
+        "billing_products": ["code-0001"],
+        "image_path": "/tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw",  # nosec B108
+        "image_name": "RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2",
+        "snapshot_name": "RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2",
+        "snapshot_account_ids": ["0987654321", "1234567890", "684062674729"],
+        "description": "Provided by Red Hat, Inc.",
+        "container": "redhat-cloudimg-region-1",
+        "arch": "x86_64",
+        "virt_type": "hvm",
+        "root_device_name": "/dev/sda1",
+        "volume_type": "gp2",
+        "accounts": ["secret-1"],
+        "groups": ["all"],
+        "tags": None,
+    }
+    aws_publish_args, _ = mock_aws_publish.call_args_list[0]
+    aws_metadata = aws_publish_args[0]
+    assert compare_metadata(aws_metadata, expected_metadata)
+    # Since the published image has groups set to 'all' initially, we get two
+    # identical calls - one for public image and one with groups restricted to `all`
+    assert len(set(aws_publish_args)) == 1
+
+    # Check state of items pushed
+    stored_items = fake_collector.items
+    assert len(stored_items) == 1
+    assert "PUSHED" == stored_items[0]["state"]
+
+    # Check contents of files pushed
+    images_json = json.loads(fake_collector.file_content["images.json"])
+    assert len(images_json) == 1
+    assert "ami-1234567" == images_json[0]["ami"]
 
 
 def test_create_region_failure(command_tester, requests_mocker):
@@ -317,7 +452,9 @@ def test_not_ami_push_item(command_tester, staged_file):
     )
 
 
-def test_aws_publish_failure_retry(command_tester, mock_aws_publish):
+def test_aws_publish_failure_retry(
+    command_tester, requests_mocker, mock_aws_publish, fake_collector
+):
     """Image upload to AWS is retried on upload failure till it's pushed successfully
     or reached max retry count"""
     response = mock_aws_publish.return_value
@@ -352,3 +489,85 @@ def test_aws_publish_failure_retry(command_tester, mock_aws_publish):
             AMI_SOURCE,
         ],
     )
+
+    # Check that aws publish has been called 5x
+    assert len(mock_aws_publish.call_args_list) == 5
+
+    # Assert that correct metadata was used
+    expected_metadata = {
+        "ena_support": True,
+        "sriov_net_support": "simple",
+        "billing_products": ["code-0001"],
+        "image_path": "/tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw",  # nosec B108
+        "image_name": "RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2",
+        "snapshot_name": "RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2",
+        "snapshot_account_ids": ["0987654321", "1234567890", "684062674729"],
+        "description": "Provided by Red Hat, Inc.",
+        "container": "redhat-cloudimg-region-1",
+        "arch": "x86_64",
+        "virt_type": "hvm",
+        "root_device_name": "/dev/sda1",
+        "volume_type": "gp2",
+        "accounts": ["secret-1"],
+        "groups": [],
+        "tags": None,
+    }
+    aws_publish_args, _ = mock_aws_publish.call_args_list[0]
+    aws_metadata = aws_publish_args[0]
+    assert compare_metadata(aws_metadata, expected_metadata)
+    # Assert all the call arguments are the same
+    assert len(set(aws_publish_args)) == 1
+
+    # Check state of items pushed
+    stored_items = fake_collector.items
+    assert len(stored_items) == 1
+    assert "PUSHED" == stored_items[0]["state"]
+
+    # Check contents of files pushed
+    images_json = json.loads(fake_collector.file_content["images.json"])
+    assert len(images_json) == 1
+    assert "ami-1234567" == images_json[0]["ami"]
+
+
+def test_publish_retry_multiple(command_tester, mock_region_data, mock_ami_upload):
+    """
+    Assert that when multiple images are pushed to the same region and one
+    of them fails only the failed one is repushed.
+    """
+    # let the first image push be successful and fail once for the second image
+    mock_ami_upload.side_effect = [
+        "some_test_id",
+        HTTPError("some_url", "some_code", "some_msg", "some_hdrs", "some_fp"),
+        "another_test_id",
+    ]
+
+    command_tester.test(
+        lambda: entry_point(AmiPush),
+        [
+            "test-push",
+            "--rhsm-url",
+            "https://example.com",
+            "--aws-provider-name",
+            "awstest",
+            "--retry-wait",
+            "1",
+            "--accounts",
+            region_acc,
+            "--aws-access-id",
+            "access_id",
+            "--aws-secret-key",
+            "secret_key",
+            "--snapshot-account-ids",
+            snapshot_acc,
+            "--ship",
+            "--debug",
+            AMI_SOURCE,
+        ],
+    )
+
+    # check that there are only three pushes - one successful for the first
+    # image and one unsuccessful and one retry for the second one
+    assert mock_ami_upload.call_count == 3
+    # check that the first image has been pushed only once
+    pushed_image_names = [x[0][0].name for x in mock_ami_upload.call_args_list]
+    assert pushed_image_names == ["ami-01", "ami-02", "ami-02"]

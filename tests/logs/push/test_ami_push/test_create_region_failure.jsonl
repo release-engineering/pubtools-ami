@@ -1,1 +1,16 @@
-
+{"event": {"type": "upload-image-to-aws-start"}}
+{"event": {"type": "update-rhsm-metadata-start"}}
+{"event": {"type": "update-rhsm-metadata-error"}}
+{"event": {"type": "upload-image-to-aws-error"}}
+{"event": {"type": "upload-image-to-aws-start"}}
+{"event": {"type": "update-rhsm-metadata-start"}}
+{"event": {"type": "update-rhsm-metadata-error"}}
+{"event": {"type": "upload-image-to-aws-error"}}
+{"event": {"type": "upload-image-to-aws-start"}}
+{"event": {"type": "update-rhsm-metadata-start"}}
+{"event": {"type": "update-rhsm-metadata-error"}}
+{"event": {"type": "upload-image-to-aws-error"}}
+{"event": {"type": "upload-image-to-aws-start"}}
+{"event": {"type": "update-rhsm-metadata-start"}}
+{"event": {"type": "update-rhsm-metadata-error"}}
+{"event": {"type": "upload-image-to-aws-error"}}
