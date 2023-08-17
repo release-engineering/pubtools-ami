@@ -136,6 +136,7 @@ def test_do_push(command_tester, requests_mocker):
         ],
     )
 
+
 def test_no_source(command_tester, capsys):
     """Checks that exception is raised when the source is missing"""
     command_tester.test(
