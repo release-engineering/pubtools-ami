@@ -17,9 +17,9 @@ azure-common==1.1.28 \
     --hash=sha256:4ac0cd3214e36b6a1b6a442686722a5d8cc449603aa833f3f0f40bda836704a3 \
     --hash=sha256:5c12d3dcf4ec20599ca6b0d3e09e86e146353d443e7fcc050c9a19c1f9df20ad
     # via azure-mgmt-storage
-azure-core==1.29.1 \
-    --hash=sha256:68e5bb6e3a3230ec202001cc5cb88e57f11c441c8345e921a9ffb8c370abf936 \
-    --hash=sha256:6bcefa1f70ff7bf3c39c07c73d8a21df73288eff7e6a1031eb8cfae71cc7bed4
+azure-core==1.29.2 \
+    --hash=sha256:8e6602f322dc1070caf7e17754beb53b69ffa09df0f4786009a3107e9a00c793 \
+    --hash=sha256:beb0fe88d1043d8457318e8fb841d9caa648211092eda213c16b376401f3710d
     # via
     #   azure-mgmt-core
     #   azure-storage-blob
@@ -36,13 +36,13 @@ azure-storage-blob==12.17.0 \
     --hash=sha256:0016e0c549a80282d7b4920c03f2f4ba35c53e6e3c7dbcd2a4a8c8eb3882c1e7 \
     --hash=sha256:c14b785a17050b30fc326a315bdae6bc4a078855f4f94a4c303ad74a48dc8c63
     # via cloudimg
-boto3==1.28.25 \
-    --hash=sha256:20feedb753e87d6dd55665e2e9dda08b031518291350c9c57b552c86a537fd4e \
-    --hash=sha256:f08f6c83608721c2142abd2ccc5f15bd5c98c282ad9e0d39f9efc59d98604658
+boto3==1.28.28 \
+    --hash=sha256:4a435fdbd77628e3d32cfbc8b6225e779d8f789027fadb6a51fe1b456e15ef54 \
+    --hash=sha256:57d618f03bd269ebef6287dd4ed86ddaa1d53a4021008ad3267c6097be17e172
     # via cloudimg
-botocore==1.31.25 \
-    --hash=sha256:17cc6db84644251a5b519aeccd5eb1c313a18ef2e92616ec16182aa30c877152 \
-    --hash=sha256:b8a40b0ca1e3c8290a4c0d473c8e1575d2e8b2ddc3c61dd8814c3976357cac84
+botocore==1.31.28 \
+    --hash=sha256:1fcfbd23c7f1f66f16c5c1a1e8565ee8ff68429cc0ee9d2acfb1b55739584cbd \
+    --hash=sha256:d6310826e37ba0209e904d691638b8e848342ec17f5187568ca02ad092c55c45
     # via
     #   boto3
     #   s3transfer
@@ -195,9 +195,9 @@ charset-normalizer==3.2.0 \
     --hash=sha256:f779d3ad205f108d14e99bb3859aa7dd8e9c68874617c72354d7ecaec2a054ac \
     --hash=sha256:f87f746ee241d30d6ed93969de31e5ffd09a2961a051e60ae6bddde9ec3583aa
     # via requests
-cloudimg==1.7.0 \
-    --hash=sha256:54fc8cf0fc1dad4c239512e36bed717b41bff58ddf1149a20e6ade6c1b162cc4 \
-    --hash=sha256:940b62b6573e05c2bccd21a1df5c63b77ca4a06da5725db2b5fa937ef93a781d
+cloudimg==1.8.0 \
+    --hash=sha256:e27efb82cda1fde297d7c0938fd319a0e9b18ef6342836356942751fc0fca9e3 \
+    --hash=sha256:f03b0ccb9dccded962260146311c2a4038dea92c0af416366fbc839e30362753
     # via -r requirements.in
 cryptography==41.0.3 \
     --hash=sha256:0d09fb5356f975974dbcb595ad2d178305e5050656affb7890a1583f5e02a306 \
@@ -365,9 +365,9 @@ pushcollector==1.3.0 \
     # via
     #   -r requirements.in
     #   pushsource
-pushsource==2.34.0 \
-    --hash=sha256:70b62f4ff17d1f85dbabde4494f26dd0b1bd7c1247868c129c8a877dff51eb09 \
-    --hash=sha256:cde6e7c3d2722ea9134413dbba6caca23f11085a365652fa649b7ff658648370
+pushsource==2.35.0 \
+    --hash=sha256:6c61ae02a3996629bfff8152a0baf8efc957d3b06c53abc9fd5a083928b7f5d6 \
+    --hash=sha256:ba0eed4a83677d74f0bacb565bd606a08c7eb499f40075e0aed5eab6f34f3982
     # via -r requirements.in
 pycparser==2.21 \
     --hash=sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9 \
@@ -552,9 +552,9 @@ rpds-py==0.9.2 \
     # via
     #   jsonschema
     #   referencing
-s3transfer==0.6.1 \
-    --hash=sha256:3c0da2d074bf35d6870ef157158641178a4204a6e689e82546083e31e0311346 \
-    --hash=sha256:640bb492711f4c0c0905e1f62b6aaeb771881935ad27884852411f8e9cacbca9
+s3transfer==0.6.2 \
+    --hash=sha256:b014be3a8a2aab98cfe1abc7229cc5a9a0cf05eb9c1f2b86b230fd8df3f78084 \
+    --hash=sha256:cab66d3380cca3e70939ef2255d01cd8aece6a4907a9528740f668c4b0611861
     # via boto3
 six==1.16.0 \
     --hash=sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926 \
