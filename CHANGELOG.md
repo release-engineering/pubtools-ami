@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## [2.3.0] - 2023-08-21
+
+### Added
+
+- Support for `uefi_support` flag on AMI push item.
+
 ## [2.2.0] - 2023-04-27
 
 ### Added
@@ -77,7 +83,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to PyPI
 
-[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/release-engineering/pubtools-ami/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/release-engineering/pubtools-ami/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/release-engineering/pubtools-ami/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/release-engineering/pubtools-ami/compare/v1.2.1...v2.0.0
