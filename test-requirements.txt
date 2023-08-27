@@ -27,20 +27,19 @@ azure-common==1.1.28 \
     --hash=sha256:4ac0cd3214e36b6a1b6a442686722a5d8cc449603aa833f3f0f40bda836704a3 \
     --hash=sha256:5c12d3dcf4ec20599ca6b0d3e09e86e146353d443e7fcc050c9a19c1f9df20ad
     # via azure-mgmt-storage
-azure-core==1.29.2 \
-    --hash=sha256:8e6602f322dc1070caf7e17754beb53b69ffa09df0f4786009a3107e9a00c793 \
-    --hash=sha256:beb0fe88d1043d8457318e8fb841d9caa648211092eda213c16b376401f3710d
+azure-core==1.29.3 \
+    --hash=sha256:c92700af982e71c8c73de9f4c20da8b3f03ce2c22d13066e4d416b4629c87903 \
+    --hash=sha256:f8b2910f92b66293d93bd00564924ad20ad48f4a1e150577cf18d1e7d4f9263c
     # via
     #   azure-mgmt-core
     #   azure-storage-blob
-    #   msrest
 azure-mgmt-core==1.4.0 \
     --hash=sha256:81071675f186a585555ef01816f2774d49c1c9024cb76e5720c3c0f6b337bb7d \
     --hash=sha256:d195208340094f98e5a6661b781cde6f6a051e79ce317caabd8ff97030a9b3ae
     # via azure-mgmt-storage
-azure-mgmt-storage==21.0.0 \
-    --hash=sha256:6eb13eeecf89195b2b5f47be0679e3f27888efd7bd2132eec7ebcbce75cb1377 \
-    --hash=sha256:89d644c6192118b0b097deaa9c4925832d8f7ea4693d38d5fce3f0125b43a1c5
+azure-mgmt-storage==21.1.0 \
+    --hash=sha256:593f2544fc4f05750c4fe7ca4d83c32ea1e9d266e57899bbf79ce5940124e8cc \
+    --hash=sha256:d6d3c0e917c988bc9ed0472477d3ef3f90886009eb1d97a711944f8375630162
     # via cloudimg
 azure-storage-blob==12.17.0 \
     --hash=sha256:0016e0c549a80282d7b4920c03f2f4ba35c53e6e3c7dbcd2a4a8c8eb3882c1e7 \
@@ -54,22 +53,20 @@ bandit==1.7.5 ; python_version >= "3" \
     --hash=sha256:75665181dc1e0096369112541a056c59d1c5f66f9bb74a8d686c3c362b83f549 \
     --hash=sha256:bdfc739baa03b880c2d15d0431b31c658ffc348e907fe197e54e0389dd59e11e
     # via -r test-requirements.in
-boto3==1.28.28 \
-    --hash=sha256:4a435fdbd77628e3d32cfbc8b6225e779d8f789027fadb6a51fe1b456e15ef54 \
-    --hash=sha256:57d618f03bd269ebef6287dd4ed86ddaa1d53a4021008ad3267c6097be17e172
+boto3==1.28.35 \
+    --hash=sha256:580b584e36967155abed7cc9b088b3bd784e8242ae4d8841f58cb50ab05520dc \
+    --hash=sha256:d77415f22bbc14f3d72eaed2fc9f96d161f3ba7686922ad26d6bbc9d4985f3df
     # via cloudimg
-botocore==1.31.28 \
-    --hash=sha256:1fcfbd23c7f1f66f16c5c1a1e8565ee8ff68429cc0ee9d2acfb1b55739584cbd \
-    --hash=sha256:d6310826e37ba0209e904d691638b8e848342ec17f5187568ca02ad092c55c45
+botocore==1.31.35 \
+    --hash=sha256:7e4534325262f43293a9cc9937cb3f1711365244ffde8b925a6ee862bcf30a83 \
+    --hash=sha256:943e1465aad66db4933b06809134bd08c5b05e8eb18c19742ffec82f54769457
     # via
     #   boto3
     #   s3transfer
 certifi==2023.7.22 \
     --hash=sha256:539cc1d13202e33ca466e88b2807e29f4c13049d6d87031a3c110744495cb082 \
     --hash=sha256:92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9
-    # via
-    #   msrest
-    #   requests
+    # via requests
 cffi==1.15.1 \
     --hash=sha256:00a9ed42e88df81ffae7a8ab6d9356b371399b91dbdf0c3cb1e84c03a13aceb5 \
     --hash=sha256:03425bdae262c76aad70202debd780501fabeaca237cdfddc008987c0e0f59ef \
@@ -397,9 +394,9 @@ gssapi==1.8.2 \
     --hash=sha256:f75b094913a1757e5e634b70b03e808cab0eb02c802ec50b760636b23b0aa50c \
     --hash=sha256:fac7d1f4b14383bd29d3996cf5f6f23d0dc50ffd7965d2bc35bcc0849da24152
     # via requests-gssapi
-identify==2.5.26 \
-    --hash=sha256:7243800bce2f58404ed41b7c002e53d4d22bcf3ae1b7900c2d7aefd95394bf7f \
-    --hash=sha256:c22a8ead0d4ca11f1edd6c9418c3220669b3b7533ada0a0ffa6cc0ef85cf9b54
+identify==2.5.27 \
+    --hash=sha256:287b75b04a0e22d727bc9a41f0d4f3c1bcada97490fa6eabb5b28f0e9097e733 \
+    --hash=sha256:fdb527b2dfe24602809b2201e033c2a113d7bdf716db3ca8e3243f735dcecaba
     # via pre-commit
 idna==3.4 \
     --hash=sha256:814f528e8dead7d329833b91c5faa87d60bf71824cd12a7530b5526063d02cb4 \
@@ -427,8 +424,8 @@ isodate==0.6.1 \
     --hash=sha256:0751eece944162659049d35f4f549ed815792b38793f07cf73381c1c87cbed96 \
     --hash=sha256:48c5881de7e8b0a0d648cb024c8062dc84e7b840ed81e864c7614fd3c127bde9
     # via
+    #   azure-mgmt-storage
     #   azure-storage-blob
-    #   msrest
 isort==5.12.0 \
     --hash=sha256:8bef7dde241278824a6d83f44a544709b065191b95b6e50894bdc722fcba0504 \
     --hash=sha256:f84c2818376e66cf843d497486ea8fed8700b340f308f076c6fb1229dff318b6
@@ -573,18 +570,10 @@ more-executors==2.11.4 \
     #   -r requirements.in
     #   pushcollector
     #   pushsource
-msrest==0.7.1 \
-    --hash=sha256:21120a810e1233e5e6cc7fe40b474eeb4ec6f757a15d7cf86702c369f9567c32 \
-    --hash=sha256:6e7661f46f3afd88b75667b7187a92829924446c7ea1d169be8c4bb7eeb788b9
-    # via azure-mgmt-storage
 nodeenv==1.8.0 \
     --hash=sha256:d51e0c37e64fbf47d017feac3145cdbb58836d7eee8c6f6d3b6880c5456227d2 \
     --hash=sha256:df865724bb3c3adc86b3876fa209771517b0cfe596beff01a92700e0e8be4cec
     # via pre-commit
-oauthlib==3.2.2 \
-    --hash=sha256:8139f29aac13e25d502680e9e19963e83f16838d48a0d71c287fe40e7067fbca \
-    --hash=sha256:9859c40929662bec5d64f34d01c99e093149682a3f38915dc0655d5a633dd918
-    # via requests-oauthlib
 packaging==23.1 \
     --hash=sha256:994793af429502c4ea2ebf6bf664629d07c1a9fe974af92966e4b8d2df7edc61 \
     --hash=sha256:a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f
@@ -605,9 +594,9 @@ platformdirs==3.10.0 \
     # via
     #   pylint
     #   virtualenv
-pluggy==1.2.0 \
-    --hash=sha256:c2fd55a7d7a3863cba1a013e4e2414658b1d07b6bc57b3919e0c63c9abb99849 \
-    --hash=sha256:d12f0c4b579b15f5e054301bb226ee85eeeba08ffec228092f8defbaa3a4c4b3
+pluggy==1.3.0 \
+    --hash=sha256:cf61ae8f126ac6f7c451172cf30e3e43d3ca77615509771b3a984a0730651e12 \
+    --hash=sha256:d89c696a773f8bd377d18e5ecda92b7a3793cbe66c87060a6fb58c7b6e1061f7
     # via
     #   pubtools
     #   pytest
@@ -725,10 +714,8 @@ requests==2.31.0 \
     #   azure-core
     #   cloudimg
     #   koji
-    #   msrest
     #   requests-gssapi
     #   requests-mock
-    #   requests-oauthlib
     #   sphinx
 requests-gssapi==1.2.3 \
     --hash=sha256:20784508981401f7153c933eed095338933a40818da65a259dbf2d80dccb150e
@@ -737,10 +724,6 @@ requests-mock==1.11.0 \
     --hash=sha256:ef10b572b489a5f28e09b708697208c4a3b2b89ef80a9f01584340ea357ec3c4 \
     --hash=sha256:f7fae383f228633f6bececebdab236c478ace2284d6292c6e7e2867b9ab74d15
     # via -r test-requirements.in
-requests-oauthlib==1.3.1 \
-    --hash=sha256:2577c501a2fb8d05a304c09d090d6e47c306fef15809d102b327cf8364bddab5 \
-    --hash=sha256:75beac4a47881eeb94d5ea5d6ad31ef88856affe2332b9aafb52c6452ccf0d7a
-    # via msrest
 rich==13.5.2 \
     --hash=sha256:146a90b3b6b47cac4a73c12866a499e9817426423f57c5a66949c086191a8808 \
     --hash=sha256:fb9d6c0a0f643c99eed3875b5377a184132ba9be4d61516a55273d3554d75a39
