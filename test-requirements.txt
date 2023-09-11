@@ -214,9 +214,9 @@ charset-normalizer==3.2.0 \
     --hash=sha256:f779d3ad205f108d14e99bb3859aa7dd8e9c68874617c72354d7ecaec2a054ac \
     --hash=sha256:f87f746ee241d30d6ed93969de31e5ffd09a2961a051e60ae6bddde9ec3583aa
     # via requests
-cloudimg==1.9.0 \
-    --hash=sha256:94776844e011061cdbd84ebccd847d786cb84ac06eff8b408b420a4793526535 \
-    --hash=sha256:d5fdfaed897aec487f9eb289b6e7787df2e5aebd0421a2d26809b3f971fc0b0f
+cloudimg==1.10.0 \
+    --hash=sha256:918e6278f25dcad0125f8c8c3ba8b87583f06c8ad5efb7f65a947757a751a396 \
+    --hash=sha256:981b7cd3e96d08e0d7f8acf56ef450a096c12ca13d858003b57af33e34b3a6e3
     # via -r requirements.in
 coverage[toml]==7.3.1 \
     --hash=sha256:025ded371f1ca280c035d91b43252adbb04d2aea4c7105252d3cbc227f03b375 \
@@ -628,9 +628,9 @@ pushcollector==1.3.0 \
     # via
     #   -r requirements.in
     #   pushsource
-pushsource==2.37.0 \
-    --hash=sha256:d75ef24b8e8915845a1943f411edb1e72677f1ea160aacad53885a9a37f0287a \
-    --hash=sha256:dabbcea9adb488fa990beeaebcc1e3464714c9333f0c7c7881acb9c2b0859746
+pushsource==2.38.0 \
+    --hash=sha256:315945ce6580fa12dafaa5b6b072ff54349251492aa8108c4168ab40dc7a8e67 \
+    --hash=sha256:60b6720a425e96d44ae52d4975dffe74f1d972dc0b21ce7663a49c0b612af8d3
     # via -r requirements.in
 pycparser==2.21 \
     --hash=sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9 \
@@ -738,6 +738,7 @@ requests==2.31.0 \
     #   azure-core
     #   cloudimg
     #   koji
+    #   pushsource
     #   requests-gssapi
     #   requests-mock
     #   sphinx
