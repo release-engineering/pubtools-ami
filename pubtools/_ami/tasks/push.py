@@ -296,7 +296,6 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
                 exception_base=(HTTPError, AWSPublishError),
             ),
         ) as executor:
-
             to_await = []
             result = []
             for data in region_data:

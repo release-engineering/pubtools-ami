@@ -25,6 +25,7 @@ def compare_metadata(metadata, exp_metadata):
             result = False
     return result
 
+
 @pytest.fixture(scope="session", autouse=True)
 def stage_ami():
     if os.path.exists(AMI_STAGE_ROOT):
