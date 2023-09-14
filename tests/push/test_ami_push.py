@@ -498,7 +498,6 @@ def test_aws_publish_failure_retry(
         ],
     )
 
-
     # Check that aws publish has been called 5x
     assert len(mock_aws_publish.call_args_list) == 5
 
