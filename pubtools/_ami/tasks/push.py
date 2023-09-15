@@ -102,7 +102,7 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
             if region in self.args.snapshot_account_ids
             else self.args.snapshot_account_ids["default"]
         )
-
+        boot_mode = push_item.boot_mode.value if push_item.boot_mode else None
         publishing_meta_kwargs = {
             "image_path": file_path,
             "image_name": name,
@@ -113,7 +113,7 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
             "virt_type": push_item.virtualization,
             "root_device_name": push_item.root_device,
             "volume_type": push_item.volume,
-            "uefi_support": push_item.uefi_support,
+            "boot_mode": boot_mode,
             "billing_products": push_item.billing_codes.codes,
             "accounts": accounts,
             "snapshot_account_ids": snapshot_account_ids,

@@ -11,8 +11,9 @@
                 "code-0001"
               ], 
               "name": "Hourly2"
-            }, 
-            "description": "Provided by Red Hat, Inc.", 
+            },
+            "boot_mode": null,
+            "description": "Provided by Red Hat, Inc.",
             "ena_support": true, 
             "region": "region-1", 
             "release": {
@@ -20,7 +21,7 @@
               "base_product": "RHEL", 
               "base_version": "8.5", 
               "date": "20210902", 
-              "product": "RHEL", 
+              "product": "RHEL",
               "respin": 5, 
               "type": "beta", 
               "variant": "BaseOS", 
@@ -29,8 +30,7 @@
             "root_device": "/dev/sda1", 
             "sriov_net_support": "simple", 
             "type": "hourly",
-            "uefi_support": false,
-            "virtualization": "hvm", 
+            "virtualization": "hvm",
             "volume": "gp2"
           }, 
           "relative_path": "region-1-hourly/AWS_IMAGES/ami-1.raw"

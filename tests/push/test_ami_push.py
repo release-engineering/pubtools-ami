@@ -8,6 +8,7 @@ from logging import DEBUG
 from collections import OrderedDict
 from mock import patch, MagicMock
 from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
+from enum import Enum
 from pushsource import AmiPushItem
 from requests import HTTPError
 
@@ -100,6 +101,7 @@ def mock_region_data():
         first_ami_data = {
             "name": "ami-01",
             "billing_codes": {"codes": ["code-0001"], "name": "Hourly2"},
+            "boot_mode": None,
             "description": "Provided by Red Hat, Inc.",
             "ena_support": True,
             "region": "region-1",
@@ -157,6 +159,11 @@ def mock_debug_logger():
         for arg in args:
             if isinstance(arg, dict):
                 od = OrderedDict(sorted(arg.items()))
+                # json dumps can't handle Enums by default.
+                # For testing it's fine to treat it as a string
+                for key, val in od.items():
+                    if isinstance(val, Enum):
+                        od[key] = val.value
                 debug_args.append(json.dumps(od))
             else:
                 debug_args.append(arg)
