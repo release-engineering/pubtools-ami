@@ -6,12 +6,12 @@ import attr
 from cloudimg.aws import AWSDeleteMetadata
 from more_executors import Executors, ExceptionRetryPolicy
 
-from pubtools._ami.arguments import SplitAndExtend
-
+from ..arguments import SplitAndExtend
 from ..services import AWSPublishService, CollectorService, RHSMClientService
+from ..task import AmiTask
 from .base import AmiBase
 from .exceptions import AWSDeleteError
-from pubtools._ami.task import AmiTask
+
 
 LOG = logging.getLogger("pubtools.ami")
 

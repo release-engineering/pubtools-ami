@@ -1,17 +1,20 @@
+import json
 import os
 import re
 import shutil
-import pytest
-import json
-import yaml
-from logging import DEBUG
 from collections import OrderedDict
-from mock import patch, MagicMock
-from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
 from enum import Enum
+from logging import DEBUG
+
+import pytest
+import yaml
+from cloudimg.aws import AWSBootMode
+from mock import patch, MagicMock
 from pushsource import AmiPushItem
 from requests import HTTPError
-from cloudimg.aws import AWSBootMode
+
+from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
+
 
 AMI_STAGE_ROOT = "/tmp/aws_staged"  # nosec B108
 AMI_SOURCE = "staged:%s" % AMI_STAGE_ROOT
@@ -21,11 +24,10 @@ def compare_metadata(metadata, exp_metadata):
     """
     Helper fction to compare metadata object with a dictionary of expected metadata
     """
-    result = True
     for key, value in exp_metadata.items():
         if getattr(metadata, key) != value:
-            result = False
-    return result
+            return False
+    return True
 
 
 @pytest.fixture(scope="session", autouse=True)

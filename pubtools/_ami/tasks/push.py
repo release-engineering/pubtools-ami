@@ -1,16 +1,16 @@
+import json
 import logging
 import os
-import json
 import attr
-
-from requests import HTTPError
-from more_executors import Executors, ExceptionRetryPolicy
 from cloudimg.aws import AWSPublishingMetadata
-from pubtools._ami.task import AmiTask
+from more_executors import Executors, ExceptionRetryPolicy
+from requests import HTTPError
 
 from ..services import RHSMClientService, AWSPublishService, CollectorService
+from ..task import AmiTask
 from .base import AmiBase
 from .exceptions import AWSPublishError
+
 
 LOG = logging.getLogger("pubtools.ami")
 

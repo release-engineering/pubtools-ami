@@ -1,9 +1,12 @@
 import logging
 import threading
 from functools import partial
+
 from cloudimg.aws import AWSService
-from pubtools._ami.arguments import from_environ
+
+from ..arguments import from_environ
 from .base import Service
+
 
 LOG = logging.getLogger("pubtools.ami")
 

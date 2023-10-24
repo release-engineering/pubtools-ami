@@ -1,12 +1,13 @@
-import threading
-import os
 import logging
+import os
+import threading
 from datetime import datetime
 from urllib.parse import urljoin
 
 import requests
 from more_executors import Executors
 from more_executors.futures import f_map
+
 
 LOG = logging.getLogger("pubtools.ami")
 
