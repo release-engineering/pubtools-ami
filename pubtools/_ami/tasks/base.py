@@ -1,16 +1,15 @@
-import logging
-import sys
-
 import datetime
 import json
-import attr
-
+import logging
+import sys
 from concurrent.futures import wait
 
-from pushsource import Source, AmiPushItem
-from pubtools._ami.task import AmiTask
-from pubtools._ami.arguments import SplitAndExtend
+import attr
+from pushsource import Source, AmiPushItem, BootMode
+
+from ..arguments import SplitAndExtend
 from ..services import RHSMClientService, AWSPublishService, CollectorService
+from ..task import AmiTask
 from .exceptions import MissingProductError
 
 
@@ -114,6 +113,8 @@ class AmiBase(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         def convert(obj):
             if isinstance(obj, (datetime.datetime, datetime.date)):
                 return obj.strftime("%Y%m%d")
+            if isinstance(obj, BootMode):
+                return obj.value
 
         mod_result = []
         push_items = []

@@ -1,7 +1,7 @@
 import json
 import re
-
 import pytest
+
 from mock import patch
 from pushsource import AmiBillingCodes, AmiPushItem, AmiRelease, Source
 

@@ -12,7 +12,7 @@
               ], 
               "name": "Hourly2"
             },
-            "boot_mode": null,
+            "boot_mode": "hybrid",
             "description": "Provided by Red Hat, Inc.",
             "ena_support": true, 
             "region": "region-1", 
@@ -35,5 +35,6 @@
           }, 
           "relative_path": "region-1-hourly/AWS_IMAGES/ami-1.raw"
         }
-      ]}
-} 
+      ]
+    }
+}

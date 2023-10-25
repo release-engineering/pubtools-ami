@@ -1,6 +1,7 @@
 import logging
 from mock import patch
 from requests.exceptions import ConnectionError
+
 from pubtools._ami.rhsm import RHSMClient
 
 

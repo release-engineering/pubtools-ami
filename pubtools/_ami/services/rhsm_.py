@@ -2,9 +2,11 @@ import logging
 import threading
 
 from pubtools.pluggy import pm
-from pubtools._ami.rhsm import RHSMClient
-from pubtools._ami.arguments import from_environ
+
+from ..arguments import from_environ
+from ..rhsm import RHSMClient
 from .base import Service
+
 
 LOG = logging.getLogger("pubtools.ami")
 

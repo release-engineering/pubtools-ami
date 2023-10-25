@@ -1,16 +1,20 @@
+import json
 import os
 import re
 import shutil
-import pytest
-import json
-import yaml
-from logging import DEBUG
 from collections import OrderedDict
-from mock import patch, MagicMock
-from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
 from enum import Enum
+from logging import DEBUG
+
+import pytest
+import yaml
+from cloudimg.aws import AWSBootMode
+from mock import patch, MagicMock
 from pushsource import AmiPushItem
 from requests import HTTPError
+
+from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
+
 
 AMI_STAGE_ROOT = "/tmp/aws_staged"  # nosec B108
 AMI_SOURCE = "staged:%s" % AMI_STAGE_ROOT
@@ -20,11 +24,10 @@ def compare_metadata(metadata, exp_metadata):
     """
     Helper fction to compare metadata object with a dictionary of expected metadata
     """
-    result = True
     for key, value in exp_metadata.items():
         if getattr(metadata, key) != value:
-            result = False
-    return result
+            return False
+    return True
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -101,7 +104,7 @@ def mock_region_data():
         first_ami_data = {
             "name": "ami-01",
             "billing_codes": {"codes": ["code-0001"], "name": "Hourly2"},
-            "boot_mode": None,
+            "boot_mode": "hybrid",
             "description": "Provided by Red Hat, Inc.",
             "ena_support": True,
             "region": "region-1",
@@ -222,6 +225,7 @@ def test_do_push(command_tester, requests_mocker, mock_aws_publish, fake_collect
         "accounts": ["secret-r"],
         "groups": [],
         "tags": None,
+        "boot_mode": AWSBootMode.hybrid,
     }
     aws_publish_args, _ = mock_aws_publish.call_args_list[0]
     aws_metadata = aws_publish_args[0]
@@ -236,6 +240,7 @@ def test_do_push(command_tester, requests_mocker, mock_aws_publish, fake_collect
     images_json = json.loads(fake_collector.file_content["images.json"])
     assert len(images_json) == 1
     assert "ami-1234567" == images_json[0]["ami"]
+    assert "hybrid" == images_json[0]["boot_mode"]
 
 
 def test_no_source(command_tester, capsys):
@@ -354,6 +359,7 @@ def test_push_public_image(
         "accounts": ["secret-1"],
         "groups": ["all"],
         "tags": None,
+        "boot_mode": AWSBootMode.hybrid,
     }
     aws_publish_args, _ = mock_aws_publish.call_args_list[0]
     aws_metadata = aws_publish_args[0]
@@ -519,6 +525,7 @@ def test_aws_publish_failure_retry(
         "accounts": ["secret-1"],
         "groups": [],
         "tags": None,
+        "boot_mode": AWSBootMode.hybrid,
     }
     aws_publish_args, _ = mock_aws_publish.call_args_list[0]
     aws_metadata = aws_publish_args[0]
