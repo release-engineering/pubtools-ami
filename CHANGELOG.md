@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## [2.4.1] - 2023-11-29
+
+- Fixed setting `boot_mode` value in images.json file
+
 ## [2.4.0] - 2023-09-15
 
 - Added support for `boot_mode` option in publishing metadata
@@ -92,7 +96,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to PyPI
 
-[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v2.4.0...HEAD
+[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v2.4.1...HEAD
+[2.4.1]: https://github.com/release-engineering/pubtools-ami/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/release-engineering/pubtools-ami/compare/v2.3.1...v2.4.0
 [2.3.1]: https://github.com/release-engineering/pubtools-ami/compare/v2.3.0...v2.3.1
 [2.3.0]: https://github.com/release-engineering/pubtools-ami/compare/v2.2.0...v2.3.0
