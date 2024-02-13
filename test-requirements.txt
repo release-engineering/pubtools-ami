@@ -53,13 +53,13 @@ bandit==1.7.7 ; python_version >= "3" \
     --hash=sha256:17e60786a7ea3c9ec84569fd5aee09936d116cb0cb43151023258340dbffb7ed \
     --hash=sha256:527906bec6088cb499aae31bc962864b4e77569e9d529ee51df3a93b4b8ab28a
     # via -r test-requirements.in
-boto3==1.34.34 \
-    --hash=sha256:33a8b6d9136fa7427160edb92d2e50f2035f04e9d63a2d1027349053e12626aa \
-    --hash=sha256:b2f321e20966f021ec800b7f2c01287a3dd04fc5965acdfbaa9c505a24ca45d1
+boto3==1.34.39 \
+    --hash=sha256:35bcbecf1b5d3620c93f0062d2994177f8bda25a9d2cba144d6462793c16065b \
+    --hash=sha256:476896e70d36c9134d4125834280c597c17b54bff4902baf2e5fcde74f8acec8
     # via cloudimg
-botocore==1.34.34 \
-    --hash=sha256:54093dc97372bb7683f5c61a279aa8240408abf3b2cc494ae82a9a90c1b784b5 \
-    --hash=sha256:cd060b0d88ebb2b893f1411c1db7f2ba66cc18e52dcc57ad029564ef5fec437b
+botocore==1.34.39 \
+    --hash=sha256:9f00bd5e4698bcdd37ce6e224a896baf58d209678ed92834944b767de9061cc5 \
+    --hash=sha256:e175360445424b83b0e28ae20d301b99cf44ff2c9d5ab1d8670899bec05a9753
     # via
     #   boto3
     #   s3transfer
@@ -407,9 +407,9 @@ gssapi==1.8.3 \
     --hash=sha256:edc8ef3a9e397dbe18bb6016f8e2209969677b534316d20bb139da2865a38efe \
     --hash=sha256:ee74b9211c977b9181ff4652d886d7712c9a221560752a35393b58e5ea07887a
     # via requests-gssapi
-identify==2.5.33 \
-    --hash=sha256:161558f9fe4559e1557e1bff323e8631f6a0e4837f7497767c1782832f16b62d \
-    --hash=sha256:d40ce5fcd762817627670da8a7d8d8e65f24342d14539c59488dc603bf662e34
+identify==2.5.34 \
+    --hash=sha256:a4316013779e433d08b96e5eabb7f641e6c7942e4ab5d4c509ebd2e7a8994aed \
+    --hash=sha256:ee17bc9d499899bc9eaec1ac7bf2dc9eedd480db9d88b96d123d3b64a9d34f5d
     # via pre-commit
 idna==3.6 \
     --hash=sha256:9ecdbbd083b06798ae1e86adcbfe8ab1479cf864e4ee30fe4e46a003d12491ca \
