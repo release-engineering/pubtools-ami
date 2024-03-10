@@ -31,17 +31,17 @@ azure-mgmt-storage==21.1.0 \
     --hash=sha256:593f2544fc4f05750c4fe7ca4d83c32ea1e9d266e57899bbf79ce5940124e8cc \
     --hash=sha256:d6d3c0e917c988bc9ed0472477d3ef3f90886009eb1d97a711944f8375630162
     # via cloudimg
-azure-storage-blob==12.19.0 \
-    --hash=sha256:26c0a4320a34a3c2a1b74528ba6812ebcb632a04cd67b1c7377232c4b01a5897 \
-    --hash=sha256:7bbc2c9c16678f7a420367fef6b172ba8730a7e66df7f4d7a55d5b3c8216615b
+azure-storage-blob==12.19.1 \
+    --hash=sha256:13e16ba42fc54ac2c7e8f976062173a5c82b9ec0594728e134aac372965a11b0 \
+    --hash=sha256:c5530dc51c21c9564e4eb706cd499befca8819b10dd89716d3fc90d747556243
     # via cloudimg
-boto3==1.34.54 \
-    --hash=sha256:8b3f5cc7fbedcbb22271c328039df8a6ab343001e746e0cdb24774c426cadcf8 \
-    --hash=sha256:f201b6a416f809283d554c652211eecec9fe3a52ed4063dab3f3e7aea7571d9c
+boto3==1.34.59 \
+    --hash=sha256:004e67b078be58d34469406f93cc8b95bc43becef4bbe44523a0b8e51f84c668 \
+    --hash=sha256:162edf182e53c198137a28432a626dba103f787a8f5000ed4758b73ccd203fa0
     # via cloudimg
-botocore==1.34.54 \
-    --hash=sha256:4061ff4be3efcf53547ebadf2c94d419dfc8be7beec24e9fa1819599ffd936fa \
-    --hash=sha256:bf215d93e9d5544c593962780d194e74c6ee40b883d0b885e62ef35fc0ec01e5
+botocore==1.34.59 \
+    --hash=sha256:24edb4d21d7c97dea0c6c4a80d36b3809b1443a30b0bd5e317d6c319dfac823f \
+    --hash=sha256:4bc112dafb1679ab571117593f7656604726a3da0e5ae5bad00ea772fa40e75c
     # via
     #   boto3
     #   s3transfer
@@ -317,9 +317,9 @@ importlib-metadata==6.11.0 \
     --hash=sha256:1231cf92d825c9e03cfc4da076a16de6422c863558229ea0b22b675657463443 \
     --hash=sha256:f0afba6205ad8f8947c7d338b5342d5db2afbfd82f9cbef7879a9539cc12eb9b
     # via opentelemetry-api
-importlib-resources==6.1.2 \
-    --hash=sha256:308abf8474e2dba5f867d279237cd4076482c3de7104a40b41426370e891549b \
-    --hash=sha256:9a0a862501dc38b68adebc82970140c9e4209fc99601782925178f8386339938
+importlib-resources==6.1.3 \
+    --hash=sha256:4c0269e3580fe2634d364b39b38b961540a7738c02cb984e98add8b4221d793d \
+    --hash=sha256:56fb4525197b78544a3354ea27793952ab93f935bb4bf746b846bb1015020f2b
     # via
     #   jsonschema
     #   jsonschema-specifications
