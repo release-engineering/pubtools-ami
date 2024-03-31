@@ -35,13 +35,13 @@ azure-storage-blob==12.19.1 \
     --hash=sha256:13e16ba42fc54ac2c7e8f976062173a5c82b9ec0594728e134aac372965a11b0 \
     --hash=sha256:c5530dc51c21c9564e4eb706cd499befca8819b10dd89716d3fc90d747556243
     # via cloudimg
-boto3==1.34.69 \
-    --hash=sha256:2e25ef6bd325217c2da329829478be063155897d8d3b29f31f7f23ab548519b1 \
-    --hash=sha256:898a5fed26b1351352703421d1a8b886ef2a74be6c97d5ecc92432ae01fda203
+boto3==1.34.74 \
+    --hash=sha256:71f551491fb12fe07727d371d5561c5919fdf33dbc1d4251c57940d267a53a9e \
+    --hash=sha256:b703e22775561a748adc4576c30424b81abd2a00d3c6fb28eec2e5cde92c1eed
     # via cloudimg
-botocore==1.34.69 \
-    --hash=sha256:d1ab2bff3c2fd51719c2021d9fa2f30fbb9ed0a308f69e9a774ac92c8091380a \
-    --hash=sha256:d3802d076d4d507bf506f9845a6970ce43adc3d819dd57c2791f5c19ed6e5950
+botocore==1.34.74 \
+    --hash=sha256:32bb519bae62483893330c18a0ea4fd09d1ffa32bc573cd8559c2d9a08fb8c5c \
+    --hash=sha256:5d2015b5d91d6c402c122783729ce995ed7283a746b0380957026dc2b3b75969
     # via
     #   boto3
     #   s3transfer
@@ -313,9 +313,9 @@ idna==3.6 \
     --hash=sha256:9ecdbbd083b06798ae1e86adcbfe8ab1479cf864e4ee30fe4e46a003d12491ca \
     --hash=sha256:c05567e9c24a6b9faaa835c4821bad0590fbb9d5779e7caa6e1cc4978e7eb24f
     # via requests
-importlib-metadata==6.11.0 \
-    --hash=sha256:1231cf92d825c9e03cfc4da076a16de6422c863558229ea0b22b675657463443 \
-    --hash=sha256:f0afba6205ad8f8947c7d338b5342d5db2afbfd82f9cbef7879a9539cc12eb9b
+importlib-metadata==7.0.0 \
+    --hash=sha256:7fc841f8b8332803464e5dc1c63a2e59121f46ca186c0e2e182e80bf8c1319f7 \
+    --hash=sha256:d97503976bb81f40a193d41ee6570868479c69d5068651eb039c40d850c59d67
     # via opentelemetry-api
 importlib-resources==6.4.0 \
     --hash=sha256:50d10f043df931902d4194ea07ec57960f66a80449ff867bfe782b4c486ba78c \
@@ -359,19 +359,19 @@ more-executors==2.11.4 \
     #   -r requirements.in
     #   pushcollector
     #   pushsource
-opentelemetry-api==1.23.0 \
-    --hash=sha256:14a766548c8dd2eb4dfc349739eb4c3893712a0daa996e5dbf945f9da665da9d \
-    --hash=sha256:cc03ea4025353048aadb9c64919099663664672ea1c6be6ddd8fee8e4cd5e774
+opentelemetry-api==1.24.0 \
+    --hash=sha256:0f2c363d98d10d1ce93330015ca7fd3a65f60be64e05e30f557c61de52c80ca2 \
+    --hash=sha256:42719f10ce7b5a9a73b10a4baf620574fb8ad495a9cbe5c18d76b75d8689c67e
     # via
     #   opentelemetry-sdk
     #   pubtools
-opentelemetry-sdk==1.23.0 \
-    --hash=sha256:9ddf60195837b59e72fd2033d6a47e2b59a0f74f0ec37d89387d89e3da8cab7f \
-    --hash=sha256:a93c96990ac0f07c6d679e2f1015864ff7a4f5587122dd5af968034436efb1fd
+opentelemetry-sdk==1.24.0 \
+    --hash=sha256:75bc0563affffa827700e0f4f4a68e1e257db0df13372344aebc6f8a64cde2e5 \
+    --hash=sha256:fa731e24efe832e98bcd90902085b359dcfef7d9c9c00eb5b9a18587dae3eb59
     # via pubtools
-opentelemetry-semantic-conventions==0.44b0 \
-    --hash=sha256:2e997cb28cd4ca81a25a9a43365f593d0c2b76be0685015349a89abdf1aa4ffa \
-    --hash=sha256:7c434546c9cbd797ab980cc88bf9ff3f4a5a28f941117cad21694e43d5d92019
+opentelemetry-semantic-conventions==0.45b0 \
+    --hash=sha256:7c84215a44ac846bc4b8e32d5e78935c5c43482e491812a0bb8aaf87e4d92118 \
+    --hash=sha256:a4a6fb9a7bacd9167c082aa4681009e9acdbfa28ffb2387af50c2fef3d30c864
     # via opentelemetry-sdk
 pkgutil-resolve-name==1.3.10 \
     --hash=sha256:357d6c9e6a755653cfd78893817c0853af365dd51ec97f3d358a819373bbd174 \
@@ -395,9 +395,9 @@ pushsource==2.43.1 \
     --hash=sha256:29322a58b65c690fd2c1b48bfb6b4a38600e59af562a28a8ce9709500d84edc0 \
     --hash=sha256:cf70667b7ab4a796b3017016d2eefa162cdab1a97f0aa90613ae45ffcfbc0919
     # via -r requirements.in
-pycparser==2.21 \
-    --hash=sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9 \
-    --hash=sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206
+pycparser==2.22 \
+    --hash=sha256:491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6 \
+    --hash=sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
     # via cffi
 python-dateutil==2.9.0.post0 \
     --hash=sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3 \
