@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - n/a
 
+## [2.4.2] - 2024-07-19
+
+- Fixed source code structure
+
 ## [2.4.1] - 2023-11-29
 
 - Fixed setting `boot_mode` value in images.json file
@@ -96,7 +100,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release to PyPI
 
-[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v2.4.1...HEAD
+[Unreleased]: https://github.com/release-engineering/pubtools-ami/compare/v2.4.2...HEAD
+[2.4.2]: https://github.com/release-engineering/pubtools-ami/compare/v2.4.1...v2.4.2
 [2.4.1]: https://github.com/release-engineering/pubtools-ami/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/release-engineering/pubtools-ami/compare/v2.3.1...v2.4.0
 [2.3.1]: https://github.com/release-engineering/pubtools-ami/compare/v2.3.0...v2.3.1

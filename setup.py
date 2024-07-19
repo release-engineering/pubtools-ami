@@ -21,7 +21,7 @@ def get_requirements():
 
 setup(
     name="pubtools-ami",
-    version="2.4.1",
+    version="2.4.2",
     packages=find_namespace_packages(where="src"),
     package_dir={"": "src"},
     url="https://github.com/release-engineering/pubtools-ami",
