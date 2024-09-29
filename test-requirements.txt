@@ -41,25 +41,25 @@ azure-mgmt-storage==21.2.1 \
     --hash=sha256:503a7ff9c31254092b0656445f5728bfdfda2d09d46a82e97019eaa9a1ecec64 \
     --hash=sha256:f97df1fa39cde9dbacf2cd96c9cba1fc196932185e24853e276f74b18a0bd031
     # via cloudimg
-azure-storage-blob==12.23.0 \
-    --hash=sha256:2fadbceda1d99c4a72dfd32e0122d7bca8b5e8d2563f5c624d634aeaff49c9df \
-    --hash=sha256:8ac4b34624ed075eda1e38f0c6dadb601e1b199e27a09aa63edc429bf4a23329
+azure-storage-blob==12.23.1 \
+    --hash=sha256:1c2238aa841d1545f42714a5017c010366137a44a0605da2d45f770174bfc6b4 \
+    --hash=sha256:a587e54d4e39d2a27bd75109db164ffa2058fe194061e5446c5a89bca918272f
     # via cloudimg
 babel==2.16.0 \
     --hash=sha256:368b5b98b37c06b7daf6696391c3240c938b37767d4584413e8438c5c435fa8b \
     --hash=sha256:d1f3554ca26605fe173f3de0c65f750f5a42f924499bf134de6423582298e316
     # via sphinx
-bandit==1.7.9 ; python_version >= "3" \
-    --hash=sha256:52077cb339000f337fb25f7e045995c4ad01511e716e5daac37014b9752de8ec \
-    --hash=sha256:7c395a436743018f7be0a4cbb0a4ea9b902b6d87264ddecf8cfdc73b4f78ff61
+bandit==1.7.10 ; python_version >= "3" \
+    --hash=sha256:59ed5caf5d92b6ada4bf65bc6437feea4a9da1093384445fed4d472acc6cff7b \
+    --hash=sha256:665721d7bebbb4485a339c55161ac0eedde27d51e638000d91c8c2d68343ad02
     # via -r test-requirements.in
-boto3==1.35.24 \
-    --hash=sha256:97fcc1a14cbc759e4ba9535ced703a99fcf652c9c4b8dfcd06f292c80551684b \
-    --hash=sha256:be7807f30f26d6c0057e45cfd09dad5968e664488bf4f9138d0bb7a0f6d8ed40
+boto3==1.35.29 \
+    --hash=sha256:2244044cdfa8ac345d7400536dc15a4824835e7ec5c55bc267e118af66bb27db \
+    --hash=sha256:7bbb1ee649e09e956952285782cfdebd7e81fc78384f48dfab3d66c6eaf3f63f
     # via cloudimg
-botocore==1.35.24 \
-    --hash=sha256:1e59b0f14f4890c4f70bd6a58a634b9464bed1c4c6171f87c8795d974ade614b \
-    --hash=sha256:eb9ccc068255cc3d24c36693fda6aec7786db05ae6c2b13bcba66dce6a13e2e3
+botocore==1.35.29 \
+    --hash=sha256:4ed28ab03675bb008a290c452c5ddd7aaa5d4e3fa1912aadbdf93057ee84362b \
+    --hash=sha256:f8e3ae0d84214eff3fb69cb4dc51cea6c43d3bde82027a94d00c52b941d6c3d5
     # via
     #   boto3
     #   s3transfer
@@ -355,9 +355,9 @@ deprecated==1.2.14 \
     # via
     #   opentelemetry-api
     #   opentelemetry-semantic-conventions
-dill==0.3.8 \
-    --hash=sha256:3ebe3c479ad625c4553aca177444d89b486b1d84982eeacded644afc0cf797ca \
-    --hash=sha256:c36ca9ffb54365bdd2f8eb3eff7d2a21237f8452b57ace88b1ac615b7e815bd7
+dill==0.3.9 \
+    --hash=sha256:468dff3b89520b474c0397703366b7b95eebe6303f108adf9b19da1f702be87a \
+    --hash=sha256:81aa267dddf68cbfe8029c42ca9ec6a4ab3b22371d1c450abc54422577b4512c
     # via pylint
 distlib==0.3.8 \
     --hash=sha256:034db59a0b96f8ca18035f36290806a9a6e6bd9d1ff91e45a7f172eb17e51784 \
@@ -979,9 +979,9 @@ urllib3==1.26.20 \
     # via
     #   botocore
     #   requests
-virtualenv==20.26.5 \
-    --hash=sha256:4f3ac17b81fba3ce3bd6f4ead2749a72da5929c01774948e243db9ba41df4ff6 \
-    --hash=sha256:ce489cac131aa58f4b25e321d6d186171f78e6cb13fafbf32a840cee67733ff4
+virtualenv==20.26.6 \
+    --hash=sha256:280aede09a2a5c317e409a00102e7077c6432c5a38f0ef938e643805a7ad2c48 \
+    --hash=sha256:7345cc5b25405607a624d8418154577459c3e0277f5466dd79c49d5e492995f2
     # via pre-commit
 wrapt==1.16.0 \
     --hash=sha256:0d2691979e93d06a95a26257adb7bfd0c93818e89b1406f5a28f36e0d8c1e1fc \
