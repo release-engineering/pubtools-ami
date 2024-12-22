@@ -14,9 +14,9 @@ astroid==3.2.4 \
     --hash=sha256:0e14202810b30da1b735827f78f5157be2bbd4a7a59b7707ca0bfc2fb4c0063a \
     --hash=sha256:413658a61eeca6202a59231abb473f932038fbcbf1666587f66d482083413a25
     # via pylint
-attrs==24.2.0 \
-    --hash=sha256:5cfb1b9148b5b086569baec03f20d7b6bf3bcacc9a42bebf87ffaaca362f6346 \
-    --hash=sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2
+attrs==24.3.0 \
+    --hash=sha256:8f5c07333d543103541ba7be0e2ce16eeee8130cb0b3f9238ab904ce1e85baff \
+    --hash=sha256:ac96cd038792094f438ad1f6ff80837353805ac950cd2aa0e0625ef19850c308
     # via
     #   -r requirements.in
     #   cloudimg
@@ -53,13 +53,13 @@ bandit==1.7.10 ; python_version >= "3" \
     --hash=sha256:59ed5caf5d92b6ada4bf65bc6437feea4a9da1093384445fed4d472acc6cff7b \
     --hash=sha256:665721d7bebbb4485a339c55161ac0eedde27d51e638000d91c8c2d68343ad02
     # via -r test-requirements.in
-boto3==1.35.81 \
-    --hash=sha256:742941b2424c0223d2d94a08c3485462fa7c58d816b62ca80f08e555243acee1 \
-    --hash=sha256:d2e95fa06f095b8e0c545dd678c6269d253809b2997c30f5ce8a956c410b4e86
+boto3==1.35.86 \
+    --hash=sha256:d61476fdd5a5388503b72c897083310d2329ce088593c4332b571a860be5d155 \
+    --hash=sha256:ed59fb4883da167464a5dfbc96e76d571db75e1a7a27d8e7b790c3008b02fcc7
     # via cloudimg
-botocore==1.35.81 \
-    --hash=sha256:564c2478e50179e0b766e6a87e5e0cdd35e1bc37eb375c1cf15511f5dd13600d \
-    --hash=sha256:a7b13bbd959bf2d6f38f681676aab408be01974c46802ab997617b51399239f7
+botocore==1.35.86 \
+    --hash=sha256:77cb4b445e4f424f956c68c688bd3ad527f4d214d51d67ffc8e245f4476d7de0 \
+    --hash=sha256:951e944eb30284b4593d4da98f70f7b5292ea237e4de0c5a2852946a549b8347
     # via
     #   boto3
     #   s3transfer
@@ -492,9 +492,9 @@ isort==5.13.2 \
     --hash=sha256:48fdfcb9face5d58a4f6dde2e72a1fb8dcaf8ab26f95ab49fab84c2ddefb0109 \
     --hash=sha256:8ca5e72a8d85860d5a3fa69b8745237f2939afe12dbf656afbcb47fe72d947a6
     # via pylint
-jinja2==3.1.4 \
-    --hash=sha256:4a3aee7acbbe7303aede8e9648d13b8bf88a429282aa6122a993f0ac800cb369 \
-    --hash=sha256:bc5dd2abb727a5319567b7a813e6a2e7318c39f4f487cfe6c89c6f9c7d25197d
+jinja2==3.1.5 \
+    --hash=sha256:8fefff8dc3034e27bb80d67c671eb8a9bc424c0ef4c0826edbff304cceff43bb \
+    --hash=sha256:aba0f4dc9ed8013c424088f68a5c226f7d6097ed89b246d7749c2ec4175c6adb
     # via sphinx
 jmespath==1.0.1 \
     --hash=sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980 \
