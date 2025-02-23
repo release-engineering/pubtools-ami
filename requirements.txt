@@ -27,21 +27,21 @@ azure-mgmt-core==1.5.0 \
     --hash=sha256:18aaa5a723ee8ae05bf1bfc9f6d0ffb996631c7ea3c922cc86f522973ce07b5f \
     --hash=sha256:380ae3dfa3639f4a5c246a7db7ed2d08374e88230fd0da3eb899f7c11e5c441a
     # via azure-mgmt-storage
-azure-mgmt-storage==22.0.0 \
-    --hash=sha256:4b61c3190648111c4d6c06d100dbae70f645f0a948a031167c562ac70a348d98 \
-    --hash=sha256:f67a4681b715b79b830e59f4efed6fdacd2c262ce862226f6cc5cef852296b70
+azure-mgmt-storage==22.1.0 \
+    --hash=sha256:727b8c8be4aca4551a9b921cdf76bb92b1e988d009de3b983ce72b7343b749e9 \
+    --hash=sha256:fb5dd4ab8c09f5d0a9e631110d4089aad0c7135f7de8d5b3ebe1ad505b8643cd
     # via cloudimg
 azure-storage-blob==12.24.1 \
     --hash=sha256:052b2a1ea41725ba12e2f4f17be85a54df1129e13ea0321f5a2fcc851cbf47d4 \
     --hash=sha256:77fb823fdbac7f3c11f7d86a5892e2f85e161e8440a7489babe2195bf248f09e
     # via cloudimg
-boto3==1.36.21 \
-    --hash=sha256:41eb2b73eb612d300e629e3328b83f1ffea0fc6633e75c241a72a76746c1db26 \
-    --hash=sha256:f94faa7cf932d781f474d87f8b4c14a033af95ac1460136b40d75e7a30086ef0
+boto3==1.36.26 \
+    --hash=sha256:523b69457eee55ac15aa707c0e768b2a45ca1521f95b2442931090633ec72458 \
+    --hash=sha256:f67d014a7c5a3cd540606d64d7cb9eec3600cf42acab1ac0518df9751ae115e2
     # via cloudimg
-botocore==1.36.21 \
-    --hash=sha256:24a7052e792639dc2726001bd474cd0aaa959c1e18ddd92c17f3adc6efa1b132 \
-    --hash=sha256:da746240e2ad64fd4997f7f3664a0a8e303d18075fc1d473727cb6375080ea16
+botocore==1.36.26 \
+    --hash=sha256:4a63bcef7ecf6146fd3a61dc4f9b33b7473b49bdaf1770e9aaca6eee0c9eab62 \
+    --hash=sha256:4e3f19913887a58502e71ef8d696fe7eaa54de7813ff73390cd5883f837dfa6e
     # via
     #   boto3
     #   s3transfer
@@ -251,9 +251,9 @@ cryptography==44.0.1 \
     # via
     #   azure-storage-blob
     #   pushsource
-decorator==5.1.1 \
-    --hash=sha256:637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330 \
-    --hash=sha256:b8c3f85900b9dc423225913c5aace94729fe1fa9763b38939a95226f02d37186
+decorator==5.2.0 \
+    --hash=sha256:1cf2ab68f8c1c7eae3895d82ab0daab41294cfbe6fbdebf50b44307299980762 \
+    --hash=sha256:f30a69c066f698c7c11fa1fa3425f684d3b4b01b494ee41e73c0a14f3de48427
     # via gssapi
 defusedxml==0.7.1 \
     --hash=sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69 \
@@ -365,10 +365,10 @@ kobo==0.39.0 \
     --hash=sha256:45302a8d819ae0b47e0a76d3223ee64943d4e7c988379b1f8ceff3fc99ab7a85 \
     --hash=sha256:fcf9bb7ac0ca3bc0ca2aaaff75fa974a78b3f4207037829dce2bf242def6c179
     # via pushsource
-koji==1.35.1 \
-    --hash=sha256:0302a5c12173938f88edc02dbd1fb55631454ccd3c6543446edc83befb89d3e1 \
-    --hash=sha256:8321c22920029ca2e8cf6f38eed087e2af947f40fece50aba7f0d52defd1636f \
-    --hash=sha256:916e7dd68e14980ed7245cbd700b74e79e913cfd4f250367307a8fce866381c6
+koji==1.35.2 \
+    --hash=sha256:0ece53247064c6c1c772527c74176dd07a67dd78465ddd1c7bf2170f6f673244 \
+    --hash=sha256:95685007fff8dda4a32231ace6e4d80f2294ad37f89862f9de77dfead8da08aa \
+    --hash=sha256:9bb18a407a1cfda68d378384d3e4c48bbb361cd029e1f614b36f6da02e489e3e
     # via pushsource
 more-executors==2.11.4 \
     --hash=sha256:a304139c6bece5be18aed7dcff4c48440412cb7cbe90f64ba4572772fcb0407f \
