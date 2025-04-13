@@ -53,13 +53,13 @@ bandit==1.7.10 ; python_version >= "3" \
     --hash=sha256:59ed5caf5d92b6ada4bf65bc6437feea4a9da1093384445fed4d472acc6cff7b \
     --hash=sha256:665721d7bebbb4485a339c55161ac0eedde27d51e638000d91c8c2d68343ad02
     # via -r test-requirements.in
-boto3==1.37.28 \
-    --hash=sha256:09ee85ba70a88286bba0d1bf5f0460a4b3bde52d162216accfe637b8bfac351b \
-    --hash=sha256:e584d9d33808633e73af3d962e22cf2cea91a38bc5a17577bb25618f8ded504f
+boto3==1.37.33 \
+    --hash=sha256:4390317a1578af73f1514651bd180ba25802dcbe0a23deafa13851d54d3c3203 \
+    --hash=sha256:7b1b1bc69762975824e5a5d570880abebf634f7594f88b3dc175e8800f35be1a
     # via cloudimg
-botocore==1.37.28 \
-    --hash=sha256:69ea327f70f0607d174c4c2b1dcc87327b9c48e413c9d322179172b614b28e03 \
-    --hash=sha256:c26b645d7b125bf42ffc1671b862b47500ee658e3a1c95d2438cb689fc85df15
+botocore==1.37.33 \
+    --hash=sha256:09b213b0d0500040f85c7daee912ea767c724e43ed61909e624c803ff6925222 \
+    --hash=sha256:4a167dfecae51e9140de24067de1c339acde5ade3dad524a4600ac2c72055e23
     # via
     #   boto3
     #   s3transfer
@@ -986,9 +986,9 @@ tomlkit==0.13.2 \
     --hash=sha256:7a974427f6e119197f670fbbbeae7bef749a6c14e793db934baefc1b5f03efde \
     --hash=sha256:fff5fe59a87295b278abd31bec92c15d9bc4a06885ab12bcea52c71119392e79
     # via pylint
-typing-extensions==4.13.1 \
-    --hash=sha256:4b6cf02909eb5495cfbc3f6e8fd49217e6cc7944e145cdda8caa3734777f9e69 \
-    --hash=sha256:98795af00fb9640edec5b8e31fc647597b4691f099ad75f469a2616be1a76dff
+typing-extensions==4.13.2 \
+    --hash=sha256:a439e7c04b49fec3e5d3e2beaa21755cadbbdc391694e28ccdd36ca4a1408f8c \
+    --hash=sha256:e6c81219bd689f51865d9e372991c540bda33a0379d5573cddb9a3a23f7caaef
     # via
     #   astroid
     #   azure-core
