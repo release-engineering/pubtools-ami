@@ -27,27 +27,27 @@ azure-mgmt-core==1.5.0 \
     --hash=sha256:18aaa5a723ee8ae05bf1bfc9f6d0ffb996631c7ea3c922cc86f522973ce07b5f \
     --hash=sha256:380ae3dfa3639f4a5c246a7db7ed2d08374e88230fd0da3eb899f7c11e5c441a
     # via azure-mgmt-storage
-azure-mgmt-storage==22.1.1 \
-    --hash=sha256:25aaa5ae8c40c30e2f91f8aae6f52906b0557e947d5c1b9817d4ff9decc11340 \
-    --hash=sha256:a4a4064918dcfa4f1cbebada5bf064935d66f2a3647a2f46a1f1c9348736f5d9
+azure-mgmt-storage==22.2.0 \
+    --hash=sha256:7ae98fd6850487d1f7dc88b8922b5a50e223b49586addb65410ed46ad829d501 \
+    --hash=sha256:7fed433d244e276d06ddf34f9fa7b9b87134f085fc634601af5b67f2a0084d86
     # via cloudimg
 azure-storage-blob==12.25.1 \
     --hash=sha256:1f337aab12e918ec3f1b638baada97550673911c4ceed892acc8e4e891b74167 \
     --hash=sha256:4f294ddc9bc47909ac66b8934bd26b50d2000278b10ad82cc109764fdc6e0e3b
     # via cloudimg
-boto3==1.37.37 \
-    --hash=sha256:752d31105a45e3e01c8c68471db14ae439990b75a35e72b591ca528e2575b28f \
-    --hash=sha256:d125cb11e22817f7a2581bade4bf7b75247b401888890239ceb5d3e902ccaf38
+boto3==1.37.38 \
+    --hash=sha256:88c02910933ab7777597d1ca7c62375f52822e0aa1a8e0c51b2598a547af42b2 \
+    --hash=sha256:b6d42803607148804dff82389757827a24ce9271f0583748853934c86310999f
     # via cloudimg
-botocore==1.37.37 \
-    --hash=sha256:3eadde6fed95c4cb469cc39d1c3558528b7fa76d23e7e16d4bddc77250431a64 \
-    --hash=sha256:eb730ff978f47c02f0c8ed07bccdc0db6d8fa098ed32ac31bee1da0e9be480d1
+botocore==1.37.38 \
+    --hash=sha256:23b4097780e156a4dcaadfc1ed156ce25cb95b6087d010c4bb7f7f5d9bc9d219 \
+    --hash=sha256:c3ea386177171f2259b284db6afc971c959ec103fa2115911c4368bea7cbbc5d
     # via
     #   boto3
     #   s3transfer
-certifi==2025.1.31 \
-    --hash=sha256:3d5da6925056f6f18f119200434a4780a94263f10d1c21d032a6f6b2baa20651 \
-    --hash=sha256:ca78db4565a652026a4db2bcdf68f2fb589ea80d0be70e03929ed730746b84fe
+certifi==2025.4.26 \
+    --hash=sha256:0a816057ea3cdefcef70270d2c515e4506bbc954f417fa5ade2021213bb8f0c6 \
+    --hash=sha256:30350364dfe371162649852c63336a15c70c6510c2ad5015b21c2345311805f3
     # via requests
 cffi==1.17.1 \
     --hash=sha256:045d61c734659cc045141be4bae381a41d89b741f795af1dd018bfb532fd0df8 \
