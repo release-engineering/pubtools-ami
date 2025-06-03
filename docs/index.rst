@@ -11,4 +11,3 @@ Amazon Machine Images to AWS.
    :caption: Command Reference:
 
    push
-   delete
