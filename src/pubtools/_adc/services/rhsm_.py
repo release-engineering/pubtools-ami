@@ -8,7 +8,7 @@ from ..rhsm import RHSMClient
 from .base import Service
 
 
-LOG = logging.getLogger("pubtools.ami")
+LOG = logging.getLogger("pubtools.adc")
 
 
 class RHSMClientService(Service):

@@ -56,13 +56,13 @@ def fake_collector():
     """
     collector = FakeCollector()
 
-    Collector.register_backend("pubtools-ami-test", lambda: collector)
-    Collector.set_default_backend("pubtools-ami-test")
+    Collector.register_backend("pubtools-adc-test", lambda: collector)
+    Collector.set_default_backend("pubtools-adc-test")
 
     yield collector
 
     Collector.set_default_backend(None)
-    Collector.register_backend("pubtools-ami-test", None)
+    Collector.register_backend("pubtools-adc-test", None)
 
 
 @pytest.fixture

@@ -3,7 +3,7 @@ from argparse import ArgumentParser
 
 import pytest
 
-from pubtools._ami.arguments import SplitAndExtend
+from pubtools._adc.arguments import SplitAndExtend
 
 
 @pytest.fixture

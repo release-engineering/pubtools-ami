@@ -13,7 +13,7 @@ from ..task import AmiTask
 from .exceptions import MissingProductError
 
 
-LOG = logging.getLogger("pubtools.ami")
+LOG = logging.getLogger("pubtools.adc")
 
 
 class AmiBase(AmiTask, RHSMClientService, AWSPublishService, CollectorService):

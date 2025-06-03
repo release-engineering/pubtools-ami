@@ -2,9 +2,9 @@ push
 ====
 
 .. argparse::
-   :module: pubtools._ami.tasks.push
+   :module: pubtools.adc.tasks.push
    :func: doc_parser
-   :prog: pubtools-ami-push
+   :prog: pubtools-adc-push
 
 Example
 .......
@@ -13,7 +13,7 @@ A typical invocation of push would look like this:
 
 .. code-block::
 
-  pubtools-ami-push \
+  pubtools-adc-push \
     --rhsm-url https://rhsm.example.com \
     --aws-provider-name awstest \
     --accounts '{"region-1": {"access-r": "secret-r"},
@@ -36,7 +36,7 @@ should be used. This updates the metadata on RHSM services.
 
 .. code-block::
 
-  pubtools-ami-push \
+  pubtools-adc-push \
     --rhsm-url https://rhsm.example.com \
     --aws-provider-name awstest \
     --accounts '{"region-1": {"access-r": "secret-r"},
@@ -53,7 +53,7 @@ fee requires using --allow-public-images along with the above options.
 
 .. code-block::
 
-  pubtools-ami-push \
+  pubtools-adc-push \
     --rhsm-url https://rhsm.example.com \
     --aws-provider-name awstest \
     --accounts '{"region-1": {"access-r": "secret-r"},
@@ -73,7 +73,7 @@ for 4 times after every 30 seconds. These defaults can be modified as:
 
 .. code-block::
 
-  pubtools-ami-push \
+  pubtools-adc-push \
     --rhsm-url https://rhsm.example.com \
     --aws-provider-name awstest \
     --accounts '{"region-1": {"access-r": "secret-r"},

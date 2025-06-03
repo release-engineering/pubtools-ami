@@ -2,7 +2,7 @@ delete
 ======
 
 .. argparse::
-   :module: pubtools._ami.tasks.delete
+   :module: pubtools._adc.tasks.delete
    :func: doc_parser
    :prog: pubtools-ami-delete
 

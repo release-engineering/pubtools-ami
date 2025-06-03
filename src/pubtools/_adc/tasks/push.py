@@ -12,12 +12,12 @@ from .base import AmiBase
 from .exceptions import AWSPublishError
 
 
-LOG = logging.getLogger("pubtools.ami")
+LOG = logging.getLogger("pubtools.adc")
 
 step = AmiTask.step
 
 
-class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
+class ADCPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
     """Pushes one or more Amazon Machine Images to AWS from the specified sources.
 
     This command gets the AMIs from the provided sources, checks for the image product in
@@ -31,7 +31,7 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
     def __init__(self, *args, **kwargs):
         self._ami_push_items = None
         self._rhsm_products = None
-        super(AmiPush, self).__init__(*args, **kwargs)
+        super(ADCPush, self).__init__(*args, **kwargs)
 
     def items_in_metadata_service(self):
         """Checks for all the push_items whether they are in
@@ -236,7 +236,7 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
         return region_data
 
     def add_args(self):
-        super(AmiPush, self).add_args()
+        super(ADCPush, self).add_args()
 
         group = self.parser.add_argument_group("AMI Push options")
 
@@ -286,7 +286,7 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
 
         # upload
         with Executors.thread_pool(
-            name="pubtools-ami-push",
+            name="pubtools-adc-push",
             max_workers=min(len(region_data), self._REQUEST_THREADS),
         ).with_retry(
             logger=LOG,
@@ -319,9 +319,9 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
         LOG.info("AMI upload completed")
 
 
-def entry_point(cls=AmiPush):
+def entry_point(cls=ADCPush):
     cls().main()
 
 
 def doc_parser():
-    return AmiPush().parser
+    return ADCPush().parser

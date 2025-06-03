@@ -1,4 +1,4 @@
-pubtools-ami
+pubtools-adc
 =============
 
 Publishing tools for Amazon Machine Images to AWS.

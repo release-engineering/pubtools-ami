@@ -5,7 +5,7 @@ import sys
 import pytest
 
 
-@pytest.fixture(params=["pubtools._ami.tasks.push", "pubtools._ami.tasks.delete"])
+@pytest.fixture(params=["pubtools._adc.tasks.push", "pubtools._adc.tasks.delete"])
 def task_module(request):
     __import__(request.param)
     return sys.modules[request.param]

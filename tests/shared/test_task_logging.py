@@ -2,7 +2,7 @@ import logging
 import pytest
 import sys
 
-from pubtools._ami.task import AmiTask
+from pubtools._adc.task import AmiTask
 
 
 class MyTask(AmiTask):
@@ -40,7 +40,7 @@ def clean_root_logger(monkeypatch):
 def tier1_logger():
     """The logger for this project."""
 
-    out = logging.getLogger("pubtools.ami")
+    out = logging.getLogger("pubtools.adc")
     level = out.level
     out.setLevel(logging.NOTSET)
     yield out

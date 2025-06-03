@@ -20,11 +20,11 @@ def get_requirements():
 
 
 setup(
-    name="pubtools-ami",
+    name="pubtools-adc",
     version="2.4.2",
     packages=find_namespace_packages(where="src"),
     package_dir={"": "src"},
-    url="https://github.com/release-engineering/pubtools-ami",
+    url="https://github.com/JAVGan/pubtools-adc",
     license="GNU General Public License",
     description=get_description(),
     long_description=get_long_description(),
@@ -40,12 +40,12 @@ setup(
     python_requires=">=3.6",
     entry_points={
         "console_scripts": [
-            "pubtools-ami-push = pubtools._ami.tasks.push:entry_point",
-            "pubtools-ami-delete = pubtools._ami.tasks.delete:entry_point",
+            "pubtools-adc-push = pubtools._adc.tasks.push:entry_point",
+            "pubtools-ami-delete = pubtools._adc.tasks.delete:entry_point",
         ]
     },
     project_urls={
         "Documentation": "https://release-engineering.github.io/pubtools-ami/",
-        "Changelog": "https://github.com/release-engineering/pubtools-ami/blob/master/CHANGELOG.md",
+        "Changelog": "https://github.com/JAVGan/pubtools-adc/blob/master/CHANGELOG.md",
     },
 )

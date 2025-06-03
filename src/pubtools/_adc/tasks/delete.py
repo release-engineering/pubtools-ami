@@ -13,7 +13,7 @@ from .base import AmiBase
 from .exceptions import AWSDeleteError
 
 
-LOG = logging.getLogger("pubtools.ami")
+LOG = logging.getLogger("pubtools.adc")
 
 step = AmiTask.step
 

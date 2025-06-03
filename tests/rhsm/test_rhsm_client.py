@@ -2,7 +2,7 @@ import logging
 from mock import patch
 from requests.exceptions import ConnectionError
 
-from pubtools._ami.rhsm import RHSMClient
+from pubtools._adc.rhsm import RHSMClient
 
 
 def test_rhsm_products(requests_mocker):
@@ -72,7 +72,7 @@ def test_update_image(requests_mocker, caplog):
     client = RHSMClient(
         "https://example.com", cert=("client.crt", "client.key"), max_retry_sleep=0.001
     )
-    with patch("pubtools._ami.rhsm.datetime") as now:
+    with patch("pubtools._adc.rhsm.datetime") as now:
         now.utcnow().replace().isoformat.return_value = date_now
         out = client.update_image(
             "ami-123", "ami-rhel", "x86_64", "RHEL", version="7.3", variant="Server"
@@ -119,7 +119,7 @@ def test_create_image(requests_mocker, caplog):
     client = RHSMClient(
         "https://example.com", cert=("client.crt", "client.key"), max_retry_sleep=0.001
     )
-    with patch("pubtools._ami.rhsm.datetime") as now:
+    with patch("pubtools._adc.rhsm.datetime") as now:
         now.utcnow().replace().isoformat.return_value = date_now
         out = client.create_image("ami-123", "ami-rhel", "x86_64", "RHEL", "us-east-1")
     assert out.result().ok

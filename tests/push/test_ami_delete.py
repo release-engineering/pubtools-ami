@@ -5,12 +5,12 @@ import pytest
 from mock import patch
 from pushsource import AmiBillingCodes, AmiPushItem, AmiRelease, Source
 
-from pubtools._ami.tasks.delete import AmiDelete, entry_point
+from pubtools._adc.tasks.delete import AmiDelete, entry_point
 
 
 @pytest.fixture()
 def mock_aws_delete():
-    with patch("pubtools._ami.services.aws.AWSService.delete") as m:
+    with patch("pubtools._adc.services.aws.AWSService.delete") as m:
         yield m
 
 

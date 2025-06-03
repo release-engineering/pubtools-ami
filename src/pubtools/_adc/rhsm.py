@@ -9,7 +9,7 @@ from more_executors import Executors
 from more_executors.futures import f_map
 
 
-LOG = logging.getLogger("pubtools.ami")
+LOG = logging.getLogger("pubtools.adc")
 
 
 class RHSMClient(object):

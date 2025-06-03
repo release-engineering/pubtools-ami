@@ -1,12 +1,9 @@
-pubtools-ami
+pubtools-adc
 =============
 
-A command-line interface to publish Amazon Machine Images(AMI) to AWS,
-used by [release-engineering](https://github.com/release-engineering) publishing tools.
+A command-line interface to publish Amazon Machine Images(AMI) to AWS.
 
-[![PyPI version](https://badge.fury.io/py/pubtools-ami.svg)](https://badge.fury.io/py/pubtools-ami)
-
-- [Source](https://github.com/release-engineering/pubtools-ami)
+- [Source](https://github.com/JAVGan/pubtools-adc)
 - [Documentation](https://release-engineering.github.io/pubtools-ami/)
 
 License
