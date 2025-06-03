@@ -13,7 +13,7 @@ from mock import patch, MagicMock
 from pushsource import AmiPushItem
 from requests import HTTPError
 
-from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
+from pubtools._adc.tasks.push import ADCPush, entry_point, LOG
 
 
 AMI_STAGE_ROOT = "/tmp/aws_staged"  # nosec B108
@@ -85,7 +85,7 @@ def staged_file():
 
 @pytest.fixture(autouse=True)
 def mock_aws_publish():
-    with patch("pubtools._ami.services.aws.AWSService.publish") as m:
+    with patch("pubtools._adc.services.aws.AWSService.publish") as m:
         publish_rv = MagicMock(id="ami-1234567")
         publish_rv.name = "ami-rhel"
         m.return_value = publish_rv
@@ -94,13 +94,13 @@ def mock_aws_publish():
 
 @pytest.fixture()
 def mock_ami_upload():
-    with patch("pubtools._ami.tasks.push.AmiPush.upload") as m:
+    with patch("pubtools._adc.tasks.push.ADCPush.upload") as m:
         yield m
 
 
 @pytest.fixture()
 def mock_region_data():
-    with patch("pubtools._ami.tasks.base.AmiBase.region_data") as m:
+    with patch("pubtools._adc.tasks.base.AmiBase.region_data") as m:
         first_ami_data = {
             "name": "ami-01",
             "billing_codes": {"codes": ["code-0001"], "name": "Hourly2"},
@@ -139,18 +139,6 @@ def mock_region_data():
 
 
 @pytest.fixture(autouse=True)
-def mock_rhsm_api(requests_mocker):
-    requests_mocker.register_uri(
-        "GET",
-        re.compile("amazon/provider_image_groups"),
-        json={"body": [{"name": "RHEL_HOURLY", "providerShortName": "awstest"}]},
-    )
-    requests_mocker.register_uri("POST", re.compile("amazon/region"))
-    requests_mocker.register_uri("PUT", re.compile("amazon/amis"))
-    requests_mocker.register_uri("POST", re.compile("amazon/amis"))
-
-
-@pytest.fixture(autouse=True)
 def mock_debug_logger():
     # dicts are unordered in < py36. Hence, logging them may generate
     # a different order every time. The dicts are logged via debug
@@ -172,20 +160,18 @@ def mock_debug_logger():
                 debug_args.append(arg)
         LOG._log(DEBUG, debug_args[0], tuple(debug_args[1:]))
 
-    with patch("pubtools._ami.tasks.push.LOG.debug") as log_debug:
+    with patch("pubtools._adc.tasks.push.LOG.debug") as log_debug:
         log_debug.side_effect = _log_debug
         yield log_debug
 
 
 def test_do_push(command_tester, requests_mocker, mock_aws_publish, fake_collector):
-    """Successful push and ship of an image that's not present on RHSM"""
+    """Successful push and ship of an AWS image."""
     requests_mocker.register_uri("PUT", re.compile("amazon/amis"), status_code=400)
     command_tester.test(
-        lambda: entry_point(AmiPush),
+        lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--rhsm-url",
-            "https://example.com",
             "--aws-provider-name",
             "awstest",
             "--retry-wait",
@@ -246,8 +232,8 @@ def test_do_push(command_tester, requests_mocker, mock_aws_publish, fake_collect
 def test_no_source(command_tester, capsys):
     """Checks that exception is raised when the source is missing"""
     command_tester.test(
-        lambda: entry_point(AmiPush),
-        ["test-push", "--debug", "--rhsm-url", "https://example.com"],
+        lambda: entry_point(ADCPush),
+        ["test-push", "--debug", "https://example.com"],
     )
     _, err = capsys.readouterr()
     assert (
@@ -256,23 +242,13 @@ def test_no_source(command_tester, capsys):
     )
 
 
-def test_no_rhsm_url(command_tester, caplog):
-    """Raises an error that RHSM url is not provided"""
-    command_tester.test(
-        lambda: entry_point(AmiPush),
-        ["test-push", "--debug", AMI_SOURCE],
-    )
-
-
 def test_no_aws_credentials(command_tester):
     """Raises an error that AWS credentials were not provided to upload an image"""
     command_tester.test(
-        lambda: entry_point(AmiPush),
+        lambda: entry_point(ADCPush),
         [
             "test-push",
             "--debug",
-            "--rhsm-url",
-            "https://example.com",
             "--aws-provider-name",
             "awstest",
             "--accounts",
@@ -286,38 +262,14 @@ def test_no_aws_credentials(command_tester):
     )
 
 
-def test_missing_product(command_tester):
-    """Raises an error when the product the image is realted to is missing on RHSM"""
-    command_tester.test(
-        lambda: entry_point(AmiPush),
-        [
-            "test-push",
-            "--rhsm-url",
-            "https://example.com",
-            "--aws-provider-name",
-            "AWS",
-            "--retry-wait",
-            "1",
-            "--aws-access-id",
-            "access_id",
-            "--aws-secret-key",
-            "secret_key",
-            "--debug",
-            AMI_SOURCE,
-        ],
-    )
-
-
 def test_push_public_image(
     command_tester, requests_mocker, mock_aws_publish, fake_collector
 ):
     """Successfully pushed images to all the accounts so it's available for general public"""
     command_tester.test(
-        lambda: entry_point(AmiPush),
+        lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--rhsm-url",
-            "https://example.com",
             "--aws-provider-name",
             "awstest",
             "--retry-wait",
@@ -379,75 +331,14 @@ def test_push_public_image(
     assert "ami-1234567" == images_json[0]["ami"]
 
 
-def test_create_region_failure(command_tester, requests_mocker):
-    """Push fails when the region couldn't be created on RHSM"""
-    requests_mocker.register_uri("POST", re.compile("amazon/region"), status_code=500)
-    command_tester.test(
-        lambda: entry_point(AmiPush),
-        [
-            "test-push",
-            "--rhsm-url",
-            "https://example.com",
-            "--aws-provider-name",
-            "awstest",
-            "--retry-wait",
-            "1",
-            "--accounts",
-            accounts,
-            "--snapshot-account-ids",
-            snapshot_acc,
-            "--aws-access-id",
-            "access_id",
-            "--aws-secret-key",
-            "secret_key",
-            "--ship",
-            "--debug",
-            AMI_SOURCE,
-        ],
-    )
-
-
-def test_create_image_failure(command_tester, requests_mocker):
-    """Push fails if the image metadata couldn't be created on RHSM for a new image"""
-    requests_mocker.register_uri("PUT", re.compile("amazon/amis"), status_code=400)
-    requests_mocker.register_uri("POST", re.compile("amazon/amis"), status_code=500)
-    command_tester.test(
-        lambda: entry_point(AmiPush),
-        [
-            "test-push",
-            "--rhsm-url",
-            "https://example.com",
-            "--aws-provider-name",
-            "awstest",
-            "--retry-wait",
-            "1",
-            "--max-retries",
-            "2",
-            "--accounts",
-            accounts,
-            "--snapshot-account-ids",
-            snapshot_acc,
-            "--aws-access-id",
-            "access_id",
-            "--aws-secret-key",
-            "secret_key",
-            "--ship",
-            "--debug",
-            AMI_SOURCE,
-        ],
-    )
-
-
 def test_not_ami_push_item(command_tester, staged_file):
     """Non AMI pushitem is skipped from inclusion in push list"""
     temp_stage = "staged:%s" % staged_file
 
     command_tester.test(
-        lambda: entry_point(AmiPush),
+        lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--rhsm-url",
-            "https://example.com",
             "--aws-provider-name",
             "awstest",
             "--retry-wait",
@@ -480,11 +371,9 @@ def test_aws_publish_failure_retry(
         response,
     ]
     command_tester.test(
-        lambda: entry_point(AmiPush),
+        lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--rhsm-url",
-            "https://example.com",
             "--aws-provider-name",
             "awstest",
             "--retry-wait",
@@ -557,11 +446,9 @@ def test_publish_retry_multiple(command_tester, mock_region_data, mock_ami_uploa
     ]
 
     command_tester.test(
-        lambda: entry_point(AmiPush),
+        lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--rhsm-url",
-            "https://example.com",
             "--aws-provider-name",
             "awstest",
             "--retry-wait",

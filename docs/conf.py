@@ -20,8 +20,8 @@ sys.path.insert(0, os.path.abspath(".."))
 
 # -- Project information -----------------------------------------------------
 
-project = "pubtools-ami"
-copyright = "2021, Red Hat"
+project = "pubtools-adc"
+copyright = "2025, Red Hat"
 author = "Red Hat"
 
 # The short X.Y version
@@ -89,13 +89,12 @@ html_theme = "alabaster"
 #
 html_theme_options = {
     "github_user": "release-engineering",
-    "github_repo": "pubtools-ami",
+    "github_repo": "pubtools-adc",
     "github_button": False,
     "github_banner": True,
     "description": "Publishing tools for Amazon Machine Images(AMI)",
     "extra_nav_links": {
-        "Source": "https://github.com/release-engineering/pubtools-ami",
-        "PyPI": "https://pypi.org/project/pubtools-ami",
+        "Source": "https://github.com/JAVGan/pubtools-adc",
         "Index": "genindex.html",
     },
     # default is 940px which seems to be a little too small to display 88 chars code

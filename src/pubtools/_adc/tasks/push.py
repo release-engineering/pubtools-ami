@@ -6,49 +6,30 @@ from cloudimg.aws import AWSPublishingMetadata
 from more_executors import Executors, ExceptionRetryPolicy
 from requests import HTTPError
 
-from ..services import RHSMClientService, AWSPublishService, CollectorService
+from ..services import AWSPublishService, CollectorService
 from ..task import AmiTask
 from .base import AmiBase
 from .exceptions import AWSPublishError
 
 
-LOG = logging.getLogger("pubtools.ami")
+LOG = logging.getLogger("pubtools.adc")
 
 step = AmiTask.step
 
 
-class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
+class ADCPush(AmiBase, AWSPublishService, CollectorService):
     """Pushes one or more Amazon Machine Images to AWS from the specified sources.
 
-    This command gets the AMIs from the provided sources, checks for the image product in
-    the metadata service e.g. RHSM and then uploads to AWS using the image metadata from
-    the source. The image metadata is then updated to the metadata service post upload if
-    the images were shipped to the users.
+    This command gets the AMIs from the provided sources and then uploads to AWS using the
+    image metadata from the source. The image metadata is then updated to the metadata service
+    post upload if the images were shipped to the users.
     """
 
     _REQUEST_THREADS = int(os.environ.get("AMI_PUSH_REQUEST_THREADS", "5"))
 
     def __init__(self, *args, **kwargs):
         self._ami_push_items = None
-        self._rhsm_products = None
-        super(AmiPush, self).__init__(*args, **kwargs)
-
-    def items_in_metadata_service(self):
-        """Checks for all the push_items whether they are in
-        rhsm or not.
-        Returns false if any of item is missing else true.
-        """
-        verified = True
-        for item in self.ami_push_items:
-            if not self.in_rhsm(item.release.product, item.type):
-                LOG.error(
-                    "Pre-push check in metadata service failed for %s at %s",
-                    item.name,
-                    item.src,
-                )
-                attr.evolve(item, state="INVALIDFILE")
-                verified = False
-        return verified
+        super(ADCPush, self).__init__(*args, **kwargs)
 
     @step("Upload image to AWS")
     # pylint:disable=too-many-locals
@@ -130,8 +111,6 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
             raise AWSPublishError(exc) from exc
 
         if ship:
-            self.update_rhsm_metadata(image, push_item)
-
             public_image = push_item.public_image
             if public_image is None and image_type == "hourly":
                 # Backwards compatibility for push items without public_image flag.
@@ -153,64 +132,6 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
         LOG.info("Successfully uploaded %s [%s] [%s]", name, region, image.id)
 
         return image.id
-
-    @step("Update RHSM metadata")
-    def update_rhsm_metadata(self, image, push_item):
-        """Update rhsm with the uploaded image info. First it creates the region of
-        the image assuming it returns OK if the region is present. Then tries to update
-        the existing image info. If the image info is not preset, it creates one.
-        """
-        LOG.info(
-            "Creating region %s [%s]", push_item.region, self.args.aws_provider_name
-        )
-        out = self.rhsm_client.create_region(
-            push_item.region, self.args.aws_provider_name
-        )
-
-        response = out.result()
-        if not response.ok:
-            LOG.error(
-                "Failed creating region %s for image %s", push_item.region, image.id
-            )
-            response.raise_for_status()
-
-        LOG.info("Registering image %s with rhsm", image.id)
-        image_meta = {
-            "image_id": image.id,
-            "image_name": image.name,
-            "arch": push_item.release.arch,
-            "product_name": self.to_rhsm_product(
-                push_item.release.product, push_item.type
-            )["name"],
-            "version": push_item.release.version or None,
-            "variant": push_item.release.variant or None,
-        }
-        LOG.info("Attempting to update the existing image %s in rhsm", image.id)
-        LOG.debug("%s", image_meta)
-        out = self.rhsm_client.update_image(**image_meta)
-        response = out.result()
-        if not response.ok:
-            LOG.warning(
-                "Update to rhsm failed for %s with error code %s. "
-                "Image might not be present on rhsm for update.",
-                image.id,
-                response.status_code,
-            )
-
-            LOG.info("Attempting to create new image %s in rhsm", image.id)
-            image_meta.update({"region": push_item.region})
-            LOG.debug("%s", image_meta)
-            out = self.rhsm_client.create_image(**image_meta)
-            response = out.result()
-            if not response.ok:
-                LOG.error(
-                    "Failed to create image %s in rhsm with error code %s",
-                    image.id,
-                    response.status_code,
-                )
-                LOG.error(response.text)
-                response.raise_for_status()
-        LOG.info("Successfully registered image %s with rhsm", image.id)
 
     def _push_to_region(self, region_data):
         # sends the push_items for each region to be uploaded in
@@ -236,7 +157,7 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
         return region_data
 
     def add_args(self):
-        super(AmiPush, self).add_args()
+        super(ADCPush, self).add_args()
 
         group = self.parser.add_argument_group("AMI Push options")
 
@@ -277,16 +198,13 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
 
     def run(self):
         failed = False
-        # verify push_items
-        if not self.items_in_metadata_service():
-            self.fail("Pre-push verification of push items in metadata service failed")
 
         # split push_items into regions
         region_data = self.region_data()
 
         # upload
         with Executors.thread_pool(
-            name="pubtools-ami-push",
+            name="pubtools-adc-push",
             max_workers=min(len(region_data), self._REQUEST_THREADS),
         ).with_retry(
             logger=LOG,
@@ -319,9 +237,9 @@ class AmiPush(AmiBase, RHSMClientService, AWSPublishService, CollectorService):
         LOG.info("AMI upload completed")
 
 
-def entry_point(cls=AmiPush):
+def entry_point(cls=ADCPush):
     cls().main()
 
 
 def doc_parser():
-    return AmiPush().parser
+    return ADCPush().parser

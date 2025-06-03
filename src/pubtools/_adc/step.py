@@ -2,7 +2,7 @@ import logging
 import threading
 from more_executors.futures import f_sequence, f_return
 
-LOG = logging.getLogger("pubtools.ami")
+LOG = logging.getLogger("pubtools.adc")
 
 
 class StepDecorator(object):

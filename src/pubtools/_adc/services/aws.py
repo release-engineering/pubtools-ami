@@ -8,7 +8,7 @@ from ..arguments import from_environ
 from .base import Service
 
 
-LOG = logging.getLogger("pubtools.ami")
+LOG = logging.getLogger("pubtools.adc")
 
 
 class AWSPublishService(Service):

@@ -1,7 +1,7 @@
 import pytest
 from mock import patch
 
-from pubtools._ami.task import AmiTask
+from pubtools._adc.task import AmiTask
 
 
 step = AmiTask.step

@@ -1,3 +1,0 @@
-[    INFO] Checking files in: /tmp/aws_staged
-[   DEBUG] Searching for product RHEL_HOURLY for provider AWS in rhsm
-# Raised: RHSM URL not provided for the RHSM client

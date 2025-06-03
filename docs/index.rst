@@ -1,4 +1,4 @@
-pubtools-ami
+pubtools-adc
 =============
 
 Publishing tools for Amazon Machine Images to AWS.
@@ -11,4 +11,3 @@ Amazon Machine Images to AWS.
    :caption: Command Reference:
 
    push
-   delete

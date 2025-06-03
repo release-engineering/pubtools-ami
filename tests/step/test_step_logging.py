@@ -4,7 +4,7 @@ import sys
 
 import pytest
 
-from pubtools._ami.task import AmiTask
+from pubtools._adc.task import AmiTask
 
 step = AmiTask.step
 
