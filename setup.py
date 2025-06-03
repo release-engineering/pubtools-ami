@@ -41,7 +41,6 @@ setup(
     entry_points={
         "console_scripts": [
             "pubtools-adc-push = pubtools._adc.tasks.push:entry_point",
-            "pubtools-ami-delete = pubtools._adc.tasks.delete:entry_point",
         ]
     },
     project_urls={

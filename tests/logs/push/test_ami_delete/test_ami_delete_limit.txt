@@ -1,3 +1,0 @@
-[    INFO] Prepare data: started
-[    INFO] Prepare data: finished
-[    INFO] No AMI image selected for deletion
