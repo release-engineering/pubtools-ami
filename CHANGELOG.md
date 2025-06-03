@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- n/a
+- Fork project from `pubtools-ami`, remove its RHSM dependency and rename it as `pubtools-adc`.
 
 ## [2.4.2] - 2024-07-19
 
