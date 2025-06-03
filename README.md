@@ -4,7 +4,7 @@ pubtools-adc
 A command-line interface to publish Amazon Machine Images(AMI) to AWS.
 
 - [Source](https://github.com/JAVGan/pubtools-adc)
-- [Documentation](https://release-engineering.github.io/pubtools-ami/)
+- [Documentation](https://javgan.github.io/pubtools-adc/)
 
 License
 -------
