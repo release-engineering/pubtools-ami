@@ -1,7 +1,3 @@
-[    INFO] Checking files in: /tmp/aws_staged
-[   DEBUG] Searching for product RHEL_HOURLY for provider awstest in rhsm
-[   DEBUG] Fetching product from https://example.com/v1/internal/cloud_access_providers/amazon/provider_image_groups
-[   DEBUG] 1 Products(AWS provider) in rhsm: RHEL_HOURLY(awstest)
 [ WARNING] Upload failed
 [    INFO] Collecting results
 [    INFO] AMI upload completed

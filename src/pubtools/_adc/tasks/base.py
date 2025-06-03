@@ -8,22 +8,20 @@ import attr
 from pushsource import Source, AmiPushItem, BootMode
 
 from ..arguments import SplitAndExtend
-from ..services import RHSMClientService, AWSPublishService, CollectorService
+from ..services import AWSPublishService, CollectorService
 from ..task import AmiTask
-from .exceptions import MissingProductError
 
 
 LOG = logging.getLogger("pubtools.adc")
 
 
-class AmiBase(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
+class AmiBase(AmiTask, AWSPublishService, CollectorService):
     """
     Base class for AMI specific tasks that holds common logic.
     """
 
     def __init__(self, *args, **kwargs):
         self._ami_push_items = None
-        self._rhsm_products = None
         super(AmiBase, self).__init__(*args, **kwargs)
 
     @property
@@ -181,55 +179,3 @@ class AmiBase(AmiTask, RHSMClientService, AWSPublishService, CollectorService):
         parts.append(push_item.volume.upper())
 
         return "-".join(parts)
-
-    def to_rhsm_product(self, product, image_type):
-        """Product info from rhsm for the specified product in metadata"""
-        # The rhsm prodcut should always be the product (short) plus
-        # "_HOURLY" for hourly type images.
-        image_type = image_type.upper()
-        aws_provider_name = self.args.aws_provider_name
-        if image_type == "HOURLY":
-            product = product + "_" + image_type
-
-        LOG.debug(
-            "Searching for product %s for provider %s in rhsm",
-            product,
-            aws_provider_name,
-        )
-        for rhsm_product in self.rhsm_products:
-            if (
-                rhsm_product["name"] == product
-                and rhsm_product["providerShortName"] == aws_provider_name
-            ):
-                return rhsm_product
-
-        raise MissingProductError("Product not in rhsm: %s" % product)
-
-    @property
-    def rhsm_products(self):
-        """List of products/image groups for all the service providers"""
-        if self._rhsm_products is None:
-            response = self.rhsm_client.rhsm_products().result()
-            self._rhsm_products = response.json()["body"]
-            prod_names = [
-                "%s(%s)" % (p["name"], p["providerShortName"])
-                for p in self._rhsm_products
-            ]
-            LOG.debug(
-                "%s Products(AWS provider) in rhsm: %s",
-                len(prod_names),
-                ", ".join(sorted(prod_names)),
-            )
-        return self._rhsm_products
-
-    def in_rhsm(self, product, image_type):
-        """Checks whether the product is present in rhsm for the provider.
-        Returns True if the product is found in rhsm_products else False.
-        """
-        try:
-            self.to_rhsm_product(product, image_type)
-        except MissingProductError as er:
-            LOG.error(er)
-            return False
-
-        return True

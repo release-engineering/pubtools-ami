@@ -1,4 +1,2 @@
 {"event": {"type": "upload-image-to-aws-start"}}
-{"event": {"type": "update-rhsm-metadata-start"}}
-{"event": {"type": "update-rhsm-metadata-end"}}
 {"event": {"type": "upload-image-to-aws-end"}}

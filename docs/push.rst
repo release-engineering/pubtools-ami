@@ -14,7 +14,6 @@ A typical invocation of push would look like this:
 .. code-block::
 
   pubtools-adc-push \
-    --rhsm-url https://rhsm.example.com \
     --aws-provider-name awstest \
     --accounts '{"region-1": {"access-r": "secret-r"},
                  "default": {"access-1": "secret-1"}}' \
@@ -22,8 +21,7 @@ A typical invocation of push would look like this:
     --aws-secret-key secret_key \
     staged:/stage/ami/root
 
-All the AMIs in the given source path will be verified for
-provider and product combination in RHSM and then uploaded
+All the AMIs in the given source path will be uploaded
 to AWS for the accounts of the region the image is pushed to
 or the default accounts.
 
@@ -32,12 +30,11 @@ Example: ship images
 ....................
 
 To the ship the images to be available to users, --ship option
-should be used. This updates the metadata on RHSM services.
+should be used.
 
 .. code-block::
 
   pubtools-adc-push \
-    --rhsm-url https://rhsm.example.com \
     --aws-provider-name awstest \
     --accounts '{"region-1": {"access-r": "secret-r"},
                  "default": {"access-1": "secret-1"}}' \
@@ -54,7 +51,6 @@ fee requires using --allow-public-images along with the above options.
 .. code-block::
 
   pubtools-adc-push \
-    --rhsm-url https://rhsm.example.com \
     --aws-provider-name awstest \
     --accounts '{"region-1": {"access-r": "secret-r"},
                  "default": {"access-1": "secret-1"}}' \
@@ -74,7 +70,6 @@ for 4 times after every 30 seconds. These defaults can be modified as:
 .. code-block::
 
   pubtools-adc-push \
-    --rhsm-url https://rhsm.example.com \
     --aws-provider-name awstest \
     --accounts '{"region-1": {"access-r": "secret-r"},
                  "default": {"access-1": "secret-1"}}' \
