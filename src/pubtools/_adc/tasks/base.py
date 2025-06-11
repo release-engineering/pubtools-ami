@@ -70,12 +70,6 @@ class AmiBase(AmiTask, AWSPublishService, CollectorService):
         )
 
         group.add_argument(
-            "--aws-provider-name",
-            help="AWS provider e.g. AWS, ACN (AWS China), AGOV (AWS US Gov)",
-            default="AWS",
-        )
-
-        group.add_argument(
             "--retry-wait",
             help="duration to wait in sec before retrying action on AWS",
             type=int,
