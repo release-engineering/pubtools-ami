@@ -172,8 +172,6 @@ def test_do_push(command_tester, requests_mocker, mock_aws_publish, fake_collect
         lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--aws-provider-name",
-            "awstest",
             "--retry-wait",
             "1",
             "--accounts",
@@ -249,8 +247,6 @@ def test_no_aws_credentials(command_tester):
         [
             "test-push",
             "--debug",
-            "--aws-provider-name",
-            "awstest",
             "--accounts",
             accounts,
             "--snapshot-account-ids",
@@ -270,8 +266,6 @@ def test_push_public_image(
         lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--aws-provider-name",
-            "awstest",
             "--retry-wait",
             "1",
             "--accounts",
@@ -339,8 +333,6 @@ def test_not_ami_push_item(command_tester, staged_file):
         lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--aws-provider-name",
-            "awstest",
             "--retry-wait",
             "1",
             "--max-retries",
@@ -374,8 +366,6 @@ def test_aws_publish_failure_retry(
         lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--aws-provider-name",
-            "awstest",
             "--retry-wait",
             "1",
             "--accounts",
@@ -449,8 +439,6 @@ def test_publish_retry_multiple(command_tester, mock_region_data, mock_ami_uploa
         lambda: entry_point(ADCPush),
         [
             "test-push",
-            "--aws-provider-name",
-            "awstest",
             "--retry-wait",
             "1",
             "--accounts",
