@@ -227,6 +227,62 @@ def test_do_push(command_tester, requests_mocker, mock_aws_publish, fake_collect
     assert "hybrid" == images_json[0]["boot_mode"]
 
 
+def test_do_push_defaults(command_tester, requests_mocker, mock_aws_publish, fake_collector):
+    """Successful push with default ``account`` and ``snapshot_account``."""
+    requests_mocker.register_uri("PUT", re.compile("amazon/amis"), status_code=400)
+    command_tester.test(
+        lambda: entry_point(ADCPush),
+        [
+            "test-push",
+            "--aws-access-id",
+            "access_id",
+            "--aws-secret-key",
+            "secret_key",
+            "--ship",
+            "--debug",
+            AMI_SOURCE,
+        ],
+    )
+
+    # Check that aws publish has been called once
+    mock_aws_publish.assert_called_once()
+
+    # Assert that correct metadata was used
+    expected_metadata = {
+        "ena_support": True,
+        "sriov_net_support": "simple",
+        "billing_products": ["code-0001"],
+        "image_path": "/tmp/aws_staged/region-1-hourly/AWS_IMAGES/ami-1.raw",  # nosec B108
+        "image_name": "RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2",
+        "snapshot_name": "RHEL-8.5-RHEL-8.5.0_HVM_BETA-20210902-x86_64-5-Hourly2-GP2",
+        "snapshot_account_ids": [],
+        "description": "Provided by Red Hat, Inc.",
+        "container": "redhat-cloudimg-region-1",
+        "arch": "x86_64",
+        "virt_type": "hvm",
+        "root_device_name": "/dev/sda1",
+        "volume_type": "gp2",
+        "accounts": [],
+        "groups": [],
+        "tags": None,
+        "boot_mode": AWSBootMode.hybrid,
+    }
+    aws_publish_args, _ = mock_aws_publish.call_args_list[0]
+    aws_metadata = aws_publish_args[0]
+    assert compare_metadata(aws_metadata, expected_metadata)
+
+    # Check state of items pushed
+    stored_items = fake_collector.items
+    assert len(stored_items) == 1
+    assert "PUSHED" == stored_items[0]["state"]
+
+    # Check contents of files pushed
+    images_json = json.loads(fake_collector.file_content["images.json"])
+    assert len(images_json) == 1
+    assert "ami-1234567" == images_json[0]["ami"]
+    assert "hybrid" == images_json[0]["boot_mode"]
+
+
 def test_no_source(command_tester, capsys):
     """Checks that exception is raised when the source is missing"""
     command_tester.test(
