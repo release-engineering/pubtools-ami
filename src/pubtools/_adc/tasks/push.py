@@ -178,7 +178,7 @@ class ADCPush(AmiBase, AWSPublishService, CollectorService):
             'e.g. \'{"region-1": {"user-1": "key-1"}}\' OR \'{"default": {"user-1": "key-1"}}\' '
             'OR \'{"region-1": {"user-1": "key-1"}, "default": {"user-1": "key-1"}}\'',
             type=json.loads,
-            default={"default":{}},
+            default={"default": {}},
         )
 
         group.add_argument(

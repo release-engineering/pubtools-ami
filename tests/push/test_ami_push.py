@@ -227,7 +227,9 @@ def test_do_push(command_tester, requests_mocker, mock_aws_publish, fake_collect
     assert "hybrid" == images_json[0]["boot_mode"]
 
 
-def test_do_push_defaults(command_tester, requests_mocker, mock_aws_publish, fake_collector):
+def test_do_push_defaults(
+    command_tester, requests_mocker, mock_aws_publish, fake_collector
+):
     """Successful push with default ``account`` and ``snapshot_account``."""
     requests_mocker.register_uri("PUT", re.compile("amazon/amis"), status_code=400)
     command_tester.test(
