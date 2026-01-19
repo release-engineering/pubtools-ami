@@ -11,7 +11,6 @@ from ..task import AmiTask
 from .base import AmiBase
 from .exceptions import AWSPublishError
 
-
 LOG = logging.getLogger("pubtools.ami")
 
 step = AmiTask.step
