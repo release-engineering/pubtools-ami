@@ -7,7 +7,6 @@ from cloudimg.aws import AWSService
 from ..arguments import from_environ
 from .base import Service
 
-
 LOG = logging.getLogger("pubtools.ami")
 
 

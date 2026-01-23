@@ -7,7 +7,6 @@ from ..arguments import from_environ
 from ..rhsm import RHSMClient
 from .base import Service
 
-
 LOG = logging.getLogger("pubtools.ami")
 
 

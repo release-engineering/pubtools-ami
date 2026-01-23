@@ -12,7 +12,6 @@ from ..services import RHSMClientService, AWSPublishService, CollectorService
 from ..task import AmiTask
 from .exceptions import MissingProductError
 
-
 LOG = logging.getLogger("pubtools.ami")
 
 

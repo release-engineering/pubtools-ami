@@ -15,7 +15,6 @@ from requests import HTTPError
 
 from pubtools._ami.tasks.push import AmiPush, entry_point, LOG
 
-
 AMI_STAGE_ROOT = "/tmp/aws_staged"  # nosec B108
 AMI_SOURCE = "staged:%s" % AMI_STAGE_ROOT
 
