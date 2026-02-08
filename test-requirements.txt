@@ -255,9 +255,9 @@ charset-normalizer==3.4.4 \
     --hash=sha256:faa3a41b2b66b6e50f84ae4a68c64fcd0c44355741c6374813a800cd6695db9e \
     --hash=sha256:fd44c878ea55ba351104cb93cc85e74916eb8fa440ca7903e57575e97394f608
     # via requests
-cloudimg==1.15.0 \
-    --hash=sha256:15a0f6d1991f2f5f8ccf496fc72d02f987926bd33ba2b4ef47f7690e0d1ac52e \
-    --hash=sha256:92230e116583a750c0072c1d5c14562a7690d167d5bab559ed8f94ea0839b63d
+cloudimg==1.16.0 \
+    --hash=sha256:019d2f93bd8cdd6e6ecfed002efdbf486a757377c31f9ed1954181db48d177d7 \
+    --hash=sha256:43e30192f40925dac15f1491f1d95d6cbd0985a572fa33466ab9bd5f7c4535a7
     # via -r requirements.in
 coverage[toml]==7.6.1 \
     --hash=sha256:06a737c882bd26d0d6ee7269b20b12f14a8704807a01056c80bb881a4b2ce6ca \
