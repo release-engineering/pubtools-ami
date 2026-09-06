@@ -10,6 +10,12 @@ alabaster==0.7.13 ; python_version >= "3" \
     # via
     #   -r test-requirements.in
     #   sphinx
+anyio[trio]==4.5.2 \
+    --hash=sha256:23009af4ed04ce05991845451e11ef02fc7c5ed29179ac9a420e5ad0ac7ddc5b \
+    --hash=sha256:c011ee36bc1e8ba40e5a81cb9df91925c218fe9b778554e0b56a21e1b5d4716f
+    # via
+    #   httpx
+    #   pubtools-pulplib
 astroid==3.2.4 \
     --hash=sha256:0e14202810b30da1b735827f78f5157be2bbd4a7a59b7707ca0bfc2fb4c0063a \
     --hash=sha256:413658a61eeca6202a59231abb473f932038fbcbf1666587f66d482083413a25
@@ -21,8 +27,11 @@ attrs==25.3.0 \
     #   -r requirements.in
     #   cloudimg
     #   jsonschema
+    #   outcome
+    #   pubtools-pulplib
     #   pushsource
     #   referencing
+    #   trio
 azure-common==1.1.28 \
     --hash=sha256:4ac0cd3214e36b6a1b6a442686722a5d8cc449603aa833f3f0f40bda836704a3 \
     --hash=sha256:5c12d3dcf4ec20599ca6b0d3e09e86e146353d443e7fcc050c9a19c1f9df20ad
@@ -66,7 +75,10 @@ botocore==1.37.38 \
 certifi==2026.7.22 \
     --hash=sha256:62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775 \
     --hash=sha256:741e2c3b351ddf169a738da9f2c048608ff7f2c5cc02f1ebc6b118bb090d5d55
-    # via requests
+    # via
+    #   httpcore
+    #   httpx
+    #   requests
 cffi==1.17.1 \
     --hash=sha256:045d61c734659cc045141be4bae381a41d89b741f795af1dd018bfb532fd0df8 \
     --hash=sha256:0984a4925a435b1da406122d4d7968dd861c1385afe3b45ba82b750f229811e2 \
@@ -452,7 +464,9 @@ decorator==5.3.1 \
 defusedxml==0.7.1 \
     --hash=sha256:1bb3032db185915b62d7c6209c5a8792be6a32ab2fedacc84e01b52c51aa3e69 \
     --hash=sha256:a352e7e428770286cc899e2542b6cdaedb2b4953ff269a210103ec58f6198a61
-    # via koji
+    # via
+    #   koji
+    #   pubtools-pulplib
 dill==0.4.0 \
     --hash=sha256:0633f1d2df477324f53a895b02c901fb961bdbf65a17122586ea7019292cbcf0 \
     --hash=sha256:44f54bf6412c2c8464c14e8243eb163690a9800dbe2c367330883b19c7561049
@@ -468,7 +482,10 @@ docutils==0.20.1 \
 exceptiongroup==1.3.1 \
     --hash=sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219 \
     --hash=sha256:a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598
-    # via pytest
+    # via
+    #   anyio
+    #   pytest
+    #   trio
 filelock==3.16.1 \
     --hash=sha256:2082e5703d51fbf98ea75855d9d5527e33d8ff23099bec374a134febee6946b0 \
     --hash=sha256:c249fbfcd5db47e5e2d6d62198e565475ee65e4831e2561c8e313fa7eb961435
@@ -567,11 +584,15 @@ frozendict==2.4.7 \
     --hash=sha256:fd7ba56cf6340c732ecb78787c4e9600c4bd01372af7313ded21037126d33ec6 \
     --hash=sha256:ffd1a9f9babec9119712e76a39397d8aa0d72ef8c4ccad917c6175d7e7f81b74 \
     --hash=sha256:fff8584e3bbdc5c1713cd016fbf4b88babfffd4e5e89b39020f2a208dd24c900
-    # via pushsource
+    # via
+    #   pubtools-pulplib
+    #   pushsource
 frozenlist2==1.0.0 \
     --hash=sha256:33f6c6bb2c7d38524ec3c2d6f2d8a3ee2625a9e13096d8bc64db012b516a95e0 \
     --hash=sha256:caffe66813e42de320b10d08b8c0604c7eb3f142a8482ad3130243e084f37a2f
-    # via pushsource
+    # via
+    #   pubtools-pulplib
+    #   pushsource
 gssapi==1.9.0 \
     --hash=sha256:060b58b455d29ab8aca74770e667dca746264bee660ac5b6a7a17476edc2c0b8 \
     --hash=sha256:10134db0cf01bd7d162acb445762dbcc58b5c772a613e17c46cf8ad956c4dfec \
@@ -599,6 +620,18 @@ gssapi==1.9.0 \
     --hash=sha256:f2f3a46784d8127cc7ef10d3367dedcbe82899ea296710378ccc9b7cefe96f4c \
     --hash=sha256:f468fac8f3f5fca8f4d1ca19e3cd4d2e10bd91074e7285464b22715d13548afe
     # via requests-gssapi
+h11==0.16.0 \
+    --hash=sha256:4e35b956cf45792e4caa5885e69fba00bdbc6ffafbfa020300e549b208ee5ff1 \
+    --hash=sha256:63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86
+    # via httpcore
+httpcore==1.0.9 \
+    --hash=sha256:2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55 \
+    --hash=sha256:6e34463af53fd2ab5d807f399a9b45ea31c3dfa2276f15a2c3f00afff6e176e8
+    # via httpx
+httpx==0.28.1 \
+    --hash=sha256:75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc \
+    --hash=sha256:d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad
+    # via pubtools-pulplib
 identify==2.6.1 \
     --hash=sha256:53863bcac7caf8d2ed85bd20312ea5dcfc22226800f6d6881f232d861db5a8f0 \
     --hash=sha256:91478c5fb7c3aac5ff7bf9b4344f803843dc586832d5f110d672b19aa1984c98
@@ -606,7 +639,11 @@ identify==2.6.1 \
 idna==3.15 \
     --hash=sha256:048adeaf8c2d788c40fee287673ccaa74c24ffd8dcf09ffa555a2fbb59f10ac8 \
     --hash=sha256:ca962446ea538f7092a95e057da437618e886f4d349216d2b1e294abfdb65fdc
-    # via requests
+    # via
+    #   anyio
+    #   httpx
+    #   requests
+    #   trio
 imagesize==1.5.0 \
     --hash=sha256:32677681b3f434c2cb496f00e89c5a291247b35b1f527589909e008057da5899 \
     --hash=sha256:8bfc5363a7f2133a89f0098451e0bcb1cd71aba4dc02bbcecb39d99d40e1b94f
@@ -651,7 +688,9 @@ jmespath==1.0.1 \
 jsonschema==4.23.0 \
     --hash=sha256:d71497fef26351a33265337fa77ffeb82423f3ea21283cd9467bb03999266bc4 \
     --hash=sha256:fbadb6f8b144a8f8cf9f0b89ba94501d143e50411a1278633f56a7acf7fd5566
-    # via pushcollector
+    # via
+    #   pubtools-pulplib
+    #   pushcollector
 jsonschema-specifications==2023.12.1 \
     --hash=sha256:48a76787b3e70f5ed53f1160d2b81f586e4ca6d1548c5de7085d1682674764cc \
     --hash=sha256:87e4fdf3a94858b8a2ba2778d9ba57d8a9cafca7c7489c46ba0d30a8bc6a9c3c
@@ -748,12 +787,17 @@ more-executors==2.11.4 \
     --hash=sha256:f1b21d72c4c15069e891d9b96bca05f9abde149e3c11ca54630c5a1a5ee8f4b5
     # via
     #   -r requirements.in
+    #   pubtools-pulplib
     #   pushcollector
     #   pushsource
 nodeenv==1.10.0 \
     --hash=sha256:5bb13e3eed2923615535339b3c620e76779af4cb4c6a90deccc9e36b274d3827 \
     --hash=sha256:996c191ad80897d076bdfba80a41994c2b47c68e224c542b48feba42ba00f8bb
     # via pre-commit
+outcome==1.3.0.post0 \
+    --hash=sha256:9dcf02e65f2971b80047b377468e72a268e15c0af3cf1238e6ff14f7f91143b8 \
+    --hash=sha256:e771c5ce06d1415e356078d3bdd68523f284b4ce5419828922b6871e65eda82b
+    # via trio
 packaging==26.2 \
     --hash=sha256:5fc45236b9446107ff2415ce77c807cee2862cb6fac22b8a73826d0693b0980e \
     --hash=sha256:ff452ff5a3e828ce110190feff1178bb1f2ea2281fa2075aadb987c2fb221661
@@ -787,16 +831,22 @@ pre-commit==3.5.0 ; python_version >= "3" \
 pubtools==1.4.5 \
     --hash=sha256:04544718ad40fc689814e93e5af4cd343ab4688f2883e5e2cae29c8e2d7ae2cd \
     --hash=sha256:c7270bcb8e3a7677f838023603f93e687d9efc2b63248e600bf625580b3bf3bf
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   pubtools-pulplib
+pubtools-pulplib==2.45.0 \
+    --hash=sha256:538933115da1871cd69fc96bb52c16f275ed1cc55dce2f3501d66670f77a6d4c \
+    --hash=sha256:68671cb77ccfba3d5dc21b8268d724f459f99ce6f1a4b5fa2d9e10a89adc73e4
+    # via pushsource
 pushcollector==1.3.0 \
     --hash=sha256:18281fcd4247ca8b668c25348bbc2f9cc032912cecc7037824a74ad8adcbb1c3 \
     --hash=sha256:3b0754dd86e9d66ec1b19f13b66be6582e5d1b5087a1f1db3778485948fc0f28
     # via
     #   -r requirements.in
     #   pushsource
-pushsource==2.52.2 \
-    --hash=sha256:5b954905f4618b0c6bc915d1c85c549934343164ad2a96c54c60f265ebb86f14 \
-    --hash=sha256:709a213e5649f8af5f7445a13d17015690e98877b74d9ff1f33620ed542d4fc1
+pushsource==2.53.0 \
+    --hash=sha256:0a5a7dd69d76097336b887acdeaf7967b8d45533f3d3a40920946a44ac351982 \
+    --hash=sha256:8b374a5775c60f0f8686f9b2605bcf7a9de650a8851aba9564b44e321452d829
     # via -r requirements.in
 pyasn1==0.6.4 \
     --hash=sha256:9c447d8431c947fe4c8febc4ed9e760bc29011a5b01e5c74b67025bd9fb8ce81 \
@@ -920,6 +970,7 @@ pyyaml==6.0.3 \
     # via
     #   bandit
     #   pre-commit
+    #   pubtools-pulplib
     #   pushcollector
     #   pushsource
 referencing==0.35.1 \
@@ -935,6 +986,7 @@ requests==2.32.4 \
     #   azure-core
     #   cloudimg
     #   koji
+    #   pubtools-pulplib
     #   pushsource
     #   requests-gssapi
     #   requests-mock
@@ -1074,10 +1126,20 @@ six==1.17.0 \
     #   koji
     #   more-executors
     #   python-dateutil
+sniffio==1.3.1 \
+    --hash=sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2 \
+    --hash=sha256:f4324edc670a0f49750a81b895f35c3adb843cca46f0530f79fc1babb23789dc
+    # via
+    #   anyio
+    #   trio
 snowballstemmer==3.1.1 \
     --hash=sha256:7e207fa178741da09cdee59d3ecec3827ad5f92b1fc5c9ff3755b639f71f5752 \
     --hash=sha256:e07bbc54a0d798fe6010a12398422e62a8bfbba95c394fd0956ef58cb4d3e260
     # via sphinx
+sortedcontainers==2.4.0 \
+    --hash=sha256:25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88 \
+    --hash=sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0
+    # via trio
 sphinx==7.1.2 ; python_version >= "3" \
     --hash=sha256:780f4d32f1d7d1126576e0e5ecc19dc32ab76cd24e950228dcf7b1f6d3d9e22f \
     --hash=sha256:d170a81825b2fcacb6dfd5a0d7f578a053e45d3f2b153fecc948c37344eb4cbe
@@ -1119,7 +1181,9 @@ stevedore==5.3.0 \
 tenacity==9.0.0 \
     --hash=sha256:807f37ca97d62aa361264d497b0e31e92b8027044942bfa756160d908320d73b \
     --hash=sha256:93de0c98785b27fcf659856aa9f54bfbd399e29969b0621bc7f762bd441b4539
-    # via cloudimg
+    # via
+    #   cloudimg
+    #   pubtools-pulplib
 tomli==2.4.1 \
     --hash=sha256:01f520d4f53ef97964a240a035ec2a869fe1a37dde002b57ebc4417a27ccd853 \
     --hash=sha256:0d85819802132122da43cb86656f8d1f8c6587d54ae7dcaf30e90533028b49fe \
@@ -1176,10 +1240,15 @@ tomlkit==0.13.3 \
     --hash=sha256:430cf247ee57df2b94ee3fbe588e71d362a941ebb545dec29b53961d61add2a1 \
     --hash=sha256:c89c649d79ee40629a9fda55f8ace8c6a1b42deb912b2a8fd8d942ddadb606b0
     # via pylint
+trio==0.27.0 \
+    --hash=sha256:1dcc95ab1726b2da054afea8fd761af74bad79bd52381b84eae408e983c76831 \
+    --hash=sha256:68eabbcf8f457d925df62da780eff15ff5dc68fd6b367e2dde59f7aaf2a0b884
+    # via anyio
 typing-extensions==4.13.2 \
     --hash=sha256:a439e7c04b49fec3e5d3e2beaa21755cadbbdc391694e28ccdd36ca4a1408f8c \
     --hash=sha256:e6c81219bd689f51865d9e372991c540bda33a0379d5573cddb9a3a23f7caaef
     # via
+    #   anyio
     #   astroid
     #   azure-core
     #   azure-mgmt-storage
